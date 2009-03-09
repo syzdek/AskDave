@@ -1,0 +1,24 @@
+
+Ask Dave
+========
+
+
+Getting the source
+------------------
+
+The source code for this project is maintained using git (http://git-scm.com).
+The following instructions checkout the source code from the git repository
+and creates the autotool files:
+
+        git clone git://git.scm.bindlebinaries.net/pub/scm/projects/AskDave.git
+        cd AskDave
+
+Git Branches
+------------
+
+	docs - branch contains documents related to the "Ask Dave" project
+	master - branch should match the current release of "Ask Dave"
+	next - this branch is the staging area for the next release of "Ask Dave"
+	pu - this branch contains proposed updates for "Ask Dave"
+	??/* - topical branches used for adding/testing new features of "Ask Dave"
+
