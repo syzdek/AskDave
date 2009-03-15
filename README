@@ -22,3 +22,15 @@ Git Branches
 	pu - this branch contains proposed updates for "Ask Dave"
 	??/* - topical branches used for adding/testing new features of "Ask Dave"
 
+Directory Map
+-------------
+
+	.git/ - Git repository (stores history)
+	.gitignore - list of files for Git to ignore
+	AskDave.xcodeproj - AskDave Xcode project
+	README - this file
+	build/ - Xcode build directory (used for compiling the app)
+	classes/ - contains source files for Objective-C classes
+	other/ - misc source files
+	resources - resource files such as icons, images, etc
+

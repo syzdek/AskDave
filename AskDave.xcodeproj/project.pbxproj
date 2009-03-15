@@ -55,7 +55,8 @@
 				28D7ACF60DDB3853001CB0EB /* AskDaveViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* AskDaveViewController.m */,
 			);
-			path = Classes;
+			name = Classes;
+			path = classes;
 			sourceTree = "<group>";
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
@@ -85,6 +86,7 @@
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
+			path = other;
 			sourceTree = "<group>";
 		};
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
@@ -95,6 +97,7 @@
 				8D1107310486CEB800E47090 /* Info.plist */,
 			);
 			name = Resources;
+			path = resources;
 			sourceTree = "<group>";
 		};
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
@@ -178,8 +181,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = AskDave_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
+				GCC_PREFIX_HEADER = other/AskDave_Prefix.pch;
+				INFOPLIST_FILE = resources/Info.plist;
 				PRODUCT_NAME = AskDave;
 			};
 			name = Debug;
@@ -190,8 +193,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = AskDave_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
+				GCC_PREFIX_HEADER = other/AskDave_Prefix.pch;
+				INFOPLIST_FILE = resources/Info.plist;
 				PRODUCT_NAME = AskDave;
 			};
 			name = Release;
@@ -204,6 +207,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = resources/Info.plist;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				SDKROOT = iphoneos2.2.1;
@@ -218,6 +222,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = resources/Info.plist;
 				PREBINDING = NO;
 				SDKROOT = iphoneos2.2.1;
 			};
