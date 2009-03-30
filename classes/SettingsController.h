@@ -20,7 +20,7 @@
  *  @BINDLEBINARIES_FOSS_LICENSE_HEADER_END@
  */
 /**
- *  @file classes/AppDelegate.h Entry point from UIKit framework
+ *  @file classes/SettingsController.h controls settings/info display
  */
 
 ///////////////
@@ -32,32 +32,28 @@
 #import <UIKit/UIKit.h>
 
 
-/////////////////////////
-//                     //
-//  Class Definitions  //
-//                     //
-/////////////////////////
-
-@class AskDaveViewController;
-
-@interface AppDelegate : NSObject <UIApplicationDelegate>
+@interface SettingsController : UIViewController
 {
-   IBOutlet UIWindow  * window;
-   UIViewController   * menu;
-   UIViewController   * board;
-   UIViewController   * settings;
-   NSUserDefaults     * defaults;
+   id               delegate;
+   UISwitch       * shakeSwitch;
+   UISwitch       * flipSwitch;
+   UISwitch       * vibrateSwitch;
+   UISwitch       * soundSwitch;
+   NSUserDefaults * defaults;
 }
 
-@property (nonatomic, retain) UIWindow           * window;
-@property (nonatomic, retain) UIViewController   * menu;
-@property (nonatomic, retain) UIViewController   * board;
-@property (nonatomic, retain) UIViewController   * settings;
-@property (nonatomic, retain) NSUserDefaults     * defaults;
+@property(nonatomic, retain) id               delegate; 
+@property(nonatomic, retain) UISwitch       * shakeSwitch; 
+@property(nonatomic, retain) UISwitch       * flipSwitch; 
+@property(nonatomic, retain) UISwitch       * vibrateSwitch; 
+@property(nonatomic, retain) UISwitch       * soundSwitch; 
+@property(nonatomic, retain) NSUserDefaults * defaults;
 
-- (void) showBoardView:(id)sender;
-- (void) showMenuView:(id)sender;
-- (void) showSettingsView:(id)sender;
+- (void) openDeveloper:(id)sender;
+
+- (void) updateShakePref:(id)sender;
+- (void) updateFlipPref:(id)sender;
+- (void) updateVibratePref:(id)sender;
+- (void) updateSoundPref:(id)sender;
 
 @end
-

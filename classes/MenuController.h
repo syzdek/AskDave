@@ -20,7 +20,7 @@
  *  @BINDLEBINARIES_FOSS_LICENSE_HEADER_END@
  */
 /**
- *  @file classes/AppDelegate.h Entry point from UIKit framework
+ *  @file classes/SettingsController.h controls settings/info display
  */
 
 ///////////////
@@ -31,33 +31,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class AppDelegate;
 
-/////////////////////////
-//                     //
-//  Class Definitions  //
-//                     //
-/////////////////////////
-
-@class AskDaveViewController;
-
-@interface AppDelegate : NSObject <UIApplicationDelegate>
+@interface MenuController : UIViewController
 {
-   IBOutlet UIWindow  * window;
-   UIViewController   * menu;
-   UIViewController   * board;
-   UIViewController   * settings;
-   NSUserDefaults     * defaults;
+   id               delegate;
+   NSUserDefaults * defaults;
 }
 
-@property (nonatomic, retain) UIWindow           * window;
-@property (nonatomic, retain) UIViewController   * menu;
-@property (nonatomic, retain) UIViewController   * board;
-@property (nonatomic, retain) UIViewController   * settings;
-@property (nonatomic, retain) NSUserDefaults     * defaults;
-
-- (void) showBoardView:(id)sender;
-- (void) showMenuView:(id)sender;
-- (void) showSettingsView:(id)sender;
+@property(nonatomic, retain) id               delegate;
+@property(nonatomic, retain) NSUserDefaults * defaults;
 
 @end
-
