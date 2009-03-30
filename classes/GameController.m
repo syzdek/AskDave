@@ -58,6 +58,8 @@
 
 @synthesize hideImage;
 @synthesize revealImage;
+@synthesize boardView;
+@synthesize messageView;
 @synthesize centerImageView;
 @synthesize defaults;
 @synthesize messages;
@@ -68,10 +70,10 @@
 {
    CGRect              frame;
    UIView            * localView;
-   UILabel           * localLabel;
+   //UILabel           * localLabel;
    UIButton          * localButton;
    UIImageView       * localImageView;
-   NSString          * path;
+   //NSString          * path;
    NSAutoreleasePool * pool;
    
    pool = [[NSAutoreleasePool alloc] init];
@@ -83,31 +85,61 @@
    localView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
    self.view = localView;
    [localView release];
-   
-   // loads image view
-   frame                      = CGRectMake(10.0, 90.0, 300, 300);
+
+   // loads first background
+   frame                      = CGRectMake(0.0, 0.0, 320, 480);
    localImageView             = [[UIImageView alloc] initWithFrame:frame];
-   localImageView.image       = self.hideImage;
-   self.centerImageView       = localImageView;
+   localImageView.image       = self.background1;
+   [self.view addSubview:localImageView];
    [localImageView release];
-   [self.view addSubview:self.centerImageView];
+
+   // loads second background
+   frame                      = CGRectMake(0.0, 0.0, 320, 480);
+   localImageView             = [[UIImageView alloc] initWithFrame:frame];
+   localImageView.image       = self.background2;
+   [self.view addSubview:localImageView];
+   [localImageView release];
+
+   // loads message board
+   frame                      = CGRectMake(0.0, 0.0, 320, 480);
+   localImageView             = [[UIImageView alloc] initWithFrame:frame];
+   localImageView.image       = self.board;
+   self.boardView             = localImageView;
+   [self.view addSubview:localImageView];
+   [localImageView release];
+
+   // loads message board
+   frame                      = CGRectMake(0.0, 0.0, 320, 480);
+   localImageView             = [[UIImageView alloc] initWithFrame:frame];
+   localImageView.image       = Nil;
+   self.messageView           = localImageView;
+   [self.view addSubview:localImageView];
+   [localImageView release];
    
-   // loads label
-   frame                      = CGRectMake(117.0, 165.0, 130.0, 123.0);
-   localLabel                 = [[UILabel alloc] initWithFrame:frame];
-   localLabel.textColor       = [UIColor whiteColor];
-   localLabel.textAlignment   = UITextAlignmentCenter;
-   localLabel.backgroundColor = [UIColor clearColor];
-   localLabel.lineBreakMode   = UILineBreakModeWordWrap;
-   localLabel.numberOfLines   = 3;
-   self.message               = localLabel;
-   [localLabel release];
-   [self.view addSubview:self.message];
+//   // loads image view
+//   frame                      = CGRectMake(10.0, 90.0, 300, 300);
+//   localImageView             = [[UIImageView alloc] initWithFrame:frame];
+//   localImageView.image       = self.hideImage;
+//   self.centerImageView       = localImageView;
+//   [localImageView release];
+//   [self.view addSubview:self.centerImageView];
+
+//   // loads label
+//   frame                      = CGRectMake(117.0, 165.0, 130.0, 123.0);
+//   localLabel                 = [[UILabel alloc] initWithFrame:frame];
+//   localLabel.textColor       = [UIColor whiteColor];
+//   localLabel.textAlignment   = UITextAlignmentCenter;
+//   localLabel.backgroundColor = [UIColor clearColor];
+//   localLabel.lineBreakMode   = UILineBreakModeWordWrap;
+//   localLabel.numberOfLines   = 3;
+//   self.message               = localLabel;
+//   [localLabel release];
+//   [self.view addSubview:self.message];
    
    // Add 'i' button
    localButton       = [UIButton buttonWithType:UIButtonTypeInfoLight];
-   localButton.frame = CGRectMake(320-40, 460-40, 40, 40);
-   [localButton addTarget:delegate action:@selector(showSettingsView:) forControlEvents:UIControlEventTouchUpInside];
+   localButton.frame = CGRectMake(320-40, 480-40, 40, 40);
+   [localButton addTarget:delegate action:@selector(showMenuView:) forControlEvents:UIControlEventTouchUpInside];
    [self.view addSubview:localButton];
    
 #ifdef DEBUG
@@ -251,13 +283,20 @@
 
 - (IBAction) rollBall:(NSString *)newMessage
 {
+   NSUInteger   msg_count = [self.messages count];
+   NSUInteger   msg_index = random() % msg_count;
+   self.messageView.image = [self.messages objectAtIndex:msg_index];
+
    if ([self.defaults boolForKey:@"vibrate"])
       AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
    if ([self.defaults boolForKey:@"sound"])
       AudioServicesPlaySystemSound(chimes);
    self.centerImageView.image = self.revealImage;
-   if (newMessage)
-      self.message.text = newMessage;
+
+   self.messageView.hidden = NO;
+
+   //if (newMessage)
+   //   self.message.text = newMessage;
       
   return;
 };

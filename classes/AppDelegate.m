@@ -45,6 +45,7 @@
 
 @synthesize window;
 @synthesize board;
+@synthesize active;
 @synthesize menu;
 @synthesize settings;
 @synthesize defaults;
@@ -82,11 +83,27 @@
    appDefaults = [NSDictionary dictionaryWithObject:@"NO" forKey:@"sound"];
    [self.defaults registerDefaults:appDefaults];
 
+   NSLog(@"loading menu view...");
+   localController     = [[MenuController alloc] init];
+   self.menu           = localController;
+   [(id)self.menu setDelegate:self];
+   [(id)self.menu setDefaults:self.defaults];
+   [self.menu loadView];
+   [localController release];
+
+   NSLog(@"loading settings view...");
+   localController         = [[SettingsController alloc] init];
+   self.settings           = localController;
+   [(id)self.settings setDelegate:self];
+   [(id)self.settings setDefaults:self.defaults];
+   [self.settings loadView];
+   [localController release];
+
    // creates array for holding board controllers
    NSLog(@"loading Dave views...");
    self.boards = [NSMutableArray arrayWithCapacity:6];
 
-   // classic Dave
+   NSLog(@"loading classic Dave...");
    gamer = [[GameController alloc] init];
    [(id)gamer setDelegate:self];
    [(id)gamer setDefaults:self.defaults];
@@ -94,11 +111,11 @@
    gamer.background2 = Nil;
    gamer.board       = Nil;
    gamer.messages    = [NSMutableArray arrayWithCapacity:10];
-   [self.boards addObject:gamer];
+   [self.boards addObject:self.settings];
    [gamer loadView];
    [gamer release];
 
-   // zombie Dave
+   NSLog(@"loading zombie Dave...");
    gamer = [[GameController alloc] init];
    [(id)gamer setDelegate:self];
    [(id)gamer setDefaults:self.defaults];
@@ -106,11 +123,11 @@
    gamer.background2 = Nil;
    gamer.board       = Nil;
    gamer.messages    = [NSMutableArray arrayWithCapacity:10];
-   [self.boards addObject:gamer];
+   [self.boards addObject:self.settings];
    [gamer loadView];
    [gamer release];
 
-   // nirvana Dave
+   NSLog(@"loading nirvana Dave...");
    gamer = [[GameController alloc] init];
    [(id)gamer setDelegate:self];
    [(id)gamer setDefaults:self.defaults];
@@ -118,11 +135,11 @@
    gamer.background2 = Nil;
    gamer.board       = Nil;
    gamer.messages    = [NSMutableArray arrayWithCapacity:10];
-   [self.boards addObject:gamer];
+   [self.boards addObject:self.settings];
    [gamer loadView];
    [gamer release];
 
-   // geek Dave
+   NSLog(@"loading geek Dave...");
    gamer = [[GameController alloc] init];
    [(id)gamer setDelegate:self];
    [(id)gamer setDefaults:self.defaults];
@@ -140,7 +157,7 @@
    [gamer loadView];
    [gamer release];
 
-   // pirate Dave
+   NSLog(@"loading pirate Dave...");
    gamer = [[GameController alloc] init];
    [(id)gamer setDelegate:self];
    [(id)gamer setDefaults:self.defaults];
@@ -148,11 +165,11 @@
    gamer.background2 = Nil;
    gamer.board       = Nil;
    gamer.messages    = [NSMutableArray arrayWithCapacity:10];
-   [self.boards addObject:gamer];
+   [self.boards addObject:self.settings];
    [gamer loadView];
    [gamer release];
 
-   // devil Dave
+   NSLog(@"loading devil Dave...");
    gamer = [[GameController alloc] init];
    [(id)gamer setDelegate:self];
    [(id)gamer setDefaults:self.defaults];
@@ -160,29 +177,14 @@
    gamer.background2 = Nil;
    gamer.board       = Nil;
    gamer.messages    = [NSMutableArray arrayWithCapacity:10];
-   [self.boards addObject:gamer];
+   [self.boards addObject:self.settings];
    [gamer loadView];
    [gamer release];
-
-   NSLog(@"loading menu view...");
-   localController     = [[MenuController alloc] init];
-   self.menu           = localController;
-   [(id)self.menu setDelegate:self];
-   [(id)self.menu setDefaults:self.defaults];
-   [self.menu loadView];
-   [localController release];
-
-   NSLog(@"loading settings view...");
-   localController         = [[SettingsController alloc] init];
-   self.settings           = localController;
-   [(id)self.settings setDelegate:self];
-   [(id)self.settings setDefaults:self.defaults];
-   [self.settings loadView];
-   [localController release];
 
 	// Override point for customization after app launch
    NSLog(@"let there be light...");
-   [self.window addSubview:self.menu.view];
+   self.active = self.menu;
+   [self.window addSubview:self.active.view];
    [window makeKeyAndVisible];
 
    NSLog(@"Enjoy!!!");
@@ -210,20 +212,20 @@
 
 - (void) showBoardView:(id)sender
 {
-	//self.settings.view.userInteractionEnabled   = NO;
-	//self.board.view.userInteractionEnabled      = NO;
-   
+   self.board = [self.boards objectAtIndex:[sender tag]];
    // setup the animation group
 	[UIView beginAnimations:nil context:nil];
    [UIView setAnimationDuration:0.75];
    [UIView setAnimationDelegate:self];
    [UIView setAnimationDidStopSelector:@selector(transitionDidStop:finished:context:)];
-   
-   [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:window cache:YES];
-   [self.settings.view removeFromSuperview];
+
+   [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:window cache:YES];
+   [self.active.view removeFromSuperview];
    [window addSubview:self.board.view];
 
    [UIView commitAnimations];
+
+   self.active = self.board;
 
    return;
 }
@@ -241,10 +243,12 @@
    [UIView setAnimationDidStopSelector:@selector(transitionDidStop:finished:context:)];
    
    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:window cache:YES];
-   [self.settings.view removeFromSuperview];
+   [self.active.view removeFromSuperview];
    [window addSubview:self.menu.view];
 
    [UIView commitAnimations];
+
+   self.active = self.menu;
 
    return;
 }
@@ -259,10 +263,12 @@
    [UIView setAnimationDidStopSelector:@selector(transitionDidStop:finished:context:)];
 
    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:window cache:YES];
-   [self.menu.view removeFromSuperview];
+   [self.active.view removeFromSuperview];
    [window addSubview:self.settings.view];
 
    [UIView commitAnimations];
+
+   self.active = self.settings;
 
    return;
 }

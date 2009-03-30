@@ -58,9 +58,11 @@
    UIImage           * background1;
    UIImage           * background2;
    UIImage           * board;
-
    UIImage           * hideImage;
    UIImage           * revealImage;
+
+   UIImageView       * boardView;
+   UIImageView       * messageView;
    UIImageView       * centerImageView;
    NSUserDefaults    * defaults;
    SystemSoundID       chimes;
@@ -86,6 +88,8 @@
 
 @property(nonatomic, retain) UIImage        * hideImage;
 @property(nonatomic, retain) UIImage        * revealImage;
+@property(nonatomic, retain) UIImageView    * boardView;
+@property(nonatomic, retain) UIImageView    * messageView;
 @property(nonatomic, retain) UIImageView    * centerImageView;
 @property(nonatomic, retain) NSUserDefaults * defaults;
 @property(nonatomic, retain) NSMutableArray * messages;

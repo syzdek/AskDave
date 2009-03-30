@@ -43,6 +43,7 @@
 @interface AppDelegate : NSObject <UIApplicationDelegate>
 {
    IBOutlet UIWindow  * window;
+   UIViewController   * active;
    UIViewController   * menu;
    UIViewController   * board;
    UIViewController   * settings;
@@ -51,6 +52,7 @@
 }
 
 @property (nonatomic, retain) UIWindow           * window;
+@property (nonatomic, retain) UIViewController   * active;
 @property (nonatomic, retain) UIViewController   * menu;
 @property (nonatomic, retain) UIViewController   * board;
 @property (nonatomic, retain) UIViewController   * settings;
