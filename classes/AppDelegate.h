@@ -47,6 +47,7 @@
    UIViewController   * board;
    UIViewController   * settings;
    NSUserDefaults     * defaults;
+   NSMutableArray     * boards;
 }
 
 @property (nonatomic, retain) UIWindow           * window;
@@ -54,6 +55,7 @@
 @property (nonatomic, retain) UIViewController   * board;
 @property (nonatomic, retain) UIViewController   * settings;
 @property (nonatomic, retain) NSUserDefaults     * defaults;
+@property (nonatomic, retain) NSMutableArray     * boards;
 
 - (void) showBoardView:(id)sender;
 - (void) showMenuView:(id)sender;

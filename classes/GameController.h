@@ -54,11 +54,17 @@
    UILabel           * forceDataX;
    UILabel           * forceDataY;
    UILabel           * forceDataZ;
+
+   UIImage           * background1;
+   UIImage           * background2;
+   UIImage           * board;
+
    UIImage           * hideImage;
    UIImage           * revealImage;
    UIImageView       * centerImageView;
    NSUserDefaults    * defaults;
    SystemSoundID       chimes;
+   NSMutableArray    * messages;
 }
 
 @property(assign, readwrite) BOOL             hasFliped;
@@ -73,10 +79,16 @@
 @property(nonatomic, retain) UILabel        * forceDataX;
 @property(nonatomic, retain) UILabel        * forceDataY;
 @property(nonatomic, retain) UILabel        * forceDataZ;
+
+@property(nonatomic, retain) UIImage        * background1;
+@property(nonatomic, retain) UIImage        * background2;
+@property(nonatomic, retain) UIImage        * board;
+
 @property(nonatomic, retain) UIImage        * hideImage;
 @property(nonatomic, retain) UIImage        * revealImage;
 @property(nonatomic, retain) UIImageView    * centerImageView;
 @property(nonatomic, retain) NSUserDefaults * defaults;
+@property(nonatomic, retain) NSMutableArray * messages;
 
 - (void) rollBall:(NSString *)newMessage;
 - (void)accelerometerFlip:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration;

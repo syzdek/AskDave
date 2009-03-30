@@ -51,10 +51,16 @@
 @synthesize forceDataX;
 @synthesize forceDataY;
 @synthesize forceDataZ;
+
+@synthesize background1;
+@synthesize background2;
+@synthesize board;
+
 @synthesize hideImage;
 @synthesize revealImage;
 @synthesize centerImageView;
 @synthesize defaults;
+@synthesize messages;
 
 
 // Implement loadView if you want to create a view hierarchy programmatically
@@ -70,8 +76,8 @@
    
    pool = [[NSAutoreleasePool alloc] init];
 
-   path = [[NSBundle mainBundle] pathForResource:@"chimes" ofType:@"wav"];
-   AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:path], &chimes);
+   //path = [[NSBundle mainBundle] pathForResource:@"chimes" ofType:@"wav"];
+   //AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:path], &chimes);
 
    // load view
    localView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];

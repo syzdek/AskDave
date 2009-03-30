@@ -48,6 +48,7 @@
 @synthesize menu;
 @synthesize settings;
 @synthesize defaults;
+@synthesize boards;
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
@@ -55,6 +56,7 @@
    NSDictionary     * appDefaults;
    NSUserDefaults   * localDefaults;
 	UIViewController * localController;
+   GameController   * gamer;
 
    NSLog(@"%@ %@ Source Code", [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleName"], [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleVersion"]);
    NSLog(@"Copyright (C) 2009 David M. Syzdek");
@@ -67,7 +69,7 @@
 
    srandomdev();
 
-   // initialize defaults
+   NSLog(@"loading defaults...");
    localDefaults = [[NSUserDefaults alloc] init];
    self.defaults = localDefaults;
    [localDefaults release];
@@ -80,20 +82,97 @@
    appDefaults = [NSDictionary dictionaryWithObject:@"NO" forKey:@"sound"];
    [self.defaults registerDefaults:appDefaults];
 
-//   localController         = [[GameController alloc] init];
-//   self.board              = localController;
-//   [(id)self.board setDelegate:self];
-//   [(id)self.board setDefaults:self.defaults];
-//   [self.board loadView];
-//   [localController release];
-//
-   localController         = [[MenuController alloc] init];
+   // creates array for holding board controllers
+   NSLog(@"loading Dave views...");
+   self.boards = [NSMutableArray arrayWithCapacity:6];
+
+   // classic Dave
+   gamer = [[GameController alloc] init];
+   [(id)gamer setDelegate:self];
+   [(id)gamer setDefaults:self.defaults];
+   gamer.background1 = Nil;
+   gamer.background2 = Nil;
+   gamer.board       = Nil;
+   gamer.messages    = [NSMutableArray arrayWithCapacity:10];
+   [self.boards addObject:gamer];
+   [gamer loadView];
+   [gamer release];
+
+   // zombie Dave
+   gamer = [[GameController alloc] init];
+   [(id)gamer setDelegate:self];
+   [(id)gamer setDefaults:self.defaults];
+   gamer.background1 = Nil;
+   gamer.background2 = Nil;
+   gamer.board       = Nil;
+   gamer.messages    = [NSMutableArray arrayWithCapacity:10];
+   [self.boards addObject:gamer];
+   [gamer loadView];
+   [gamer release];
+
+   // nirvana Dave
+   gamer = [[GameController alloc] init];
+   [(id)gamer setDelegate:self];
+   [(id)gamer setDefaults:self.defaults];
+   gamer.background1 = Nil;
+   gamer.background2 = Nil;
+   gamer.board       = Nil;
+   gamer.messages    = [NSMutableArray arrayWithCapacity:10];
+   [self.boards addObject:gamer];
+   [gamer loadView];
+   [gamer release];
+
+   // geek Dave
+   gamer = [[GameController alloc] init];
+   [(id)gamer setDelegate:self];
+   [(id)gamer setDefaults:self.defaults];
+   gamer.background1 = Nil;
+   gamer.background2 = [UIImage imageNamed:@"geek-bg.png"];
+   gamer.board       = [UIImage imageNamed:@"geek-board.png"];
+   gamer.messages    = [NSMutableArray arrayWithCapacity:10];
+   [gamer.messages addObject:[UIImage imageNamed:@"geek-msg01.png"]];
+   [gamer.messages addObject:[UIImage imageNamed:@"geek-msg01.png"]];
+   [gamer.messages addObject:[UIImage imageNamed:@"geek-msg01.png"]];
+   [gamer.messages addObject:[UIImage imageNamed:@"geek-msg01.png"]];
+   [gamer.messages addObject:[UIImage imageNamed:@"geek-msg01.png"]];
+   [gamer.messages addObject:[UIImage imageNamed:@"geek-msg01.png"]];
+   [self.boards addObject:gamer];
+   [gamer loadView];
+   [gamer release];
+
+   // pirate Dave
+   gamer = [[GameController alloc] init];
+   [(id)gamer setDelegate:self];
+   [(id)gamer setDefaults:self.defaults];
+   gamer.background1 = Nil;
+   gamer.background2 = Nil;
+   gamer.board       = Nil;
+   gamer.messages    = [NSMutableArray arrayWithCapacity:10];
+   [self.boards addObject:gamer];
+   [gamer loadView];
+   [gamer release];
+
+   // devil Dave
+   gamer = [[GameController alloc] init];
+   [(id)gamer setDelegate:self];
+   [(id)gamer setDefaults:self.defaults];
+   gamer.background1 = Nil;
+   gamer.background2 = Nil;
+   gamer.board       = Nil;
+   gamer.messages    = [NSMutableArray arrayWithCapacity:10];
+   [self.boards addObject:gamer];
+   [gamer loadView];
+   [gamer release];
+
+   NSLog(@"loading menu view...");
+   localController     = [[MenuController alloc] init];
    self.menu           = localController;
    [(id)self.menu setDelegate:self];
    [(id)self.menu setDefaults:self.defaults];
    [self.menu loadView];
    [localController release];
 
+   NSLog(@"loading settings view...");
    localController         = [[SettingsController alloc] init];
    self.settings           = localController;
    [(id)self.settings setDelegate:self];
@@ -101,12 +180,12 @@
    [self.settings loadView];
    [localController release];
 
-	// Override point for customization after app launch	
+	// Override point for customization after app launch
+   NSLog(@"let there be light...");
    [self.window addSubview:self.menu.view];
    [window makeKeyAndVisible];
 
-//   [self.board viewDidLoad];
-//   [self.settings viewDidLoad];
+   NSLog(@"Enjoy!!!");
 
    return;
 }
