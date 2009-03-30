@@ -227,6 +227,8 @@
 
    self.active = self.board;
 
+   [self.board viewDidLoad];
+
    return;
 }
 

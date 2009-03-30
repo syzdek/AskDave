@@ -70,11 +70,13 @@
 {
    CGRect              frame;
    UIView            * localView;
-   //UILabel           * localLabel;
    UIButton          * localButton;
    UIImageView       * localImageView;
    //NSString          * path;
    NSAutoreleasePool * pool;
+#ifdef DEBUG
+   UILabel           * localLabel;
+#endif
    
    pool = [[NSAutoreleasePool alloc] init];
 
@@ -201,14 +203,15 @@
    z = acceleration.z;
    
 #ifdef DEBUG
-   forceDataX.text = [NSString stringWithFormat:@"X: %+1.30f", x]];
-   forceDataY.text = [NSString stringWithFormat:@"Y: %+1.30f", y]];
-   forceDataZ.text = [NSString stringWithFormat:@"Z: %+1.30f", z]];
+   forceDataX.text = [NSString stringWithFormat:@"X: %+1.30f", x];
+   forceDataY.text = [NSString stringWithFormat:@"Y: %+1.30f", y];
+   forceDataZ.text = [NSString stringWithFormat:@"Z: %+1.30f", z];
 #endif
 
    if (z > 0.7)
    {
       hasFliped = YES;
+      self.messageView.image = Nil;
       [message setText:@""];
       self.centerImageView.image = self.hideImage;
    };
@@ -263,6 +266,7 @@
    {
       self.hasFliped             = YES;
       self.message.text          = @"";
+      self.messageView.image     = Nil;
       self.centerImageView.image = self.hideImage;
    }
    else if (((diffX < 0.1) || (diffY < 0.1) || (diffZ < 0.1)) && (hasFliped))
