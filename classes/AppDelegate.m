@@ -63,7 +63,7 @@
    NSLog(@"Copyright (C) 2009 David Simmer II");
    NSLog(@"http://www.blogography.com/");
 
-   [application setStatusBarHidden:NO animated:NO];
+   [application setStatusBarHidden:YES animated:NO];
 
    srandomdev();
 
