@@ -30,6 +30,7 @@
 ///////////////
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import <AudioToolbox/AudioToolbox.h>
 
 /////////////////////////
@@ -56,7 +57,9 @@
    UILabel           * forceDataZ;
 
    UIImage           * background;
+   UIImageView       * backgroundView;
    UIImage           * foreground;
+   UIImageView       * foregroundView;
    UIImage           * board;
    UIImage           * hideImage;
    UIImage           * revealImage;
@@ -84,11 +87,14 @@
 
 @property(nonatomic, retain) UIImage        * background;
 @property(nonatomic, retain) UIImage        * foreground;
+@property(nonatomic, retain) UIImageView    * foregroundView;
 @property(nonatomic, retain) UIImage        * board;
 
 @property(nonatomic, retain) UIImage        * hideImage;
 @property(nonatomic, retain) UIImage        * revealImage;
 @property(nonatomic, retain) UIImageView    * boardView;
+@property(nonatomic, retain) UIImageView    * backgroundView;
+
 @property(nonatomic, retain) UIImageView    * messageView;
 @property(nonatomic, retain) UIImageView    * centerImageView;
 @property(nonatomic, retain) NSUserDefaults * defaults;

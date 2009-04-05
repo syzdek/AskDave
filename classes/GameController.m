@@ -33,9 +33,17 @@
 #import <AudioToolbox/AudioToolbox.h>
 
 // Constant for the number of times per second (Hertz) to sample acceleration.
-#define kAccelerometerFrequency     10//40
+#define kAccelerometerFrequency     10
+#define kTimerFrequency             10.0
+#define kAccelerometerForce         .75
+#define kAccelerometerToDegrees     15
+#define kSpeedMagnitude             100
+#define kDurationMagnitude          0.2
+#define kMaxDuration                10.0
 
 
+CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
+CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
 @implementation GameController
 
@@ -53,7 +61,9 @@
 @synthesize forceDataZ;
 
 @synthesize background;
+@synthesize backgroundView;
 @synthesize foreground;
+@synthesize foregroundView;
 @synthesize board;
 
 @synthesize hideImage;
@@ -88,17 +98,26 @@
    self.view = localView;
    [localView release];
 
-   // loads first background
+   // loads background
    frame                      = CGRectMake(0.0, 0.0, 320, 480);
+   if (self.background)
+   {
+      frame.size.width           = self.background.size.width;
+      frame.size.height          = self.background.size.height;
+      frame.origin.x             = 0 - ((self.background.size.width  - 320)/2);
+      frame.origin.y             = 0 - ((self.background.size.height - 480)/2);
+   };
    localImageView             = [[UIImageView alloc] initWithFrame:frame];
-   localImageView.image       = self.background ;
+   localImageView.image       = self.background;
+   self.backgroundView        = localImageView;
    [self.view addSubview:localImageView];
    [localImageView release];
 
-   // loads second background
+   // loads foreground
    frame                      = CGRectMake(0.0, 0.0, 320, 480);
    localImageView             = [[UIImageView alloc] initWithFrame:frame];
    localImageView.image       = self.foreground;
+   self.foregroundView        = localImageView;
    [self.view addSubview:localImageView];
    [localImageView release];
 
@@ -110,33 +129,13 @@
    [self.view addSubview:localImageView];
    [localImageView release];
 
-   // loads message board
+   // loads message
    frame                      = CGRectMake(0.0, 0.0, 320, 480);
    localImageView             = [[UIImageView alloc] initWithFrame:frame];
    localImageView.image       = Nil;
    self.messageView           = localImageView;
    [self.view addSubview:localImageView];
    [localImageView release];
-   
-//   // loads image view
-//   frame                      = CGRectMake(10.0, 90.0, 300, 300);
-//   localImageView             = [[UIImageView alloc] initWithFrame:frame];
-//   localImageView.image       = self.hideImage;
-//   self.centerImageView       = localImageView;
-//   [localImageView release];
-//   [self.view addSubview:self.centerImageView];
-
-//   // loads label
-//   frame                      = CGRectMake(117.0, 165.0, 130.0, 123.0);
-//   localLabel                 = [[UILabel alloc] initWithFrame:frame];
-//   localLabel.textColor       = [UIColor whiteColor];
-//   localLabel.textAlignment   = UITextAlignmentCenter;
-//   localLabel.backgroundColor = [UIColor clearColor];
-//   localLabel.lineBreakMode   = UILineBreakModeWordWrap;
-//   localLabel.numberOfLines   = 3;
-//   self.message               = localLabel;
-//   [localLabel release];
-//   [self.view addSubview:self.message];
    
    // Add 'i' button
    localButton       = [UIButton buttonWithType:UIButtonTypeInfoLight];
@@ -310,8 +309,38 @@
 // If you need to do additional setup after loading the view, override viewDidLoad.
 - (void)viewDidLoad
 {
+   // loads accelerometer
    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
+
+   [self animationDidStop:Nil finished:YES];
+
+   return;
+}
+
+
+- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
+{
+   if (!(flag))
+      return;
+
+   // cancels existing rotating backgrounds
+   [self.backgroundView.layer removeAllAnimations];
+
+   CABasicAnimation * myAnimation  = [CABasicAnimation animation];
+   myAnimation.delegate            = self;
+   myAnimation.keyPath             = @"transform.rotation.z";
+   myAnimation.fromValue           = [NSNumber numberWithFloat:DegreesToRadians(0)];
+   myAnimation.toValue             = [NSNumber numberWithFloat:DegreesToRadians(25)];
+   myAnimation.duration            = 1;
+   myAnimation.removedOnCompletion = NO;
+   // leaves presentation layer in final state; preventing snap-back to original state
+   myAnimation.fillMode = kCAFillModeBoth;
+   myAnimation.autoreverses = YES; 
+   myAnimation.repeatCount = 5;
+   myAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+
+   [self.backgroundView.layer addAnimation:myAnimation forKey:@"rotateAnimation"];
    return;
 }
 

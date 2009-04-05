@@ -17,6 +17,7 @@
 		A03952E00F8889DB00215BC8 /* geek-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A03952DF0F8889DB00215BC8 /* geek-bg.png */; };
 		A03952E70F888BD300215BC8 /* geek-msg02.png in Resources */ = {isa = PBXBuildFile; fileRef = A03952E50F888BD300215BC8 /* geek-msg02.png */; };
 		A03952E80F888BD300215BC8 /* geek-msg03.png in Resources */ = {isa = PBXBuildFile; fileRef = A03952E60F888BD300215BC8 /* geek-msg03.png */; };
+		A039533E0F8893EC00215BC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A039533D0F8893EC00215BC8 /* QuartzCore.framework */; };
 		A07FCFB60F80507500CA32C5 /* geek-fg.png in Resources */ = {isa = PBXBuildFile; fileRef = A07FCFB30F80507500CA32C5 /* geek-fg.png */; };
 		A07FCFB70F80507500CA32C5 /* geek-bd.png in Resources */ = {isa = PBXBuildFile; fileRef = A07FCFB40F80507500CA32C5 /* geek-bd.png */; };
 		A07FCFB80F80507500CA32C5 /* geek-msg01.png in Resources */ = {isa = PBXBuildFile; fileRef = A07FCFB50F80507500CA32C5 /* geek-msg01.png */; };
@@ -43,6 +44,7 @@
 		A03952DF0F8889DB00215BC8 /* geek-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geek-bg.png"; sourceTree = "<group>"; };
 		A03952E50F888BD300215BC8 /* geek-msg02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geek-msg02.png"; sourceTree = "<group>"; };
 		A03952E60F888BD300215BC8 /* geek-msg03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geek-msg03.png"; sourceTree = "<group>"; };
+		A039533D0F8893EC00215BC8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A07FCFB30F80507500CA32C5 /* geek-fg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geek-fg.png"; sourceTree = "<group>"; };
 		A07FCFB40F80507500CA32C5 /* geek-bd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geek-bd.png"; sourceTree = "<group>"; };
 		A07FCFB50F80507500CA32C5 /* geek-msg01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geek-msg01.png"; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				A07FD0190F8070DB00CA32C5 /* AudioToolbox.framework in Frameworks */,
+				A039533E0F8893EC00215BC8 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +107,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				A07FD0180F8070DB00CA32C5 /* AudioToolbox.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -136,6 +138,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A07FD0180F8070DB00CA32C5 /* AudioToolbox.framework */,
+				A039533D0F8893EC00215BC8 /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
