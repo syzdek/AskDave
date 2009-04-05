@@ -43,6 +43,7 @@
 
 @interface GameController : UIViewController <UIAccelerometerDelegate>
 {
+   NSString           * name;
    id                  delegate;
    BOOL                hasFliped;
    float               x;
@@ -58,7 +59,7 @@
    float               bga_fromValue;
    float               bga_toValue;
    BOOL                bga_autoreverses;
-   NSString *    bga_timing_function;
+   NSString          * bga_timing_function;
 
    UILabel           * forceDataX;
    UILabel           * forceDataY;
@@ -77,6 +78,7 @@
    SystemSoundID       chimes;
 }
 
+@property(nonatomic, retain) NSString       * name;
 @property(nonatomic, retain) id               delegate;
 @property(assign, readwrite) BOOL             hasFliped;
 @property(assign, readwrite) float            x;
@@ -109,6 +111,7 @@
 
 @property(nonatomic, retain) NSUserDefaults * defaults;
 
+- (void)viewDidUnload;
 
 - (void) rollBall:(NSString *)newMessage;
 - (void)accelerometerFlip:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration;

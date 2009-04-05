@@ -47,6 +47,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
 @implementation GameController
 
+@synthesize name;
 @synthesize delegate;
 @synthesize hasFliped;
 @synthesize x;
@@ -304,15 +305,25 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 };
 
 
-
 // If you need to do additional setup after loading the view, override viewDidLoad.
 - (void)viewDidLoad
 {
+   NSLog(@"activating %@", self.name);
+
    // loads accelerometer
    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
 
    [self animationDidStop:Nil finished:YES];
+
+   return;
+}
+
+// If you need to do additional setup after loading the view, override viewDidLoad.
+- (void)viewDidUnload
+{
+   NSLog(@"deactivating %@", self.name);
+   [self.backgroundView.layer removeAllAnimations];
 
    return;
 }

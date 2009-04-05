@@ -107,6 +107,7 @@
    gamer = [[GameController alloc] init];
    [(id)gamer setDelegate:self];
    [(id)gamer setDefaults:self.defaults];
+   gamer.name                 = @"classic Dave";
    gamer.bga                  = YES;
    gamer.bga_duration         = 1;
    gamer.bga_fromValue        = 0;
@@ -129,6 +130,7 @@
    gamer = [[GameController alloc] init];
    [(id)gamer setDelegate:self];
    [(id)gamer setDefaults:self.defaults];
+   gamer.name                 = @"zombie Dave";
    gamer.bga                  = YES;
    gamer.bga_duration         = 3*2;
    gamer.bga_fromValue        = 0;
@@ -150,6 +152,7 @@
    gamer = [[GameController alloc] init];
    [(id)gamer setDelegate:self];
    [(id)gamer setDefaults:self.defaults];
+   gamer.name                 = @"nirvana Dave";
    gamer.bga                  = YES;
    gamer.bga_duration         = 3*2;
    gamer.bga_fromValue        = 0;
@@ -171,6 +174,7 @@
    gamer = [[GameController alloc] init];
    [(id)gamer setDelegate:self];
    [(id)gamer setDefaults:self.defaults];
+   gamer.name                 = @"geek Dave";
    gamer.bga                  = YES;
    gamer.bga_duration         = 60;
    gamer.bga_fromValue        = 0;
@@ -192,6 +196,7 @@
    gamer = [[GameController alloc] init];
    [(id)gamer setDelegate:self];
    [(id)gamer setDefaults:self.defaults];
+   gamer.name                 = @"pirate Dave";
    gamer.bga                  = YES;
    gamer.bga_duration         = 2;
    gamer.bga_fromValue        = 0;
@@ -213,6 +218,7 @@
    gamer = [[GameController alloc] init];
    [(id)gamer setDelegate:self];
    [(id)gamer setDefaults:self.defaults];
+   gamer.name                 = @"devil Dave";
    gamer.bga                  = YES;
    gamer.bga_duration         = 1;
    gamer.bga_fromValue        = 0;
@@ -261,6 +267,11 @@
 
 - (void) showBoardView:(id)sender
 {
+   if (self.board)
+   {
+      [self.board viewDidUnload];
+      self.board = Nil;
+   };
    self.board = [self.boards objectAtIndex:[sender tag]];
    // setup the animation group
 	[UIView beginAnimations:nil context:nil];
@@ -284,9 +295,11 @@
 
 - (void) showMenuView:(id)sender
 {
-	//self.settings.view.userInteractionEnabled   = NO;
-	//self.board.view.userInteractionEnabled      = NO;
-   
+   if (self.board)
+   {
+      [self.board viewDidUnload];
+      self.board = Nil;
+   };
    // setup the animation group
 	[UIView beginAnimations:nil context:nil];
    [UIView setAnimationDuration:0.75];
@@ -307,6 +320,11 @@
 
 - (void) showSettingsView:(id)sender
 {
+   if (self.board)
+   {
+      [self.board viewDidUnload];
+      self.board = Nil;
+   };
    // setup the animation group
 	[UIView beginAnimations:nil context:nil];
    [UIView setAnimationDuration:0.75];
