@@ -55,7 +55,6 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 @synthesize oldY;
 @synthesize oldZ;
 @synthesize delegate;
-@synthesize message;
 @synthesize forceDataX;
 @synthesize forceDataY;
 @synthesize forceDataZ;
@@ -65,14 +64,11 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 @synthesize foreground;
 @synthesize foregroundView;
 @synthesize board;
-
-@synthesize hideImage;
-@synthesize revealImage;
 @synthesize boardView;
-@synthesize messageView;
-@synthesize centerImageView;
-@synthesize defaults;
 @synthesize messages;
+@synthesize messageView;
+
+@synthesize defaults;
 
 
 // Implement loadView if you want to create a view hierarchy programmatically
@@ -211,8 +207,6 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    {
       hasFliped = YES;
       self.messageView.image = Nil;
-      [message setText:@""];
-      self.centerImageView.image = self.hideImage;
    };
    if ((z < 0.0) && (hasFliped))
    {
@@ -264,9 +258,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    if ((diffX > 1.0) || (diffY > 1.0) || (diffZ > 1.0))
    {
       self.hasFliped             = YES;
-      self.message.text          = @"";
       self.messageView.image     = Nil;
-      self.centerImageView.image = self.hideImage;
    }
    else if (((diffX < 0.1) || (diffY < 0.1) || (diffZ < 0.1)) && (hasFliped))
    {
@@ -294,7 +286,6 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
       AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
    if ([self.defaults boolForKey:@"sound"])
       AudioServicesPlaySystemSound(chimes);
-   self.centerImageView.image = self.revealImage;
 
    self.messageView.hidden = NO;
 
@@ -368,11 +359,20 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
 - (void)dealloc
 {
-   self.message         = nil;
    self.forceDataX      = nil;
    self.forceDataY      = nil;
    self.forceDataZ      = nil;
-   self.centerImageView = nil;
+
+   self.background      = nil;
+   self.backgroundView  = nil;
+   self.foreground      = nil;
+   self.foregroundView  = nil;
+   self.board           = nil;
+   self.boardView       = nil;
+   self.messages        = nil;
+   self.messageView     = nil;
+
+   self.defaults;
    AudioServicesDisposeSystemSoundID(chimes);
 	[super dealloc];
 }

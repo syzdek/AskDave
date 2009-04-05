@@ -51,7 +51,7 @@
    float               oldX;
    float               oldY;
    float               oldZ;
-   UILabel           * message;
+
    UILabel           * forceDataX;
    UILabel           * forceDataY;
    UILabel           * forceDataZ;
@@ -61,15 +61,12 @@
    UIImage           * foreground;
    UIImageView       * foregroundView;
    UIImage           * board;
-   UIImage           * hideImage;
-   UIImage           * revealImage;
-
    UIImageView       * boardView;
+   NSMutableArray    * messages;
    UIImageView       * messageView;
-   UIImageView       * centerImageView;
+
    NSUserDefaults    * defaults;
    SystemSoundID       chimes;
-   NSMutableArray    * messages;
 }
 
 @property(assign, readwrite) BOOL             hasFliped;
@@ -80,25 +77,21 @@
 @property(assign, readwrite) float            oldY;
 @property(assign, readwrite) float            oldZ;
 @property(nonatomic, retain) id               delegate;
-@property(nonatomic, retain) UILabel        * message;
 @property(nonatomic, retain) UILabel        * forceDataX;
 @property(nonatomic, retain) UILabel        * forceDataY;
 @property(nonatomic, retain) UILabel        * forceDataZ;
 
 @property(nonatomic, retain) UIImage        * background;
+@property(nonatomic, retain) UIImageView    * backgroundView;
 @property(nonatomic, retain) UIImage        * foreground;
 @property(nonatomic, retain) UIImageView    * foregroundView;
 @property(nonatomic, retain) UIImage        * board;
-
-@property(nonatomic, retain) UIImage        * hideImage;
-@property(nonatomic, retain) UIImage        * revealImage;
 @property(nonatomic, retain) UIImageView    * boardView;
-@property(nonatomic, retain) UIImageView    * backgroundView;
-
-@property(nonatomic, retain) UIImageView    * messageView;
-@property(nonatomic, retain) UIImageView    * centerImageView;
-@property(nonatomic, retain) NSUserDefaults * defaults;
 @property(nonatomic, retain) NSMutableArray * messages;
+@property(nonatomic, retain) UIImageView    * messageView;
+
+@property(nonatomic, retain) NSUserDefaults * defaults;
+
 
 - (void) rollBall:(NSString *)newMessage;
 - (void)accelerometerFlip:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration;
