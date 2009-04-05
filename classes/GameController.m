@@ -52,8 +52,8 @@
 @synthesize forceDataY;
 @synthesize forceDataZ;
 
-@synthesize background1;
-@synthesize background2;
+@synthesize background;
+@synthesize foreground;
 @synthesize board;
 
 @synthesize hideImage;
@@ -91,14 +91,14 @@
    // loads first background
    frame                      = CGRectMake(0.0, 0.0, 320, 480);
    localImageView             = [[UIImageView alloc] initWithFrame:frame];
-   localImageView.image       = self.background1;
+   localImageView.image       = self.background ;
    [self.view addSubview:localImageView];
    [localImageView release];
 
    // loads second background
    frame                      = CGRectMake(0.0, 0.0, 320, 480);
    localImageView             = [[UIImageView alloc] initWithFrame:frame];
-   localImageView.image       = self.background2;
+   localImageView.image       = self.foreground;
    [self.view addSubview:localImageView];
    [localImageView release];
 

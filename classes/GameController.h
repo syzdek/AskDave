@@ -55,8 +55,8 @@
    UILabel           * forceDataY;
    UILabel           * forceDataZ;
 
-   UIImage           * background1;
-   UIImage           * background2;
+   UIImage           * background;
+   UIImage           * foreground;
    UIImage           * board;
    UIImage           * hideImage;
    UIImage           * revealImage;
@@ -82,8 +82,8 @@
 @property(nonatomic, retain) UILabel        * forceDataY;
 @property(nonatomic, retain) UILabel        * forceDataZ;
 
-@property(nonatomic, retain) UIImage        * background1;
-@property(nonatomic, retain) UIImage        * background2;
+@property(nonatomic, retain) UIImage        * background;
+@property(nonatomic, retain) UIImage        * foreground;
 @property(nonatomic, retain) UIImage        * board;
 
 @property(nonatomic, retain) UIImage        * hideImage;
