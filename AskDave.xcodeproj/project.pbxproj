@@ -19,6 +19,7 @@
 		A03952E80F888BD300215BC8 /* geek-msg03.png in Resources */ = {isa = PBXBuildFile; fileRef = A03952E60F888BD300215BC8 /* geek-msg03.png */; };
 		A039533E0F8893EC00215BC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A039533D0F8893EC00215BC8 /* QuartzCore.framework */; };
 		A03954BD0F88F80700215BC8 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = A03954BC0F88F80700215BC8 /* settings.png */; };
+		A03955A20F8915C200215BC8 /* README in Resources */ = {isa = PBXBuildFile; fileRef = A03955A10F8915C200215BC8 /* README */; };
 		A07FCFB60F80507500CA32C5 /* geek-fg.png in Resources */ = {isa = PBXBuildFile; fileRef = A07FCFB30F80507500CA32C5 /* geek-fg.png */; };
 		A07FCFB70F80507500CA32C5 /* geek-bd.png in Resources */ = {isa = PBXBuildFile; fileRef = A07FCFB40F80507500CA32C5 /* geek-bd.png */; };
 		A07FCFB80F80507500CA32C5 /* geek-msg01.png in Resources */ = {isa = PBXBuildFile; fileRef = A07FCFB50F80507500CA32C5 /* geek-msg01.png */; };
@@ -48,6 +49,7 @@
 		A039533D0F8893EC00215BC8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A03954BC0F88F80700215BC8 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		A03955770F8911E400215BC8 /* dist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dist.plist; sourceTree = "<group>"; };
+		A03955A10F8915C200215BC8 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		A07FCFB30F80507500CA32C5 /* geek-fg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geek-fg.png"; sourceTree = "<group>"; };
 		A07FCFB40F80507500CA32C5 /* geek-bd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geek-bd.png"; sourceTree = "<group>"; };
 		A07FCFB50F80507500CA32C5 /* geek-msg01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geek-msg01.png"; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A03955A10F8915C200215BC8 /* README */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -218,6 +221,7 @@
 				A03952E70F888BD300215BC8 /* geek-msg02.png in Resources */,
 				A03952E80F888BD300215BC8 /* geek-msg03.png in Resources */,
 				A03954BD0F88F80700215BC8 /* settings.png in Resources */,
+				A03955A20F8915C200215BC8 /* README in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
