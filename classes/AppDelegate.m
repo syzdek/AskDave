@@ -272,7 +272,10 @@
       [self.board viewDidUnload];
       self.board = Nil;
    };
-   self.board = [self.boards objectAtIndex:[sender tag]];
+   if ([sender tag])
+      self.board = [self.boards objectAtIndex:[sender tag]];
+   else
+      self.board = [self.boards objectAtIndex:(random()%[self.boards count])];
    // setup the animation group
 	[UIView beginAnimations:nil context:nil];
    [UIView setAnimationDuration:0.75];

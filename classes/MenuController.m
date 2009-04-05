@@ -94,7 +94,16 @@
    //localButton.backgroundColor = [UIColor yellowColor];
    [localButton addTarget:delegate action:@selector(showSettingsView:) forControlEvents:UIControlEventTouchUpInside];
    [self.view addSubview:localButton];
-   
+
+   // Add 'random Dave' button
+   //localButton       = [UIButton buttonWithType:UIButtonTypeInfoLight];
+   localButton       = [UIButton buttonWithType:UIButtonTypeCustom];
+   localButton.frame = CGRectMake(30, 480-50, 200, 50);
+   //localButton.backgroundColor = [UIColor yellowColor];
+   localButton.tag   = 0;
+   [localButton addTarget:delegate action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
+   [self.view addSubview:localButton];
+
    [pool release];
    
    return;
