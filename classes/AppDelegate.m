@@ -105,8 +105,8 @@
 
    NSLog(@"loading classic Dave...");
    gamer = [[GameController alloc] init];
-   [(id)gamer setDelegate:self];
-   [(id)gamer setDefaults:self.defaults];
+   gamer.delegate             = self;
+   gamer.defaults             = self.defaults;
    gamer.name                 = @"classic Dave";
    gamer.bga                  = YES;
    gamer.bga_duration         = 1;
@@ -128,8 +128,8 @@
 
    NSLog(@"loading zombie Dave...");
    gamer = [[GameController alloc] init];
-   [(id)gamer setDelegate:self];
-   [(id)gamer setDefaults:self.defaults];
+   gamer.delegate             = self;
+   gamer.defaults             = self.defaults;
    gamer.name                 = @"zombie Dave";
    gamer.bga                  = YES;
    gamer.bga_duration         = 3*2;
@@ -150,8 +150,8 @@
 
    NSLog(@"loading nirvana Dave...");
    gamer = [[GameController alloc] init];
-   [(id)gamer setDelegate:self];
-   [(id)gamer setDefaults:self.defaults];
+   gamer.delegate             = self;
+   gamer.defaults             = self.defaults;
    gamer.name                 = @"nirvana Dave";
    gamer.bga                  = YES;
    gamer.bga_duration         = 3*2;
@@ -172,8 +172,8 @@
 
    NSLog(@"loading geek Dave...");
    gamer = [[GameController alloc] init];
-   [(id)gamer setDelegate:self];
-   [(id)gamer setDefaults:self.defaults];
+   gamer.delegate             = self;
+   gamer.defaults             = self.defaults;
    gamer.name                 = @"geek Dave";
    gamer.bga                  = YES;
    gamer.bga_duration         = 60;
@@ -194,8 +194,8 @@
 
    NSLog(@"loading pirate Dave...");
    gamer = [[GameController alloc] init];
-   [(id)gamer setDelegate:self];
-   [(id)gamer setDefaults:self.defaults];
+   gamer.delegate             = self;
+   gamer.defaults             = self.defaults;
    gamer.name                 = @"pirate Dave";
    gamer.bga                  = YES;
    gamer.bga_duration         = 2;
@@ -216,8 +216,8 @@
 
    NSLog(@"loading devil Dave...");
    gamer = [[GameController alloc] init];
-   [(id)gamer setDelegate:self];
-   [(id)gamer setDefaults:self.defaults];
+   gamer.delegate             = self;
+   gamer.defaults             = self.defaults;
    gamer.name                 = @"devil Dave";
    gamer.bga                  = YES;
    gamer.bga_duration         = 1;

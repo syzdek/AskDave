@@ -75,6 +75,7 @@
    UIImageView       * messageView;
 
    NSUserDefaults    * defaults;
+   NSTimer           * timer;
    SystemSoundID       chimes;
 }
 
@@ -110,8 +111,10 @@
 @property(nonatomic, retain) UIImageView    * messageView;
 
 @property(nonatomic, retain) NSUserDefaults * defaults;
+@property(nonatomic, retain) NSTimer        * timer;
 
 - (void)viewDidUnload;
+- (void)showMessage;
 
 - (void) rollBall:(NSString *)newMessage;
 - (void)accelerometerFlip:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration;

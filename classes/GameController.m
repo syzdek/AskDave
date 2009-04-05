@@ -78,6 +78,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 @synthesize messageView;
 
 @synthesize defaults;
+@synthesize timer;
 
 
 // Implement loadView if you want to create a view hierarchy programmatically
@@ -268,6 +269,11 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    {
       self.hasFliped             = YES;
       self.messageView.image     = Nil;
+      if (self.timer)
+      {
+         [self.timer invalidate];
+         self.timer = Nil;
+      };
    }
    else if (((diffX < 0.1) || (diffY < 0.1) || (diffZ < 0.1)) && (hasFliped))
    {
@@ -284,6 +290,78 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    return;
 }
 
+-(void) bounceBoard
+{
+   CGMutablePathRef      thePath;
+	CAKeyframeAnimation * bounceAnimation;
+
+   [self.boardView.layer removeAllAnimations];
+
+   thePath = CGPathCreateMutable();
+   CGPathMoveToPoint(thePath, NULL, boardView.center.x, boardView.center.y);
+   CGPathAddLineToPoint(thePath, NULL, boardView.center.x, boardView.center.y-15);
+   CGPathAddLineToPoint(thePath, NULL, boardView.center.x, boardView.center.y);
+   CGPathAddLineToPoint(thePath, NULL, boardView.center.x, boardView.center.y+15);
+   CGPathAddLineToPoint(thePath, NULL, boardView.center.x, boardView.center.y);
+
+   bounceAnimation                     = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+   bounceAnimation.removedOnCompletion = YES;
+	bounceAnimation.duration            = .25;
+   bounceAnimation.repeatCount         = 4;
+   bounceAnimation.path                = thePath;
+   //bounceAnimation.timingFunction      = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+
+   [self.boardView.layer addAnimation:bounceAnimation forKey:@"bounceAnimation"];
+
+   if (self.timer)
+   {
+      [self.timer invalidate];
+      self.timer = Nil;
+   };
+   self.timer = [[NSTimer alloc]  initWithFireDate:[NSDate dateWithTimeIntervalSinceNow:1]
+                              interval:1
+                              target:self
+                              selector:@selector(showMessage)
+                              userInfo:nil
+                              repeats:NO];
+   [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
+   [self.timer release];
+
+   return;
+}
+
+- (void)hideMessage
+{
+   if (self.timer)
+   {
+      [self.timer invalidate];
+      self.timer = Nil;
+   };
+   self.messageView.hidden = YES;
+   return;
+}
+
+
+- (void)showMessage
+{
+   self.messageView.hidden = NO;
+   if (self.timer)
+   {
+      [self.timer invalidate];
+      self.timer = Nil;
+   };
+   self.timer = [[NSTimer alloc]  initWithFireDate:[NSDate dateWithTimeIntervalSinceNow:10]
+                              interval:1
+                              target:self
+                              selector:@selector(hideMessage)
+                              userInfo:nil
+                              repeats:NO];
+   [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
+   [self.timer release];
+
+   return;
+}
+
 
 - (IBAction) rollBall:(NSString *)newMessage
 {
@@ -296,10 +374,9 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    if ([self.defaults boolForKey:@"sound"])
       AudioServicesPlaySystemSound(chimes);
 
-   self.messageView.hidden = NO;
+   [self bounceBoard];
 
-   //if (newMessage)
-   //   self.message.text = newMessage;
+   self.messageView.hidden = YES;
       
   return;
 };
@@ -323,6 +400,11 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 - (void)viewDidUnload
 {
    NSLog(@"deactivating %@", self.name);
+   if (self.timer)
+   {
+      [self.timer invalidate];
+      self.timer = Nil;
+   };
    [self.backgroundView.layer removeAllAnimations];
 
    return;
@@ -345,7 +427,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    myAnimation.fromValue           = [NSNumber numberWithFloat:DegreesToRadians(self.bga_fromValue)];
    myAnimation.toValue             = [NSNumber numberWithFloat:DegreesToRadians(self.bga_toValue)];
    myAnimation.duration            = self.bga_duration;
-   myAnimation.removedOnCompletion = NO;
+   myAnimation.removedOnCompletion = YES;
    // leaves presentation layer in final state; preventing snap-back to original state
    myAnimation.fillMode            = kCAFillModeBoth;
    myAnimation.autoreverses        = self.bga_autoreverses; 
@@ -356,7 +438,6 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    [self.backgroundView.layer addAnimation:myAnimation forKey:@"rotateAnimation"];
    return;
 }
-
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
