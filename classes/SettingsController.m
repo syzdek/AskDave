@@ -45,8 +45,10 @@
 // Implement loadView if you want to create a view hierarchy programmatically
 - (void)loadView
 {
+   CGRect              frame;
    UIView            * localView;
    UILabel           * localLabel;
+   UIImageView       * localImageView;
    UIButton          * localButton;
    UISwitch          * localSwitch;
    NSAutoreleasePool * pool;
@@ -58,6 +60,13 @@
    //localView.backgroundColor = [UIColor grayColor];
    self.view                 = localView;
    [localView release];
+
+   // loads background image view
+   frame                      = CGRectMake(0.0, 0.0, 320, 480);
+   localImageView             = [[UIImageView alloc] initWithFrame:frame];
+   localImageView.image       = [UIImage imageNamed:@"settings.png"];;
+   [self.view addSubview:localImageView];
+   [localImageView release];
    
    // add BindleBinary logo and link
    localButton                 = [UIButton buttonWithType:UIButtonTypeCustom];
