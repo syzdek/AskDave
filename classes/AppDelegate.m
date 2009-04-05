@@ -148,11 +148,8 @@
    gamer.board       = [UIImage imageNamed:@"geek-bd.png"];
    gamer.messages    = [NSMutableArray arrayWithCapacity:10];
    [gamer.messages addObject:[UIImage imageNamed:@"geek-msg01.png"]];
-   [gamer.messages addObject:[UIImage imageNamed:@"geek-msg01.png"]];
-   [gamer.messages addObject:[UIImage imageNamed:@"geek-msg01.png"]];
-   [gamer.messages addObject:[UIImage imageNamed:@"geek-msg01.png"]];
-   [gamer.messages addObject:[UIImage imageNamed:@"geek-msg01.png"]];
-   [gamer.messages addObject:[UIImage imageNamed:@"geek-msg01.png"]];
+   [gamer.messages addObject:[UIImage imageNamed:@"geek-msg02.png"]];
+   [gamer.messages addObject:[UIImage imageNamed:@"geek-msg03.png"]];
    [self.boards addObject:gamer];
    [gamer loadView];
    [gamer release];
