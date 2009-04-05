@@ -143,7 +143,7 @@
    gamer = [[GameController alloc] init];
    [(id)gamer setDelegate:self];
    [(id)gamer setDefaults:self.defaults];
-   gamer.background  = Nil;
+   gamer.background  = [UIImage imageNamed:@"geek-bg.png"];
    gamer.foreground  = [UIImage imageNamed:@"geek-fg.png"];
    gamer.board       = [UIImage imageNamed:@"geek-bd.png"];
    gamer.messages    = [NSMutableArray arrayWithCapacity:10];
