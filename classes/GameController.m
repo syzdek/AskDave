@@ -47,6 +47,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
 @implementation GameController
 
+@synthesize delegate;
 @synthesize hasFliped;
 @synthesize x;
 @synthesize y;
@@ -54,7 +55,14 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 @synthesize oldX;
 @synthesize oldY;
 @synthesize oldZ;
-@synthesize delegate;
+
+@synthesize bga;
+@synthesize bga_duration;
+@synthesize bga_fromValue;
+@synthesize bga_toValue;
+@synthesize bga_autoreverses;
+@synthesize bga_timing_function;
+
 @synthesize forceDataX;
 @synthesize forceDataY;
 @synthesize forceDataZ;
@@ -314,6 +322,8 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 {
    if (!(flag))
       return;
+   if (!(self.bga))
+      return;
 
    // cancels existing rotating backgrounds
    [self.backgroundView.layer removeAllAnimations];
@@ -321,15 +331,16 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    CABasicAnimation * myAnimation  = [CABasicAnimation animation];
    myAnimation.delegate            = self;
    myAnimation.keyPath             = @"transform.rotation.z";
-   myAnimation.fromValue           = [NSNumber numberWithFloat:DegreesToRadians(0)];
-   myAnimation.toValue             = [NSNumber numberWithFloat:DegreesToRadians(25)];
-   myAnimation.duration            = 1;
+   myAnimation.fromValue           = [NSNumber numberWithFloat:DegreesToRadians(self.bga_fromValue)];
+   myAnimation.toValue             = [NSNumber numberWithFloat:DegreesToRadians(self.bga_toValue)];
+   myAnimation.duration            = self.bga_duration;
    myAnimation.removedOnCompletion = NO;
    // leaves presentation layer in final state; preventing snap-back to original state
-   myAnimation.fillMode = kCAFillModeBoth;
-   myAnimation.autoreverses = YES; 
-   myAnimation.repeatCount = 5;
-   myAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+   myAnimation.fillMode            = kCAFillModeBoth;
+   myAnimation.autoreverses        = self.bga_autoreverses; 
+   myAnimation.repeatCount         = 5;
+   if (self.bga_timing_function)
+      myAnimation.timingFunction   = [CAMediaTimingFunction functionWithName:self.bga_timing_function];
 
    [self.backgroundView.layer addAnimation:myAnimation forKey:@"rotateAnimation"];
    return;

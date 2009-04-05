@@ -52,6 +52,14 @@
    float               oldY;
    float               oldZ;
 
+   // Background animation settings
+   float               bga;
+   float               bga_duration;
+   float               bga_fromValue;
+   float               bga_toValue;
+   BOOL                bga_autoreverses;
+   NSString *    bga_timing_function;
+
    UILabel           * forceDataX;
    UILabel           * forceDataY;
    UILabel           * forceDataZ;
@@ -69,6 +77,7 @@
    SystemSoundID       chimes;
 }
 
+@property(nonatomic, retain) id               delegate;
 @property(assign, readwrite) BOOL             hasFliped;
 @property(assign, readwrite) float            x;
 @property(assign, readwrite) float            y;
@@ -76,7 +85,15 @@
 @property(assign, readwrite) float            oldX;
 @property(assign, readwrite) float            oldY;
 @property(assign, readwrite) float            oldZ;
-@property(nonatomic, retain) id               delegate;
+
+// Background animation settings
+@property(assign, readwrite) float              bga;
+@property(assign, readwrite) float              bga_duration;
+@property(assign, readwrite) float              bga_fromValue;
+@property(assign, readwrite) float              bga_toValue;
+@property(assign, readwrite) BOOL               bga_autoreverses;
+@property(assign) NSString *   bga_timing_function;
+
 @property(nonatomic, retain) UILabel        * forceDataX;
 @property(nonatomic, retain) UILabel        * forceDataY;
 @property(nonatomic, retain) UILabel        * forceDataZ;

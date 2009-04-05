@@ -127,26 +127,20 @@
    [gamer loadView];
    [gamer release];
 
-   NSLog(@"loading nirvana Dave...");
-   gamer = [[GameController alloc] init];
-   [(id)gamer setDelegate:self];
-   [(id)gamer setDefaults:self.defaults];
-   gamer.background  = Nil;
-   gamer.foreground  = Nil;
-   gamer.board       = Nil;
-   gamer.messages    = [NSMutableArray arrayWithCapacity:10];
-   [self.boards addObject:self.settings];
-   [gamer loadView];
-   [gamer release];
-
    NSLog(@"loading geek Dave...");
    gamer = [[GameController alloc] init];
    [(id)gamer setDelegate:self];
    [(id)gamer setDefaults:self.defaults];
-   gamer.background  = [UIImage imageNamed:@"geek-bg.png"];
-   gamer.foreground  = [UIImage imageNamed:@"geek-fg.png"];
-   gamer.board       = [UIImage imageNamed:@"geek-bd.png"];
-   gamer.messages    = [NSMutableArray arrayWithCapacity:10];
+   gamer.bga                  = YES;
+   gamer.bga_duration         = 1;
+   gamer.bga_fromValue        = 0;
+   gamer.bga_toValue          = 25;
+   gamer.bga_autoreverses     = YES;
+   gamer.bga_timing_function  = kCAMediaTimingFunctionEaseInEaseOut;
+   gamer.background           = [UIImage imageNamed:@"geek-bg.png"];
+   gamer.foreground           = [UIImage imageNamed:@"geek-fg.png"];
+   gamer.board                = [UIImage imageNamed:@"geek-bd.png"];
+   gamer.messages             = [NSMutableArray arrayWithCapacity:10];
    [gamer.messages addObject:[UIImage imageNamed:@"geek-msg01.png"]];
    [gamer.messages addObject:[UIImage imageNamed:@"geek-msg02.png"]];
    [gamer.messages addObject:[UIImage imageNamed:@"geek-msg03.png"]];
