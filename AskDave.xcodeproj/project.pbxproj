@@ -20,6 +20,18 @@
 		A039533E0F8893EC00215BC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A039533D0F8893EC00215BC8 /* QuartzCore.framework */; };
 		A03954BD0F88F80700215BC8 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = A03954BC0F88F80700215BC8 /* settings.png */; };
 		A03955A20F8915C200215BC8 /* README in Resources */ = {isa = PBXBuildFile; fileRef = A03955A10F8915C200215BC8 /* README */; };
+		A06EB9F30F8DD1F700EB5176 /* classic-button.png in Resources */ = {isa = PBXBuildFile; fileRef = A06EB9E50F8DD1F700EB5176 /* classic-button.png */; };
+		A06EB9F40F8DD1F700EB5176 /* classic-face.png in Resources */ = {isa = PBXBuildFile; fileRef = A06EB9E60F8DD1F700EB5176 /* classic-face.png */; };
+		A06EB9F50F8DD1F700EB5176 /* devil-button.png in Resources */ = {isa = PBXBuildFile; fileRef = A06EB9E80F8DD1F700EB5176 /* devil-button.png */; };
+		A06EB9F60F8DD1F700EB5176 /* devil-face.png in Resources */ = {isa = PBXBuildFile; fileRef = A06EB9E90F8DD1F700EB5176 /* devil-face.png */; };
+		A06EB9F70F8DD1F700EB5176 /* nirvana-button.png in Resources */ = {isa = PBXBuildFile; fileRef = A06EB9EB0F8DD1F700EB5176 /* nirvana-button.png */; };
+		A06EB9F80F8DD1F700EB5176 /* nirvana-face.png in Resources */ = {isa = PBXBuildFile; fileRef = A06EB9EC0F8DD1F700EB5176 /* nirvana-face.png */; };
+		A06EB9F90F8DD1F700EB5176 /* pirate-button.png in Resources */ = {isa = PBXBuildFile; fileRef = A06EB9EE0F8DD1F700EB5176 /* pirate-button.png */; };
+		A06EB9FA0F8DD1F700EB5176 /* pirate-face.png in Resources */ = {isa = PBXBuildFile; fileRef = A06EB9EF0F8DD1F700EB5176 /* pirate-face.png */; };
+		A06EB9FB0F8DD1F700EB5176 /* zombie-button.png in Resources */ = {isa = PBXBuildFile; fileRef = A06EB9F10F8DD1F700EB5176 /* zombie-button.png */; };
+		A06EB9FC0F8DD1F700EB5176 /* zombie-face.png in Resources */ = {isa = PBXBuildFile; fileRef = A06EB9F20F8DD1F700EB5176 /* zombie-face.png */; };
+		A06EB9FF0F8DD21500EB5176 /* menu-askadave.png in Resources */ = {isa = PBXBuildFile; fileRef = A06EB9FD0F8DD21500EB5176 /* menu-askadave.png */; };
+		A06EBA000F8DD21500EB5176 /* menu-info.png in Resources */ = {isa = PBXBuildFile; fileRef = A06EB9FE0F8DD21500EB5176 /* menu-info.png */; };
 		A07FCFB60F80507500CA32C5 /* geek-fg.png in Resources */ = {isa = PBXBuildFile; fileRef = A07FCFB30F80507500CA32C5 /* geek-fg.png */; };
 		A07FCFB70F80507500CA32C5 /* geek-bd.png in Resources */ = {isa = PBXBuildFile; fileRef = A07FCFB40F80507500CA32C5 /* geek-bd.png */; };
 		A07FCFB80F80507500CA32C5 /* geek-msg01.png in Resources */ = {isa = PBXBuildFile; fileRef = A07FCFB50F80507500CA32C5 /* geek-msg01.png */; };
@@ -50,6 +62,18 @@
 		A03954BC0F88F80700215BC8 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		A03955770F8911E400215BC8 /* dist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dist.plist; sourceTree = "<group>"; };
 		A03955A10F8915C200215BC8 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		A06EB9E50F8DD1F700EB5176 /* classic-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "classic-button.png"; sourceTree = "<group>"; };
+		A06EB9E60F8DD1F700EB5176 /* classic-face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "classic-face.png"; sourceTree = "<group>"; };
+		A06EB9E80F8DD1F700EB5176 /* devil-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "devil-button.png"; sourceTree = "<group>"; };
+		A06EB9E90F8DD1F700EB5176 /* devil-face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "devil-face.png"; sourceTree = "<group>"; };
+		A06EB9EB0F8DD1F700EB5176 /* nirvana-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nirvana-button.png"; sourceTree = "<group>"; };
+		A06EB9EC0F8DD1F700EB5176 /* nirvana-face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nirvana-face.png"; sourceTree = "<group>"; };
+		A06EB9EE0F8DD1F700EB5176 /* pirate-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pirate-button.png"; sourceTree = "<group>"; };
+		A06EB9EF0F8DD1F700EB5176 /* pirate-face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pirate-face.png"; sourceTree = "<group>"; };
+		A06EB9F10F8DD1F700EB5176 /* zombie-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zombie-button.png"; sourceTree = "<group>"; };
+		A06EB9F20F8DD1F700EB5176 /* zombie-face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zombie-face.png"; sourceTree = "<group>"; };
+		A06EB9FD0F8DD21500EB5176 /* menu-askadave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-askadave.png"; sourceTree = "<group>"; };
+		A06EB9FE0F8DD21500EB5176 /* menu-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-info.png"; sourceTree = "<group>"; };
 		A07FCFB30F80507500CA32C5 /* geek-fg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geek-fg.png"; sourceTree = "<group>"; };
 		A07FCFB40F80507500CA32C5 /* geek-bd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geek-bd.png"; sourceTree = "<group>"; };
 		A07FCFB50F80507500CA32C5 /* geek-msg01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geek-msg01.png"; sourceTree = "<group>"; };
@@ -130,10 +154,17 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A06EB9E40F8DD1F700EB5176 /* classic */,
+				A06EB9E70F8DD1F700EB5176 /* devil */,
+				A07FCFB20F80507500CA32C5 /* geek */,
+				A06EB9EA0F8DD1F700EB5176 /* nirvana */,
+				A06EB9ED0F8DD1F700EB5176 /* pirate */,
+				A06EB9F00F8DD1F700EB5176 /* zombie */,
 				A03954BC0F88F80700215BC8 /* settings.png */,
 				A07FD08F0F80769300CA32C5 /* Default.png */,
 				A07FD05A0F80732E00CA32C5 /* menu.png */,
-				A07FCFB20F80507500CA32C5 /* geek */,
+				A06EB9FD0F8DD21500EB5176 /* menu-askadave.png */,
+				A06EB9FE0F8DD21500EB5176 /* menu-info.png */,
 				2899E5210DE3E06400AC0155 /* AskDaveViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -153,6 +184,51 @@
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A06EB9E40F8DD1F700EB5176 /* classic */ = {
+			isa = PBXGroup;
+			children = (
+				A06EB9E50F8DD1F700EB5176 /* classic-button.png */,
+				A06EB9E60F8DD1F700EB5176 /* classic-face.png */,
+			);
+			path = classic;
+			sourceTree = "<group>";
+		};
+		A06EB9E70F8DD1F700EB5176 /* devil */ = {
+			isa = PBXGroup;
+			children = (
+				A06EB9E80F8DD1F700EB5176 /* devil-button.png */,
+				A06EB9E90F8DD1F700EB5176 /* devil-face.png */,
+			);
+			path = devil;
+			sourceTree = "<group>";
+		};
+		A06EB9EA0F8DD1F700EB5176 /* nirvana */ = {
+			isa = PBXGroup;
+			children = (
+				A06EB9EB0F8DD1F700EB5176 /* nirvana-button.png */,
+				A06EB9EC0F8DD1F700EB5176 /* nirvana-face.png */,
+			);
+			path = nirvana;
+			sourceTree = "<group>";
+		};
+		A06EB9ED0F8DD1F700EB5176 /* pirate */ = {
+			isa = PBXGroup;
+			children = (
+				A06EB9EE0F8DD1F700EB5176 /* pirate-button.png */,
+				A06EB9EF0F8DD1F700EB5176 /* pirate-face.png */,
+			);
+			path = pirate;
+			sourceTree = "<group>";
+		};
+		A06EB9F00F8DD1F700EB5176 /* zombie */ = {
+			isa = PBXGroup;
+			children = (
+				A06EB9F10F8DD1F700EB5176 /* zombie-button.png */,
+				A06EB9F20F8DD1F700EB5176 /* zombie-face.png */,
+			);
+			path = zombie;
 			sourceTree = "<group>";
 		};
 		A07FCFB20F80507500CA32C5 /* geek */ = {
@@ -222,6 +298,18 @@
 				A03952E80F888BD300215BC8 /* geek-msg03.png in Resources */,
 				A03954BD0F88F80700215BC8 /* settings.png in Resources */,
 				A03955A20F8915C200215BC8 /* README in Resources */,
+				A06EB9F30F8DD1F700EB5176 /* classic-button.png in Resources */,
+				A06EB9F40F8DD1F700EB5176 /* classic-face.png in Resources */,
+				A06EB9F50F8DD1F700EB5176 /* devil-button.png in Resources */,
+				A06EB9F60F8DD1F700EB5176 /* devil-face.png in Resources */,
+				A06EB9F70F8DD1F700EB5176 /* nirvana-button.png in Resources */,
+				A06EB9F80F8DD1F700EB5176 /* nirvana-face.png in Resources */,
+				A06EB9F90F8DD1F700EB5176 /* pirate-button.png in Resources */,
+				A06EB9FA0F8DD1F700EB5176 /* pirate-face.png in Resources */,
+				A06EB9FB0F8DD1F700EB5176 /* zombie-button.png in Resources */,
+				A06EB9FC0F8DD1F700EB5176 /* zombie-face.png in Resources */,
+				A06EB9FF0F8DD21500EB5176 /* menu-askadave.png in Resources */,
+				A06EBA000F8DD21500EB5176 /* menu-info.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
