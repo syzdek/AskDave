@@ -30,7 +30,7 @@
 ///////////////
 
 #import <UIKit/UIKit.h>
-#import "GameController.h"
+#import "DaveController.h"
 
 
 /////////////////////////
@@ -44,7 +44,7 @@
 @interface AppDelegate : NSObject <UIApplicationDelegate>
 {
    IBOutlet UIWindow  * window;
-   GameController     * board;
+   DaveController     * board;
    UIViewController   * active;
    UIViewController   * menu;
    UIViewController   * settings;
@@ -53,7 +53,7 @@
 }
 
 @property (nonatomic, retain) UIWindow           * window;
-@property (nonatomic, retain) GameController     * board;
+@property (nonatomic, retain) DaveController     * board;
 @property (nonatomic, retain) UIViewController   * active;
 @property (nonatomic, retain) UIViewController   * menu;
 @property (nonatomic, retain) UIViewController   * settings;

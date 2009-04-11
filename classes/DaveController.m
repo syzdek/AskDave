@@ -20,7 +20,7 @@
  *  @BINDLEBINARIES_FOSS_LICENSE_HEADER_END@
  */
 /**
- *  @file classes/GameController.m controls the game board
+ *  @file classes/DaveController.m controls the game board
  */
 
 ///////////////
@@ -29,7 +29,7 @@
 //           //
 ///////////////
 
-#import "BoardController.h"
+#import "DaveController.h"
 #import <AudioToolbox/AudioToolbox.h>
 
 // Constant for the number of times per second (Hertz) to sample acceleration.
@@ -45,7 +45,7 @@
 CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
-@implementation GameController
+@implementation DaveController
 
 @synthesize name;
 @synthesize delegate;

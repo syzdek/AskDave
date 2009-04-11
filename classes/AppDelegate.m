@@ -30,7 +30,7 @@
 ///////////////
 
 #import "AppDelegate.h"
-#import "GameController.h"
+#import "DaveController.h"
 #import "MenuController.h"
 #import "SettingsController.h"
 
@@ -57,7 +57,7 @@
    NSDictionary     * appDefaults;
    NSUserDefaults   * localDefaults;
 	UIViewController * localController;
-   GameController   * gamer;
+   DaveController   * gamer;
 
    NSLog(@"%@ %@ Source Code", [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleName"], [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleVersion"]);
    NSLog(@"Copyright (C) 2009 David M. Syzdek");
@@ -104,7 +104,7 @@
    self.boards = [NSMutableArray arrayWithCapacity:6];
 
    NSLog(@"loading classic Dave...");
-   gamer = [[GameController alloc] init];
+   gamer = [[DaveController alloc] init];
    gamer.delegate             = self;
    gamer.defaults             = self.defaults;
    gamer.name                 = @"classic Dave";
@@ -144,7 +144,7 @@
  
 
    NSLog(@"loading zombie Dave...");
-   gamer = [[GameController alloc] init];
+   gamer = [[DaveController alloc] init];
    gamer.delegate             = self;
    gamer.defaults             = self.defaults;
    gamer.name                 = @"zombie Dave";
@@ -183,7 +183,7 @@
    [gamer release];
 
    NSLog(@"loading nirvana Dave...");
-   gamer = [[GameController alloc] init];
+   gamer = [[DaveController alloc] init];
    gamer.delegate             = self;
    gamer.defaults             = self.defaults;
    gamer.name                 = @"nirvana Dave";
@@ -222,7 +222,7 @@
    [gamer release];
 
    NSLog(@"loading geek Dave...");
-   gamer = [[GameController alloc] init];
+   gamer = [[DaveController alloc] init];
    gamer.delegate             = self;
    gamer.defaults             = self.defaults;
    gamer.name                 = @"geek Dave";
@@ -261,7 +261,7 @@
    [gamer release];
 
    NSLog(@"loading pirate Dave...");
-   gamer = [[GameController alloc] init];
+   gamer = [[DaveController alloc] init];
    gamer.delegate             = self;
    gamer.defaults             = self.defaults;
    gamer.name                 = @"pirate Dave";
@@ -300,7 +300,7 @@
    [gamer release];
 
    NSLog(@"loading devil Dave...");
-   gamer = [[GameController alloc] init];
+   gamer = [[DaveController alloc] init];
    gamer.delegate             = self;
    gamer.defaults             = self.defaults;
    gamer.name                 = @"devil Dave";

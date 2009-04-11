@@ -20,7 +20,7 @@
  *  @BINDLEBINARIES_FOSS_LICENSE_HEADER_END@
  */
 /**
- *  @file classes/GameController.h controls the game board
+ *  @file classes/DaveController.h controls the game board
  */
 
 ///////////////
@@ -41,7 +41,7 @@
 
 @class AppDelegate;
 
-@interface GameController : UIViewController <UIAccelerometerDelegate>
+@interface DaveController : UIViewController <UIAccelerometerDelegate>
 {
    NSString           * name;
    id                  delegate;
