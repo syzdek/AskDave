@@ -83,6 +83,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
 @synthesize background;
 @synthesize backgroundView;
+@synthesize backgroundAnimation;
 @synthesize foreground;
 @synthesize foregroundView;
 @synthesize board;
@@ -100,7 +101,6 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    CGRect              frame;
    UIView            * localView;
    UIButton          * localButton;
-   UIImageView       * localImageView;
    //NSString          * path;
    NSAutoreleasePool * pool;
 #ifdef DEBUG
@@ -128,35 +128,27 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
       frame.origin.x             = 0 - ((self.background.size.width  - 320)/2);
       frame.origin.y             = 0 - ((self.background.size.height - 480)/2);
    };
-   localImageView             = [[UIImageView alloc] initWithFrame:frame];
-   localImageView.image       = self.background;
-   self.backgroundView        = localImageView;
-   [self.view addSubview:localImageView];
-   [localImageView release];
+   backgroundView        = [[UIImageView alloc] initWithFrame:frame];
+   self.backgroundView.image  = self.background;
+   [self.view addSubview:self.backgroundView];
 
    // loads foreground view
    frame                      = CGRectMake(0.0, 0.0, 320, 480);
-   localImageView             = [[UIImageView alloc] initWithFrame:frame];
-   localImageView.image       = self.foreground;
-   self.foregroundView        = localImageView;
-   [self.view addSubview:localImageView];
-   [localImageView release];
+   foregroundView             = [[UIImageView alloc] initWithFrame:frame];
+   self.foregroundView.image  = self.foreground;
+   [self.view addSubview:self.foregroundView];
 
    // loads message board view
    frame                      = CGRectMake(0.0, 0.0, 320, 480);
-   localImageView             = [[UIImageView alloc] initWithFrame:frame];
-   localImageView.image       = self.board;
-   self.boardView             = localImageView;
-   [self.view addSubview:localImageView];
-   [localImageView release];
+   boardView                  = [[UIImageView alloc] initWithFrame:frame];
+   self.boardView.image       = self.board;
+   [self.view addSubview:self.boardView];
 
    // loads message view
    frame                      = CGRectMake(0.0, 0.0, 320, 480);
-   localImageView             = [[UIImageView alloc] initWithFrame:frame];
-   localImageView.image       = Nil;
-   self.messageView           = localImageView;
-   [self.view addSubview:localImageView];
-   [localImageView release];
+   messageView                = [[UIImageView alloc] initWithFrame:frame];
+   self.messageView.image     = Nil;
+   [self.view addSubview:self.messageView];
    
    // Add 'i' button
    localButton       = [UIButton buttonWithType:UIButtonTypeInfoLight];
@@ -202,13 +194,14 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
 - (void)unloadView
 {
-   NSLog(@"unloading %@", self.name);
+   NSLog(@"deactivating %@", self.name);
+   [[UIAccelerometer sharedAccelerometer] setUpdateInterval:90.0];
+   [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
    if (self.timer)
       [self.timer invalidate];
-   if (self.backgroundView)
-      [self.backgroundView.layer removeAllAnimations];
-   if (self.boardView)
-      [self.boardView.layer removeAllAnimations];
+   [self.backgroundView.layer removeAllAnimations];
+   self.backgroundAnimation = nil;
+   [self.boardView.layer removeAllAnimations];
    return;
 }
 
@@ -265,6 +258,8 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    float               diffZ;
    NSAutoreleasePool * pool;
 
+   pool = [[NSAutoreleasePool alloc] init];
+
    // grabs current readings
    self.x = acceleration.x;
    self.y = acceleration.y;
@@ -282,8 +277,6 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    diffX = fabsf(self.x - self.oldX);
    diffY = fabsf(self.y - self.oldY);
    diffZ = fabsf(self.z - self.oldZ);
-
-   pool = [[NSAutoreleasePool alloc] init];
    
 #ifdef DEBUG
    forceDataX.text = [NSString stringWithFormat:@"X: %+1.30f", diffX];
@@ -413,6 +406,10 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 // If you need to do additional setup after loading the view, override viewDidLoad.
 - (void)viewDidLoad
 {
+   NSAutoreleasePool * pool;
+
+   pool = [[NSAutoreleasePool alloc] init];
+
    NSLog(@"activating %@", self.name);
 
    // loads accelerometer
@@ -421,35 +418,47 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
    [self animationDidStop:Nil finished:YES];
 
+   // creates background animation
+   if (self.bga)
+   {
+      self.backgroundAnimation                = [CABasicAnimation animation];
+      backgroundAnimation.delegate            = self;
+      backgroundAnimation.keyPath             = @"transform.rotation.z";
+      backgroundAnimation.fromValue           = [NSNumber numberWithFloat:DegreesToRadians(self.bga_fromValue)];
+      backgroundAnimation.toValue             = [NSNumber numberWithFloat:DegreesToRadians(self.bga_toValue)];
+      backgroundAnimation.duration            = self.bga_duration;
+      backgroundAnimation.removedOnCompletion = YES;
+      // leaves presentation layer in final state; preventing snap-back to original state
+      backgroundAnimation.fillMode            = kCAFillModeBoth;
+      backgroundAnimation.autoreverses        = self.bga_autoreverses; 
+      backgroundAnimation.repeatCount         = 5;
+      if (self.bga_timing_function)
+         backgroundAnimation.timingFunction   = [CAMediaTimingFunction functionWithName:self.bga_timing_function];
+
+      [self.backgroundView.layer addAnimation:backgroundAnimation forKey:@"rotateAnimation"];
+   };
+
+   [pool release];
+
    return;
 }
 
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
 {
+   NSAutoreleasePool * pool;
+
    if (!(flag))
       return;
-   if (!(self.bga))
-      return;
 
-   // cancels existing rotating backgrounds
+   pool = [[NSAutoreleasePool alloc] init];
+
    [self.backgroundView.layer removeAllAnimations];
 
-   CABasicAnimation * myAnimation  = [CABasicAnimation animation];
-   myAnimation.delegate            = self;
-   myAnimation.keyPath             = @"transform.rotation.z";
-   myAnimation.fromValue           = [NSNumber numberWithFloat:DegreesToRadians(self.bga_fromValue)];
-   myAnimation.toValue             = [NSNumber numberWithFloat:DegreesToRadians(self.bga_toValue)];
-   myAnimation.duration            = self.bga_duration;
-   myAnimation.removedOnCompletion = YES;
-   // leaves presentation layer in final state; preventing snap-back to original state
-   myAnimation.fillMode            = kCAFillModeBoth;
-   myAnimation.autoreverses        = self.bga_autoreverses; 
-   myAnimation.repeatCount         = 5;
-   if (self.bga_timing_function)
-      myAnimation.timingFunction   = [CAMediaTimingFunction functionWithName:self.bga_timing_function];
+   [self.backgroundView.layer addAnimation:backgroundAnimation forKey:@"rotateAnimation"];
 
-   [self.backgroundView.layer addAnimation:myAnimation forKey:@"rotateAnimation"];
+   [pool release];
+
    return;
 }
 
@@ -469,14 +478,35 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
 
 - (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-	// Release anything that's not essential, such as cached data
+   NSLog(@"DaveController received memory warning.");
+   [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
+   // Release any cached data, images, etc that aren't in use.
 }
 
 
 - (void)dealloc
 {
    [self unloadView];
+
+   NSLog(@"unloading %@", self.name);
+
+NSLog(@"background           retain count: %i", [self.background     retainCount]);
+
+   self.backgroundView.image = nil;
+   self.foregroundView.image = nil;
+   self.boardView.image      = nil;
+   self.messageView.image    = nil;
+
+   self.backgroundAnimation.delegate = nil;
+   self.backgroundAnimation          = nil;
+
+   [self.backgroundView removeFromSuperview];
+   [self.foregroundView removeFromSuperview];
+   [self.boardView      removeFromSuperview];
+   [self.messageView    removeFromSuperview];
+   [self.view           removeFromSuperview];
+
+   self.view            = nil;
 
    self.name            = nil;
 
@@ -497,7 +527,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
    self.defaults        = nil;
    self.timer           = nil;
-   AudioServicesDisposeSystemSoundID(chimes);
+   //AudioServicesDisposeSystemSoundID(chimes);
 
 	[super dealloc];
 

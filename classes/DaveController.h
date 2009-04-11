@@ -67,6 +67,7 @@
 
    UIImage           * background;
    UIImageView       * backgroundView;
+   CABasicAnimation  * backgroundAnimation;
    UIImage           * foreground;
    UIImageView       * foregroundView;
    UIImage           * board;
@@ -95,7 +96,7 @@
 @property(assign, readwrite) float              bga_fromValue;
 @property(assign, readwrite) float              bga_toValue;
 @property(assign, readwrite) BOOL               bga_autoreverses;
-@property(assign) NSString *   bga_timing_function;
+@property(assign) NSString                  *   bga_timing_function;
 
 @property(nonatomic, retain) UILabel        * forceDataX;
 @property(nonatomic, retain) UILabel        * forceDataY;
@@ -103,6 +104,7 @@
 
 @property(nonatomic, retain) UIImage        * background;
 @property(nonatomic, retain) UIImageView    * backgroundView;
+@property(nonatomic, retain) CABasicAnimation  * backgroundAnimation;
 @property(nonatomic, retain) UIImage        * foreground;
 @property(nonatomic, retain) UIImageView    * foregroundView;
 @property(nonatomic, retain) UIImage        * board;
