@@ -29,7 +29,7 @@
 //           //
 ///////////////
 
-#import "GameController.h"
+#import "BoardController.h"
 #import <AudioToolbox/AudioToolbox.h>
 
 // Constant for the number of times per second (Hertz) to sample acceleration.

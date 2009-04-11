@@ -17,7 +17,7 @@
 		A039533E0F8893EC00215BC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A039533D0F8893EC00215BC8 /* QuartzCore.framework */; };
 		A03954BD0F88F80700215BC8 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = A03954BC0F88F80700215BC8 /* settings.png */; };
 		A03955A20F8915C200215BC8 /* README in Resources */ = {isa = PBXBuildFile; fileRef = A03955A10F8915C200215BC8 /* README */; };
-		A07FCFF60F806E6700CA32C5 /* GameController.m in Sources */ = {isa = PBXBuildFile; fileRef = A07FCFF50F806E6700CA32C5 /* GameController.m */; };
+		A07FCFF60F806E6700CA32C5 /* DaveController.m in Sources */ = {isa = PBXBuildFile; fileRef = A07FCFF50F806E6700CA32C5 /* DaveController.m */; };
 		A07FD0070F80703100CA32C5 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A07FD0060F80703100CA32C5 /* SettingsController.m */; };
 		A07FD00A0F80704200CA32C5 /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = A07FD0090F80704200CA32C5 /* MenuController.m */; };
 		A07FD0190F8070DB00CA32C5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07FD0180F8070DB00CA32C5 /* AudioToolbox.framework */; };
@@ -213,8 +213,8 @@
 		A03954BC0F88F80700215BC8 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		A03955770F8911E400215BC8 /* dist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dist.plist; sourceTree = "<group>"; };
 		A03955A10F8915C200215BC8 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		A07FCFF40F806E6700CA32C5 /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameController.h; sourceTree = "<group>"; };
-		A07FCFF50F806E6700CA32C5 /* GameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameController.m; sourceTree = "<group>"; };
+		A07FCFF40F806E6700CA32C5 /* DaveController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaveController.h; sourceTree = "<group>"; };
+		A07FCFF50F806E6700CA32C5 /* DaveController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaveController.m; sourceTree = "<group>"; };
 		A07FD0050F80703100CA32C5 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
 		A07FD0060F80703100CA32C5 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
 		A07FD0080F80704200CA32C5 /* MenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuController.h; sourceTree = "<group>"; };
@@ -417,8 +417,8 @@
 			children = (
 				1D3623240D0F684500981E51 /* AppDelegate.h */,
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
-				A07FCFF40F806E6700CA32C5 /* GameController.h */,
-				A07FCFF50F806E6700CA32C5 /* GameController.m */,
+				A07FCFF40F806E6700CA32C5 /* DaveController.h */,
+				A07FCFF50F806E6700CA32C5 /* DaveController.m */,
 				A07FD0080F80704200CA32C5 /* MenuController.h */,
 				A07FD0090F80704200CA32C5 /* MenuController.m */,
 				A07FD0050F80703100CA32C5 /* SettingsController.h */,
@@ -1010,7 +1010,7 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
-				A07FCFF60F806E6700CA32C5 /* GameController.m in Sources */,
+				A07FCFF60F806E6700CA32C5 /* DaveController.m in Sources */,
 				A07FD0070F80703100CA32C5 /* SettingsController.m in Sources */,
 				A07FD00A0F80704200CA32C5 /* MenuController.m in Sources */,
 			);
