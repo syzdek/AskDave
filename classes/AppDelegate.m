@@ -137,7 +137,7 @@
 
    tag = [sender tag];
    if (!(tag))
-      tag = (random() / 6) + 1;
+      tag = (random() % 6) + 1;
 
    self.board           = [[DaveController alloc] init];
    self.board.window    = self.window;
