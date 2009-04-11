@@ -31,6 +31,11 @@
 
 #import "SettingsController.h"
 
+///////////////
+//           //
+//  Classes  //
+//           //
+///////////////
 
 @implementation SettingsController
 

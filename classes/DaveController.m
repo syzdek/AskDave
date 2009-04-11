@@ -32,6 +32,13 @@
 #import "DaveController.h"
 #import <AudioToolbox/AudioToolbox.h>
 
+
+///////////////////
+//               //
+//  Definitions  //
+//               //
+///////////////////
+
 // Constant for the number of times per second (Hertz) to sample acceleration.
 #define kAccelerometerFrequency     10
 #define kTimerFrequency             10.0
@@ -44,6 +51,12 @@
 
 CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
+
+///////////////
+//           //
+//  Classes  //
+//           //
+///////////////
 
 @implementation DaveController
 

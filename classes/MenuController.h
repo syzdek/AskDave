@@ -20,7 +20,7 @@
  *  @BINDLEBINARIES_FOSS_LICENSE_HEADER_END@
  */
 /**
- *  @file classes/SettingsController.h controls settings/info display
+ *  @file classes/MenuController.h controls menu display
  */
 
 ///////////////
