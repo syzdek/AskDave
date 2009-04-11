@@ -72,7 +72,7 @@
    localButton       = [UIButton buttonWithType:UIButtonTypeCustom];
    localButton.frame = CGRectMake(320-290, 460-430, 115, 110);
    //localButton.backgroundColor = [UIColor yellowColor];
-   localButton.tag   = 0;
+   localButton.tag   = 1;
    [localButton addTarget:delegate action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
    [self.view addSubview:localButton];
 
@@ -80,7 +80,7 @@
    localButton       = [UIButton buttonWithType:UIButtonTypeCustom];
    localButton.frame = CGRectMake(320-145, 460-430, 115, 110);
    //localButton.backgroundColor = [UIColor yellowColor];
-   localButton.tag   = 1;
+   localButton.tag   = 2;
    [localButton addTarget:delegate action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
    [self.view addSubview:localButton];
 
@@ -88,7 +88,7 @@
    localButton       = [UIButton buttonWithType:UIButtonTypeCustom];
    localButton.frame = CGRectMake(320-290, 460-300, 115, 110);
    //localButton.backgroundColor = [UIColor yellowColor];
-   localButton.tag   = 2;
+   localButton.tag   = 3;
    [localButton addTarget:delegate action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
    [self.view addSubview:localButton];
 
@@ -96,7 +96,7 @@
    localButton       = [UIButton buttonWithType:UIButtonTypeCustom];
    localButton.frame = CGRectMake(320-145, 460-300, 115, 110);
    //localButton.backgroundColor = [UIColor yellowColor];
-   localButton.tag   = 3;
+   localButton.tag   = 4;
    [localButton addTarget:delegate action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
    [self.view addSubview:localButton];
 
@@ -104,7 +104,7 @@
    localButton       = [UIButton buttonWithType:UIButtonTypeCustom];
    localButton.frame = CGRectMake(320-290, 460-165, 115, 110);
    //localButton.backgroundColor = [UIColor yellowColor];
-   localButton.tag   = 4;
+   localButton.tag   = 5;
    [localButton addTarget:delegate action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
    [self.view addSubview:localButton];
 
@@ -112,7 +112,7 @@
    localButton       = [UIButton buttonWithType:UIButtonTypeCustom];
    localButton.frame = CGRectMake(320-145, 460-165, 115, 110);
    //localButton.backgroundColor = [UIColor yellowColor];
-   localButton.tag   = 5;
+   localButton.tag   = 6;
    [localButton addTarget:delegate action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
    [self.view addSubview:localButton];
 
@@ -129,7 +129,7 @@
    localButton       = [UIButton buttonWithType:UIButtonTypeCustom];
    localButton.frame = CGRectMake(30, 480-50, 200, 50);
    //localButton.backgroundColor = [UIColor yellowColor];
-   localButton.tag   = -1;
+   localButton.tag   = 0;
    [localButton addTarget:delegate action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
    [self.view addSubview:localButton];
 
