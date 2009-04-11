@@ -162,8 +162,11 @@
 
 
 - (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-	// Release anything that's not essential, such as cached data
+	 NSLog(@"MenuController received memory warning.");
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+
+	// Release any cached data, images, etc that aren't in use.
 }
 
 
