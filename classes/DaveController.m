@@ -60,6 +60,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
 @implementation DaveController
 
+@synthesize window;
 @synthesize name;
 @synthesize delegate;
 @synthesize hasFliped;
@@ -90,6 +91,15 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 @synthesize boardView;
 @synthesize messages;
 @synthesize messageView;
+@synthesize menu;
+@synthesize menuButton;
+@synthesize info;
+@synthesize infoButton;
+
+@synthesize about;
+@synthesize aboutView;
+@synthesize aboutImageView;
+@synthesize aboutButton;
 
 @synthesize defaults;
 @synthesize timer;
@@ -100,7 +110,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 {
    CGRect              frame;
    UIView            * localView;
-   UIButton          * localButton;
+   //UIButton          * localButton;
    //NSString          * path;
    NSAutoreleasePool * pool;
 #ifdef DEBUG
@@ -149,12 +159,64 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    messageView                = [[UIImageView alloc] initWithFrame:frame];
    self.messageView.image     = Nil;
    [self.view addSubview:self.messageView];
-   
-   // Add 'i' button
-   localButton       = [UIButton buttonWithType:UIButtonTypeInfoLight];
-   localButton.frame = CGRectMake(320-40, 480-40, 40, 40);
-   [localButton addTarget:delegate action:@selector(showMenuView:) forControlEvents:UIControlEventTouchUpInside];
-   [self.view addSubview:localButton];
+
+   // loads menu button
+   if (self.menu)
+   {
+      frame.size.width           = self.menu.size.width;
+      frame.size.height          = self.menu.size.height;
+      frame.origin.x             = 0;
+      frame.origin.y             = 480 - self.menu.size.height;
+   };
+   menuButton                   = [UIButton buttonWithType:UIButtonTypeCustom];
+   menuButton.frame             = frame;
+   menuButton.backgroundColor   = [UIColor clearColor];
+   [menuButton setBackgroundImage:menu forState:UIControlStateNormal];
+   [menuButton addTarget:delegate action:@selector(showMenuView:) forControlEvents:UIControlEventTouchUpInside];
+   [self.view addSubview:menuButton];
+
+   // loads info button
+   if (self.info)
+   {
+      frame.size.width           = self.info.size.width;
+      frame.size.height          = self.info.size.height;
+      frame.origin.x             = 320 - self.info.size.width;
+      frame.origin.y             = 480 - self.info.size.height;
+   };
+   infoButton                   = [UIButton buttonWithType:UIButtonTypeCustom];
+   infoButton.frame             = frame;
+   infoButton.backgroundColor   = [UIColor clearColor];
+   [infoButton setBackgroundImage:info forState:UIControlStateNormal];
+   [infoButton addTarget:self action:@selector(showAboutView:) forControlEvents:UIControlEventTouchUpInside];
+   [self.view addSubview:infoButton];
+
+   self.aboutView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+   [self.aboutView release];
+
+   // loads about view
+   frame                      = CGRectMake(0.0, 0.0, 320, 480);
+   if (self.about)
+   {
+      frame.size.width           = self.about.size.width;
+      frame.size.height          = self.about.size.height;
+      frame.origin.x             = 0 - ((self.about.size.width  - 320)/2);
+      frame.origin.y             = 0 - ((self.about.size.height - 480)/2);
+   };
+   aboutImageView        = [[UIImageView alloc] initWithFrame:frame];
+   self.aboutImageView.image  = self.about;
+   [self.aboutView addSubview:aboutImageView];
+
+   // loads about button
+   frame.size.width              = 320 - 40;
+   frame.size.height             = 60;
+   frame.origin.x                = 20;
+   frame.origin.y                = 480 - frame.size.height - 25;
+   aboutButton                   = [UIButton buttonWithType:UIButtonTypeCustom];
+   aboutButton.frame             = frame;
+   aboutButton.backgroundColor   = [UIColor clearColor];
+   [aboutButton addTarget:self action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
+   [self.aboutView addSubview:aboutButton];
+
    
 #ifdef DEBUG
    frame           = CGRectMake(20.0, 20.0, 280.0, 22.0);
@@ -490,12 +552,11 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
    NSLog(@"unloading %@", self.name);
 
-NSLog(@"background           retain count: %i", [self.background     retainCount]);
-
    self.backgroundView.image = nil;
    self.foregroundView.image = nil;
    self.boardView.image      = nil;
    self.messageView.image    = nil;
+   self.aboutImageView.image = nil;
 
    self.backgroundAnimation.delegate = nil;
    self.backgroundAnimation          = nil;
@@ -504,11 +565,17 @@ NSLog(@"background           retain count: %i", [self.background     retainCount
    [self.foregroundView removeFromSuperview];
    [self.boardView      removeFromSuperview];
    [self.messageView    removeFromSuperview];
+   [self.menuButton     removeFromSuperview];
+   [self.infoButton     removeFromSuperview];
+   [self.aboutImageView removeFromSuperview];
+   [self.aboutButton    removeFromSuperview];
    [self.view           removeFromSuperview];
 
    self.view            = nil;
 
+   self.window          = nil;
    self.name            = nil;
+   self.delegate        = nil;
 
    self.bga_timing_function = nil;
 
@@ -524,12 +591,68 @@ NSLog(@"background           retain count: %i", [self.background     retainCount
    self.boardView       = nil;
    self.messages        = nil;
    self.messageView     = nil;
+   self.menu            = nil;
+   self.menuButton      = nil;
+   self.info            = nil;
+   self.infoButton      = nil;
+
+   self.about           = nil;
+   self.aboutView       = nil;
+   self.aboutButton     = nil;
 
    self.defaults        = nil;
    self.timer           = nil;
    //AudioServicesDisposeSystemSoundID(chimes);
 
 	[super dealloc];
+
+   return;
+}
+
+
+- (void) showAboutView:(id)sender
+{
+   NSAutoreleasePool * pool;
+
+   pool = [[NSAutoreleasePool alloc] init];
+
+   // setup the animation group
+	[UIView beginAnimations:nil context:nil];
+   [UIView setAnimationDuration:0.75];
+   [UIView setAnimationDelegate:self];
+   [UIView setAnimationDidStopSelector:@selector(transitionDidStop:finished:context:)];
+
+   [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:window cache:YES];
+   [self.view removeFromSuperview];
+   [window addSubview:self.aboutView];
+
+   [UIView commitAnimations];
+
+   [pool release];
+
+   return;
+}
+
+
+- (void) showBoardView:(id)sender
+{
+   NSAutoreleasePool * pool;
+NSLog(@"button pressed");
+   pool = [[NSAutoreleasePool alloc] init];
+
+   // setup the animation group
+	[UIView beginAnimations:nil context:nil];
+   [UIView setAnimationDuration:0.75];
+   [UIView setAnimationDelegate:self];
+   [UIView setAnimationDidStopSelector:@selector(transitionDidStop:finished:context:)];
+
+   [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:window cache:YES];
+   [self.aboutView removeFromSuperview];
+   [window addSubview:self.view];
+
+   [UIView commitAnimations];
+
+   [pool release];
 
    return;
 }
