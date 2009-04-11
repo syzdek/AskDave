@@ -100,7 +100,7 @@
    localButton       = [UIButton buttonWithType:UIButtonTypeCustom];
    localButton.frame = CGRectMake(30, 480-50, 200, 50);
    //localButton.backgroundColor = [UIColor yellowColor];
-   localButton.tag   = 0;
+   localButton.tag   = -1;
    [localButton addTarget:delegate action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
    [self.view addSubview:localButton];
 

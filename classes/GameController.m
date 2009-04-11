@@ -307,7 +307,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    bounceAnimation                     = [CAKeyframeAnimation animationWithKeyPath:@"position"];
    bounceAnimation.removedOnCompletion = YES;
 	bounceAnimation.duration            = .25;
-   bounceAnimation.repeatCount         = 4;
+   bounceAnimation.repeatCount         = 5;
    bounceAnimation.path                = thePath;
    //bounceAnimation.timingFunction      = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 
@@ -318,7 +318,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
       [self.timer invalidate];
       self.timer = Nil;
    };
-   self.timer = [[NSTimer alloc]  initWithFireDate:[NSDate dateWithTimeIntervalSinceNow:1]
+   self.timer = [[NSTimer alloc]  initWithFireDate:[NSDate dateWithTimeIntervalSinceNow:(bounceAnimation.duration*bounceAnimation.repeatCount)+.15]
                               interval:1
                               target:self
                               selector:@selector(showMessage)
