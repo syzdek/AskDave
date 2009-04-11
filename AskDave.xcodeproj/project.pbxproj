@@ -15,7 +15,6 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		A039533E0F8893EC00215BC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A039533D0F8893EC00215BC8 /* QuartzCore.framework */; };
 		A03954BD0F88F80700215BC8 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = A03954BC0F88F80700215BC8 /* settings.png */; };
-		A03955A20F8915C200215BC8 /* README in Resources */ = {isa = PBXBuildFile; fileRef = A03955A10F8915C200215BC8 /* README */; };
 		A07FCFF60F806E6700CA32C5 /* DaveController.m in Sources */ = {isa = PBXBuildFile; fileRef = A07FCFF50F806E6700CA32C5 /* DaveController.m */; };
 		A07FD0070F80703100CA32C5 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A07FD0060F80703100CA32C5 /* SettingsController.m */; };
 		A07FD00A0F80704200CA32C5 /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = A07FD0090F80704200CA32C5 /* MenuController.m */; };
@@ -392,6 +391,21 @@
 		A0F7A6030F90780E00D50555 /* ZS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZS.png; sourceTree = "<group>"; };
 		A0F7A64D0F907B0000D50555 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		A0F7A6990F90839900D50555 /* AskDaveIcon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AskDaveIcon57.png; sourceTree = "<group>"; };
+		A0F7A75E0F90C91C00D50555 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		A0F7A7600F90C94D00D50555 /* AskDaveIcon512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AskDaveIcon512.png; sourceTree = "<group>"; };
+		A0F7A7620F90C9A500D50555 /* C_COMPOSITE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C_COMPOSITE.png; sourceTree = "<group>"; };
+		A0F7A7630F90C9B300D50555 /* D_COMPOSITE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = D_COMPOSITE.png; sourceTree = "<group>"; };
+		A0F7A7640F90C9BD00D50555 /* G_COMPOSITE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = G_COMPOSITE.png; sourceTree = "<group>"; };
+		A0F7A7650F90C9C900D50555 /* N_COMPOSITE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = N_COMPOSITE.png; sourceTree = "<group>"; };
+		A0F7A7660F90C9D300D50555 /* P_COMPOSITE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = P_COMPOSITE.png; sourceTree = "<group>"; };
+		A0F7A7670F90C9DF00D50555 /* Z_COMPOSITE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Z_COMPOSITE.png; sourceTree = "<group>"; };
+		A0F7A7700F90CB1C00D50555 /* ZZZ_ButtonCOMPOSITE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZZZ_ButtonCOMPOSITE.png; sourceTree = "<group>"; };
+		A0F7A7710F90CB1C00D50555 /* ZZZ_ButtonMeasures.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ZZZ_ButtonMeasures.jpg; sourceTree = "<group>"; };
+		A0F7A7770F90CB4F00D50555 /* StoreScreenShot1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StoreScreenShot1.png; sourceTree = "<group>"; };
+		A0F7A7780F90CB4F00D50555 /* StoreScreenShot2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StoreScreenShot2.png; sourceTree = "<group>"; };
+		A0F7A7790F90CB4F00D50555 /* StoreScreenShot3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StoreScreenShot3.png; sourceTree = "<group>"; };
+		A0F7A77A0F90CB4F00D50555 /* StoreScreenShot5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StoreScreenShot5.png; sourceTree = "<group>"; };
+		A0F7A77B0F90CB4F00D50555 /* StoreScreenshot4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StoreScreenshot4.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -437,6 +451,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A0F7A75E0F90C91C00D50555 /* COPYING */,
 				A03955A10F8915C200215BC8 /* README */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -484,6 +499,7 @@
 		A06EB9E40F8DD1F700EB5176 /* classic */ = {
 			isa = PBXGroup;
 			children = (
+				A0F7A7620F90C9A500D50555 /* C_COMPOSITE.png */,
 				A0F7A4E00F9077AF00D50555 /* C_INFO.png */,
 				A0F7A4E10F9077AF00D50555 /* CA */,
 				A0F7A4F60F9077AF00D50555 /* CAI.png */,
@@ -498,6 +514,7 @@
 		A06EB9E70F8DD1F700EB5176 /* devil */ = {
 			isa = PBXGroup;
 			children = (
+				A0F7A7630F90C9B300D50555 /* D_COMPOSITE.png */,
 				A0F7A5150F9077BC00D50555 /* D_INFO.png */,
 				A0F7A5160F9077BC00D50555 /* DA */,
 				A0F7A52B0F9077BC00D50555 /* DAI.png */,
@@ -512,6 +529,7 @@
 		A06EB9EA0F8DD1F700EB5176 /* nirvana */ = {
 			isa = PBXGroup;
 			children = (
+				A0F7A7650F90C9C900D50555 /* N_COMPOSITE.png */,
 				A0F7A57F0F9077F300D50555 /* N_INFO.png */,
 				A0F7A5800F9077F300D50555 /* NA */,
 				A0F7A5950F9077F300D50555 /* NAI.png */,
@@ -526,6 +544,7 @@
 		A06EB9ED0F8DD1F700EB5176 /* pirate */ = {
 			isa = PBXGroup;
 			children = (
+				A0F7A7660F90C9D300D50555 /* P_COMPOSITE.png */,
 				A0F7A5B40F90780200D50555 /* P_INFO.png */,
 				A0F7A5B50F90780200D50555 /* PA */,
 				A0F7A5CA0F90780200D50555 /* PAI.png */,
@@ -540,6 +559,7 @@
 		A06EB9F00F8DD1F700EB5176 /* zombie */ = {
 			isa = PBXGroup;
 			children = (
+				A0F7A7670F90C9DF00D50555 /* Z_COMPOSITE.png */,
 				A0F7A5E90F90780E00D50555 /* Z_INFO.png */,
 				A0F7A5EA0F90780E00D50555 /* ZA */,
 				A0F7A5FF0F90780E00D50555 /* ZAI.png */,
@@ -554,11 +574,12 @@
 		A06EBA010F8E08FE00EB5176 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				A0F7A6990F90839900D50555 /* AskDaveIcon57.png */,
-				A0F7A64D0F907B0000D50555 /* menu.png */,
 				A0F7A4BB0F9076AB00D50555 /* boards */,
-				A07FD08F0F80769300CA32C5 /* Default.png */,
 				A0F7A4BC0F9076CC00D50555 /* menu */,
+				A0F7A7760F90CB4F00D50555 /* store */,
+				A0F7A6990F90839900D50555 /* AskDaveIcon57.png */,
+				A0F7A7600F90C94D00D50555 /* AskDaveIcon512.png */,
+				A07FD08F0F80769300CA32C5 /* Default.png */,
 				A03954BC0F88F80700215BC8 /* settings.png */,
 			);
 			path = images;
@@ -567,6 +588,7 @@
 		A07FCFB20F80507500CA32C5 /* geek */ = {
 			isa = PBXGroup;
 			children = (
+				A0F7A7640F90C9BD00D50555 /* G_COMPOSITE.png */,
 				A0F7A54A0F9077E800D50555 /* G_INFO.png */,
 				A0F7A54B0F9077E800D50555 /* GA */,
 				A0F7A5600F9077E800D50555 /* GAI.png */,
@@ -594,6 +616,7 @@
 		A0F7A4BC0F9076CC00D50555 /* menu */ = {
 			isa = PBXGroup;
 			children = (
+				A0F7A64D0F907B0000D50555 /* menu.png */,
 				A0F7A4C20F90776C00D50555 /* Button_AskDave.png */,
 				A0F7A4C30F90776C00D50555 /* Button_Classic.png */,
 				A0F7A4C40F90776C00D50555 /* Button_Devil.png */,
@@ -609,6 +632,8 @@
 				A0F7A4CE0F90776C00D50555 /* Dave_Nirvana.png */,
 				A0F7A4CF0F90776C00D50555 /* Dave_Pirate.png */,
 				A0F7A4D00F90776C00D50555 /* Dave_Zombie.png */,
+				A0F7A7700F90CB1C00D50555 /* ZZZ_ButtonCOMPOSITE.png */,
+				A0F7A7710F90CB1C00D50555 /* ZZZ_ButtonMeasures.jpg */,
 			);
 			path = menu;
 			sourceTree = "<group>";
@@ -775,6 +800,18 @@
 			path = ZA;
 			sourceTree = "<group>";
 		};
+		A0F7A7760F90CB4F00D50555 /* store */ = {
+			isa = PBXGroup;
+			children = (
+				A0F7A7770F90CB4F00D50555 /* StoreScreenShot1.png */,
+				A0F7A7780F90CB4F00D50555 /* StoreScreenShot2.png */,
+				A0F7A7790F90CB4F00D50555 /* StoreScreenShot3.png */,
+				A0F7A77A0F90CB4F00D50555 /* StoreScreenShot5.png */,
+				A0F7A77B0F90CB4F00D50555 /* StoreScreenshot4.png */,
+			);
+			path = store;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -820,7 +857,6 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				A07FD0900F80769300CA32C5 /* Default.png in Resources */,
 				A03954BD0F88F80700215BC8 /* settings.png in Resources */,
-				A03955A20F8915C200215BC8 /* README in Resources */,
 				A0F7A4D10F90776C00D50555 /* Button_AskDave.png in Resources */,
 				A0F7A4D20F90776C00D50555 /* Button_Classic.png in Resources */,
 				A0F7A4D30F90776C00D50555 /* Button_Devil.png in Resources */,
