@@ -96,6 +96,8 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    
    pool = [[NSAutoreleasePool alloc] init];
 
+   NSLog(@"loading %@", self.name);
+
    //path = [[NSBundle mainBundle] pathForResource:@"chimes" ofType:@"wav"];
    //AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:path], &chimes);
 
@@ -104,7 +106,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    self.view = localView;
    [localView release];
 
-   // loads background
+   // loads background view
    frame                      = CGRectMake(0.0, 0.0, 320, 480);
    if (self.background)
    {
@@ -119,7 +121,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    [self.view addSubview:localImageView];
    [localImageView release];
 
-   // loads foreground
+   // loads foreground view
    frame                      = CGRectMake(0.0, 0.0, 320, 480);
    localImageView             = [[UIImageView alloc] initWithFrame:frame];
    localImageView.image       = self.foreground;
@@ -127,7 +129,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    [self.view addSubview:localImageView];
    [localImageView release];
 
-   // loads message board
+   // loads message board view
    frame                      = CGRectMake(0.0, 0.0, 320, 480);
    localImageView             = [[UIImageView alloc] initWithFrame:frame];
    localImageView.image       = self.board;
@@ -135,7 +137,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    [self.view addSubview:localImageView];
    [localImageView release];
 
-   // loads message
+   // loads message view
    frame                      = CGRectMake(0.0, 0.0, 320, 480);
    localImageView             = [[UIImageView alloc] initWithFrame:frame];
    localImageView.image       = Nil;
@@ -181,6 +183,19 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    
    [pool release];
    
+   return;
+}
+
+
+- (void)unloadView
+{
+   NSLog(@"unloading %@", self.name);
+   if (self.timer)
+      [self.timer invalidate];
+   if (self.backgroundView)
+      [self.backgroundView.layer removeAllAnimations];
+   if (self.boardView)
+      [self.boardView.layer removeAllAnimations];
    return;
 }
 
@@ -396,20 +411,6 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    return;
 }
 
-// If you need to do additional setup after loading the view, override viewDidLoad.
-- (void)viewDidUnload
-{
-   NSLog(@"deactivating %@", self.name);
-   if (self.timer)
-   {
-      [self.timer invalidate];
-      self.timer = Nil;
-   };
-   [self.backgroundView.layer removeAllAnimations];
-
-   return;
-}
-
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
 {
@@ -462,6 +463,12 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
 - (void)dealloc
 {
+   [self unloadView];
+
+   self.name            = nil;
+
+   self.bga_timing_function = nil;
+
    self.forceDataX      = nil;
    self.forceDataY      = nil;
    self.forceDataZ      = nil;
@@ -475,9 +482,13 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    self.messages        = nil;
    self.messageView     = nil;
 
-   self.defaults;
+   self.defaults        = nil;
+   self.timer           = nil;
    AudioServicesDisposeSystemSoundID(chimes);
+
 	[super dealloc];
+
+   return;
 }
 
 

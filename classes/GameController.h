@@ -113,10 +113,10 @@
 @property(nonatomic, retain) NSUserDefaults * defaults;
 @property(nonatomic, retain) NSTimer        * timer;
 
-- (void)viewDidUnload;
+- (void)unloadView;
 - (void)showMessage;
 
-- (void) rollBall:(NSString *)newMessage;
+- (void)rollBall:(NSString *)newMessage;
 - (void)accelerometerFlip:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration;
 - (void)accelerometerShake:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration;
 

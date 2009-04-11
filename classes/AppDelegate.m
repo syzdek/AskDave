@@ -371,7 +371,7 @@
 {
    if (self.board)
    {
-      [self.board viewDidUnload];
+      [self.board unloadView];
       self.board = Nil;
    };
    if ([sender tag] >= 0)
@@ -402,7 +402,7 @@
 {
    if (self.board)
    {
-      [self.board viewDidUnload];
+      [self.board unloadView];
       self.board = Nil;
    };
    // setup the animation group
@@ -427,7 +427,7 @@
 {
    if (self.board)
    {
-      [self.board viewDidUnload];
+      [self.board unloadView];
       self.board = Nil;
    };
    // setup the animation group
