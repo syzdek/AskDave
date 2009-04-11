@@ -193,6 +193,7 @@
 		A0F7A61D0F90780E00D50555 /* ZS.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A6030F90780E00D50555 /* ZS.png */; };
 		A0F7A64E0F907B0000D50555 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A64D0F907B0000D50555 /* menu.png */; };
 		A0F7A69A0F90839900D50555 /* AskDaveIcon57.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A6990F90839900D50555 /* AskDaveIcon57.png */; };
+		A0F7A8C60F90FB2E00D50555 /* UIImageAskDave.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F7A8C50F90FB2E00D50555 /* UIImageAskDave.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -406,6 +407,8 @@
 		A0F7A7790F90CB4F00D50555 /* StoreScreenShot3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StoreScreenShot3.png; sourceTree = "<group>"; };
 		A0F7A77A0F90CB4F00D50555 /* StoreScreenShot5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StoreScreenShot5.png; sourceTree = "<group>"; };
 		A0F7A77B0F90CB4F00D50555 /* StoreScreenshot4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StoreScreenshot4.png; sourceTree = "<group>"; };
+		A0F7A8C40F90FB2E00D50555 /* UIImageAskDave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageAskDave.h; sourceTree = "<group>"; };
+		A0F7A8C50F90FB2E00D50555 /* UIImageAskDave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageAskDave.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -453,6 +456,7 @@
 			children = (
 				A0F7A75E0F90C91C00D50555 /* COPYING */,
 				A03955A10F8915C200215BC8 /* README */,
+				A0F7A8C30F90FAE800D50555 /* Categories */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -812,6 +816,16 @@
 			path = store;
 			sourceTree = "<group>";
 		};
+		A0F7A8C30F90FAE800D50555 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A0F7A8C40F90FB2E00D50555 /* UIImageAskDave.h */,
+				A0F7A8C50F90FB2E00D50555 /* UIImageAskDave.m */,
+			);
+			name = Categories;
+			path = categories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1045,6 +1059,7 @@
 				A07FCFF60F806E6700CA32C5 /* DaveController.m in Sources */,
 				A07FD0070F80703100CA32C5 /* SettingsController.m in Sources */,
 				A07FD00A0F80704200CA32C5 /* MenuController.m in Sources */,
+				A0F7A8C60F90FB2E00D50555 /* UIImageAskDave.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
