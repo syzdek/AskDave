@@ -152,9 +152,9 @@
          NSLog(@"init classic Dave...");
          self.board.name                 = @"classic Dave";
          self.board.bga                  = YES;
-         self.board.bga_duration         = 120;
-         self.board.bga_fromValue        = 270;
-         self.board.bga_toValue          = 90;
+         self.board.bga_duration         = 240;
+         self.board.bga_fromValue        = 360;
+         self.board.bga_toValue          = 0;
          self.board.bga_autoreverses     = NO;
          //self.board.bga_timing_function  = kCAMediaTimingFunctionEaseInEaseOut;
          self.board.background           = [UIImage uncachedImageNamed:@"CR.png"];
