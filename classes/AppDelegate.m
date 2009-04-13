@@ -37,6 +37,22 @@
 #import "UIImageAskDave.h"
 
 
+///////////////////
+//               //
+//  Definitions  //
+//               //
+///////////////////
+
+// Constant for the number of times per second (Hertz) to sample acceleration.
+#define kAccelerometerFrequency     10
+#define kTimerFrequency             10.0
+#define kAccelerometerForce         .75
+#define kAccelerometerToDegrees     15
+#define kSpeedMagnitude             100
+#define kDurationMagnitude          0.2
+#define kMaxDuration                10.0
+
+
 ///////////////
 //           //
 //  Classes  //
@@ -67,6 +83,8 @@
    NSLog(@"http://www.blogography.com/");
 
    [application setStatusBarHidden:YES animated:NO];
+
+   boardActive = NO;
 
    srandomdev();
 
@@ -100,10 +118,15 @@
    [localController release];
 
 	// Override point for customization after app launch
-   NSLog(@"let there be light...");
+   NSLog(@"displaying views...");
    self.active = self.menu;
    [self.window addSubview:self.active.view];
    [window makeKeyAndVisible];
+
+   // loads accelerometer
+   NSLog(@"activating accelerometer...");
+   [[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
+   [[UIAccelerometer sharedAccelerometer] setDelegate:self];
 
    NSLog(@"Enjoy!!!");
 
@@ -124,6 +147,21 @@
    [settings release];
 	[window   release];
 	[super    dealloc];
+   return;
+}
+
+
+// UIAccelerometerDelegate method, called when the device accelerates.
+- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
+{
+   if (!(boardActive))
+      return;
+   if (self.board == nil)
+      return;
+   if ([self.defaults boolForKey:@"shake"])
+      [self.board accelerometerShake:accelerometer didAccelerate:acceleration];
+   else
+      [self.board accelerometerFlip:accelerometer didAccelerate:acceleration];
    return;
 }
 
@@ -390,6 +428,8 @@
 
    [self.board viewDidLoad];
 
+   boardActive = YES;
+
    [pool release];
 
    return;
@@ -401,6 +441,8 @@
    NSAutoreleasePool * pool;
 
    pool = [[NSAutoreleasePool alloc] init];
+
+   boardActive = NO;
 
    // setup the animation group
 	[UIView beginAnimations:nil context:nil];
@@ -427,6 +469,8 @@
    NSAutoreleasePool * pool;
 
    pool = [[NSAutoreleasePool alloc] init];
+
+   boardActive = NO;
 
    // setup the animation group
 	[UIView beginAnimations:nil context:nil];

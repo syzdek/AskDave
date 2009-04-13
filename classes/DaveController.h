@@ -41,7 +41,7 @@
 
 @class AppDelegate;
 
-@interface DaveController : UIViewController <UIAccelerometerDelegate>
+@interface DaveController : UIViewController
 {
    UIWindow           * window;
    NSString           * name;

@@ -39,18 +39,9 @@
 //               //
 ///////////////////
 
-// Constant for the number of times per second (Hertz) to sample acceleration.
-#define kAccelerometerFrequency     10
-#define kTimerFrequency             10.0
-#define kAccelerometerForce         .75
-#define kAccelerometerToDegrees     15
-#define kSpeedMagnitude             100
-#define kDurationMagnitude          0.2
-#define kMaxDuration                10.0
-
-
 CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
+
 
 ///////////////
 //           //
@@ -269,17 +260,6 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
 
 // UIAccelerometerDelegate method, called when the device accelerates.
-- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
-{
-   if ([self.defaults boolForKey:@"shake"])
-      [self accelerometerShake:accelerometer didAccelerate:acceleration];
-   else
-      [self accelerometerFlip:accelerometer didAccelerate:acceleration];
-   return;
-}
-
-
-// UIAccelerometerDelegate method, called when the device accelerates.
 - (void)accelerometerFlip:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
 {
    NSAutoreleasePool * pool;
@@ -474,10 +454,6 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
    NSLog(@"activating %@", self.name);
 
-   // loads accelerometer
-   [[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
-   [[UIAccelerometer sharedAccelerometer] setDelegate:self];
-
    [self animationDidStop:Nil finished:YES];
 
    // creates background animation
@@ -598,6 +574,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
    self.about           = nil;
    self.aboutView       = nil;
+   self.aboutImageView  = nil;
    self.aboutButton     = nil;
 
    self.defaults        = nil;
