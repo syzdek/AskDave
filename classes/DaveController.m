@@ -29,6 +29,7 @@
 //           //
 ///////////////
 
+#import "common.h"
 #import "DaveController.h"
 #import <AudioToolbox/AudioToolbox.h>
 

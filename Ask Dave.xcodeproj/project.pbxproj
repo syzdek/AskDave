@@ -204,6 +204,7 @@
 		A07FD0090F80704200CA32C5 /* MenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuController.m; sourceTree = "<group>"; };
 		A07FD0180F8070DB00CA32C5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A07FD08F0F80769300CA32C5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		A082D7EB0FA4653C00BE7D1A /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 		A0BCD7360F91533600553076 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		A0F7A4C20F90776C00D50555 /* Button_AskDave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_AskDave.png; sourceTree = "<group>"; };
 		A0F7A4C30F90776C00D50555 /* Button_Classic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Classic.png; sourceTree = "<group>"; };
@@ -458,6 +459,7 @@
 			children = (
 				32CA4F630368D1EE00C91783 /* AskDave_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
+				A082D7EB0FA4653C00BE7D1A /* common.h */,
 			);
 			name = "Other Sources";
 			path = other;

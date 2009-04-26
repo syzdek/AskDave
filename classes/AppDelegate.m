@@ -29,28 +29,13 @@
 //           //
 ///////////////
 
+#import "common.h"
 #import "AppDelegate.h"
 #import "DaveController.h"
 #import "MenuController.h"
 #import "SettingsController.h"
 
 #import "UIImageAskDave.h"
-
-
-///////////////////
-//               //
-//  Definitions  //
-//               //
-///////////////////
-
-// Constant for the number of times per second (Hertz) to sample acceleration.
-#define kAccelerometerFrequency     10
-#define kTimerFrequency             10.0
-#define kAccelerometerForce         .75
-#define kAccelerometerToDegrees     15
-#define kSpeedMagnitude             100
-#define kDurationMagnitude          0.2
-#define kMaxDuration                10.0
 
 
 ///////////////
