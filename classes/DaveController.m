@@ -250,7 +250,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    bounceAnimation                     = [CAKeyframeAnimation animationWithKeyPath:@"position"];
    bounceAnimation.removedOnCompletion = YES;
 	bounceAnimation.duration            = .25;
-   bounceAnimation.repeatCount         = 5;
+   bounceAnimation.repeatCount         = 3;
    bounceAnimation.path                = thePath;
    //bounceAnimation.timingFunction      = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 
