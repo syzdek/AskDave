@@ -132,14 +132,18 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
 - (void)unloadView
 {
-   NSLog(@"deactivating %@", self.name);
+   NSLog(@"unloading view of %@", self.name);
    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:90.0];
    [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
    if (self.timer)
       [self.timer invalidate];
-   [dave.backgroundView.layer removeAllAnimations];
+   if (dave)
+      [dave.boardView.layer removeAllAnimations];
+   if (dave)
+      [dave.backgroundView.layer removeAllAnimations];
+   if (self.backgroundAnimation)
+      self.backgroundAnimation.delegate = nil;
    self.backgroundAnimation = nil;
-   [dave.boardView.layer removeAllAnimations];
    return;
 }
 
@@ -337,7 +341,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
    pool = [[NSAutoreleasePool alloc] init];
 
-   NSLog(@"activating %@", self.name);
+   NSLog(@"loading view of %@", self.name);
 
    [self animationDidStop:Nil finished:YES];
 
@@ -409,11 +413,12 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
 - (void)dealloc
 {
-   [self unloadView];
+   //[self unloadView];
 
-   NSLog(@"unloading %@", self.name);
+   NSLog(@"deallocing %@", self.name);
 
-   self.backgroundAnimation.delegate = nil;
+   if (self.backgroundAnimation)
+      self.backgroundAnimation.delegate = nil;
    self.backgroundAnimation          = nil;
 
    self.view            = nil;
@@ -474,7 +479,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 - (void) showBoardView:(id)sender
 {
    NSAutoreleasePool * pool;
-NSLog(@"button pressed");
+
    pool = [[NSAutoreleasePool alloc] init];
 
    // setup the animation group

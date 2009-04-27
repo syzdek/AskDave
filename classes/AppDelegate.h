@@ -40,23 +40,25 @@
 /////////////////////////
 
 @class AskDaveViewController;
+@class DaveController;
+@class SettingsController;
 
 @interface AppDelegate : NSObject <UIApplicationDelegate, UIAccelerometerDelegate>
 {
    IBOutlet UIWindow  * window;
    DaveController     * board;
    BOOL                 boardActive;
-   UIViewController   * active;
+   UIView             * active;
    UIViewController   * menu;
-   UIViewController   * settings;
+   SettingsController * settings;
    NSUserDefaults     * defaults;
 }
 
 @property (nonatomic, retain) UIWindow           * window;
 @property (nonatomic, retain) DaveController     * board;
-@property (nonatomic, retain) UIViewController   * active;
+@property (nonatomic, retain) UIView             * active;
 @property (nonatomic, retain) UIViewController   * menu;
-@property (nonatomic, retain) UIViewController   * settings;
+@property (nonatomic, retain) SettingsController * settings;
 @property (nonatomic, retain) NSUserDefaults     * defaults;
 
 - (void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration;

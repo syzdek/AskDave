@@ -56,9 +56,12 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {    
-   NSDictionary     * appDefaults;
-   NSUserDefaults   * localDefaults;
-	UIViewController * localController;
+   NSDictionary      * appDefaults;
+   NSUserDefaults    * localDefaults;
+	UIViewController  * localController;
+   NSAutoreleasePool * pool;
+
+   pool = [[NSAutoreleasePool alloc] init];
 
    NSLog(@"%@ %@ Source Code", [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleName"], [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleVersion"]);
    NSLog(@"Copyright (C) 2009 David M. Syzdek");
@@ -95,17 +98,15 @@
    [localController release];
 
    NSLog(@"loading settings view...");
-   localController         = [[SettingsController alloc] init];
-   self.settings           = localController;
-   [(id)self.settings setDelegate:self];
-   [(id)self.settings setDefaults:self.defaults];
-   [self.settings loadView];
-   [localController release];
+   settings             = [[SettingsController alloc] init];
+   [(id)settings setDelegate:self];
+   [(id)settings setDefaults:self.defaults];
+   [(id)settings loadView];
 
 	// Override point for customization after app launch
    NSLog(@"displaying views...");
-   self.active = self.menu;
-   [self.window addSubview:self.active.view];
+   self.active = menu.view;
+   [window addSubview:menu.view];
    [window makeKeyAndVisible];
 
    // loads accelerometer
@@ -114,6 +115,8 @@
    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
 
    NSLog(@"Enjoy!!!");
+
+   [pool release];
 
    return;
 }
@@ -162,12 +165,11 @@
    if (!(tag))
       tag = (random() % 6) + 1;
 
-   self.board           = [[DaveController alloc] init];
-   self.board.window    = self.window;
-   self.board.delegate  = self;
-   self.board.defaults  = self.defaults;
-   self.board.messages  = [NSMutableArray arrayWithCapacity:20];
-   [self.board release];
+   board           = [[DaveController alloc] init];
+   board.window    = self.window;
+   board.delegate  = self;
+   board.defaults  = self.defaults;
+   board.messages  = [NSMutableArray arrayWithCapacity:20];
 
    switch(tag)
    {
@@ -404,12 +406,12 @@
    [UIView setAnimationDidStopSelector:@selector(transitionDidStop:finished:context:)];
 
    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:window cache:YES];
-   [self.active.view removeFromSuperview];
-   [window addSubview:self.board.view];
+   [active removeFromSuperview];
+   [window addSubview:board.view];
 
    [UIView commitAnimations];
 
-   self.active = self.board;
+   self.active = board.view;
 
    [self.board viewDidLoad];
 
@@ -429,6 +431,9 @@
 
    boardActive = NO;
 
+   if (board)
+      [board unloadView];
+
    // setup the animation group
 	[UIView beginAnimations:nil context:nil];
    [UIView setAnimationDuration:0.75];
@@ -436,14 +441,14 @@
    [UIView setAnimationDidStopSelector:@selector(transitionDidStop:finished:context:)];
    
    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:window cache:YES];
-   [self.active.view removeFromSuperview];
-   [window addSubview:self.menu.view];
+   [active removeFromSuperview];
+   [window addSubview:menu.view];
 
    [UIView commitAnimations];
 
-   self.active = self.menu;
-
    [pool release];
+
+   self.active = menu.view;
 
    return;
 }
@@ -464,14 +469,14 @@
    [UIView setAnimationDidStopSelector:@selector(transitionDidStop:finished:context:)];
 
    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:window cache:YES];
-   [self.active.view removeFromSuperview];
-   [window addSubview:self.settings.view];
+   [active removeFromSuperview];
+   [window addSubview:settings.view];
 
    [UIView commitAnimations];
 
-   self.active = self.settings;
-
    [pool release];
+
+   self.active = settings.view;
 
    return;
 }
