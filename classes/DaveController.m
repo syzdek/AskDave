@@ -31,6 +31,7 @@
 
 #import "common.h"
 #import "DaveController.h"
+#import "DaveView.h"
 #import <AudioToolbox/AudioToolbox.h>
 
 
@@ -70,23 +71,13 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 @synthesize bga_autoreverses;
 @synthesize bga_timing_function;
 
-@synthesize forceDataX;
-@synthesize forceDataY;
-@synthesize forceDataZ;
-
 @synthesize background;
-@synthesize backgroundView;
 @synthesize backgroundAnimation;
 @synthesize foreground;
-@synthesize foregroundView;
 @synthesize board;
-@synthesize boardView;
 @synthesize messages;
-@synthesize messageView;
 @synthesize menu;
-@synthesize menuButton;
 @synthesize info;
-@synthesize infoButton;
 
 @synthesize about;
 @synthesize aboutView;
@@ -96,18 +87,23 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 @synthesize defaults;
 @synthesize timer;
 
+-(id) init
+{
+   if (self = [super init])
+   {
+      dave = [[DaveView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+      self.view = dave;
+   }
+   return(self);
+}
+
 
 // Implement loadView if you want to create a view hierarchy programmatically
 - (void)loadView
 {
    CGRect              frame;
-   UIView            * localView;
-   //UIButton          * localButton;
    //NSString          * path;
    NSAutoreleasePool * pool;
-#ifdef DEBUG
-   UILabel           * localLabel;
-#endif
    
    pool = [[NSAutoreleasePool alloc] init];
 
@@ -116,71 +112,13 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    //path = [[NSBundle mainBundle] pathForResource:@"chimes" ofType:@"wav"];
    //AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:path], &chimes);
 
-   // load view
-   localView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
-   self.view = localView;
-   [localView release];
-
-   // loads background view
-   frame                      = CGRectMake(0.0, 0.0, 320, 480);
-   if (self.background)
-   {
-      frame.size.width           = self.background.size.width;
-      frame.size.height          = self.background.size.height;
-      frame.origin.x             = 0 - ((self.background.size.width  - 320)/2);
-      frame.origin.y             = 0 - ((self.background.size.height - 480)/2);
-   };
-   backgroundView        = [[UIImageView alloc] initWithFrame:frame];
-   self.backgroundView.image  = self.background;
-   [self.view addSubview:self.backgroundView];
-
-   // loads foreground view
-   frame                      = CGRectMake(0.0, 0.0, 320, 480);
-   foregroundView             = [[UIImageView alloc] initWithFrame:frame];
-   self.foregroundView.image  = self.foreground;
-   [self.view addSubview:self.foregroundView];
-
-   // loads message board view
-   frame                      = CGRectMake(0.0, 0.0, 320, 480);
-   boardView                  = [[UIImageView alloc] initWithFrame:frame];
-   self.boardView.image       = self.board;
-   [self.view addSubview:self.boardView];
-
-   // loads message view
-   frame                      = CGRectMake(0.0, 0.0, 320, 480);
-   messageView                = [[UIImageView alloc] initWithFrame:frame];
-   self.messageView.image     = Nil;
-   [self.view addSubview:self.messageView];
-
-   // loads menu button
-   if (self.menu)
-   {
-      frame.size.width           = self.menu.size.width;
-      frame.size.height          = self.menu.size.height;
-      frame.origin.x             = 0;
-      frame.origin.y             = 480 - self.menu.size.height;
-   };
-   menuButton                   = [UIButton buttonWithType:UIButtonTypeCustom];
-   menuButton.frame             = frame;
-   menuButton.backgroundColor   = [UIColor clearColor];
-   [menuButton setBackgroundImage:menu forState:UIControlStateNormal];
-   [menuButton addTarget:delegate action:@selector(showMenuView:) forControlEvents:UIControlEventTouchUpInside];
-   [self.view addSubview:menuButton];
-
-   // loads info button
-   if (self.info)
-   {
-      frame.size.width           = self.info.size.width;
-      frame.size.height          = self.info.size.height;
-      frame.origin.x             = 320 - self.info.size.width;
-      frame.origin.y             = 480 - self.info.size.height;
-   };
-   infoButton                   = [UIButton buttonWithType:UIButtonTypeCustom];
-   infoButton.frame             = frame;
-   infoButton.backgroundColor   = [UIColor clearColor];
-   [infoButton setBackgroundImage:info forState:UIControlStateNormal];
-   [infoButton addTarget:self action:@selector(showAboutView:) forControlEvents:UIControlEventTouchUpInside];
-   [self.view addSubview:infoButton];
+   dave.delegate   = self;
+   dave.background = self.background;
+   dave.foreground = self.foreground;
+   dave.board      = self.board;
+   dave.message    = nil;
+   dave.menu       = self.menu;
+   dave.info       = self.info;
 
    self.aboutView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
    [self.aboutView release];
@@ -209,39 +147,19 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    [aboutButton addTarget:self action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
    [self.aboutView addSubview:aboutButton];
 
-   
-#ifdef DEBUG
-   frame           = CGRectMake(20.0, 20.0, 280.0, 22.0);
-   localLabel      = [[UILabel alloc] initWithFrame:frame];
-   localLabel.font = [UIFont systemFontOfSize:17];
-   localLabel.backgroundColor = [UIColor clearColor];
-   self.forceDataX = localLabel;
-   [localLabel release];
-   [self.view addSubview:self.forceDataX];
-   
-   frame           = CGRectMake(20.0, 39.0, 280.0, 22.0);
-   localLabel      = [[UILabel alloc] initWithFrame:frame];
-   localLabel.font = [UIFont systemFontOfSize:17];
-   localLabel.backgroundColor = [UIColor clearColor];
-   self.forceDataY = localLabel;
-   [localLabel release];
-   [self.view addSubview:self.forceDataY];
-   
-   frame           = CGRectMake(20.0, 60.0, 280.0, 22.0);
-   localLabel      = [[UILabel alloc] initWithFrame:frame];
-   localLabel.font = [UIFont systemFontOfSize:17];
-   localLabel.backgroundColor = [UIColor clearColor];
-   self.forceDataZ = localLabel;
-   [localLabel release];
-   [self.view addSubview:self.forceDataZ];
-#endif
-
    self.oldX = 4;
    self.oldY = 4;
    self.oldZ = 4;
    
    [pool release];
    
+   return;
+}
+
+
+- (void) showMenuView:(id)sender
+{
+   [delegate showMenuView:sender];
    return;
 }
 
@@ -253,9 +171,9 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
    if (self.timer)
       [self.timer invalidate];
-   [self.backgroundView.layer removeAllAnimations];
+   [dave.backgroundView.layer removeAllAnimations];
    self.backgroundAnimation = nil;
-   [self.boardView.layer removeAllAnimations];
+   [dave.boardView.layer removeAllAnimations];
    return;
 }
 
@@ -272,15 +190,15 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    z = acceleration.z;
    
 #ifdef DEBUG
-   forceDataX.text = [NSString stringWithFormat:@"X: %+1.30f", x];
-   forceDataY.text = [NSString stringWithFormat:@"Y: %+1.30f", y];
-   forceDataZ.text = [NSString stringWithFormat:@"Z: %+1.30f", z];
+   dave.forceDataX.text = [NSString stringWithFormat:@"X: %+1.30f", x];
+   dave.forceDataY.text = [NSString stringWithFormat:@"Y: %+1.30f", y];
+   dave.forceDataZ.text = [NSString stringWithFormat:@"Z: %+1.30f", z];
 #endif
 
    if (z > 0.7)
    {
       hasFliped = YES;
-      self.messageView.image = Nil;
+      dave.message = Nil;
    };
    if ((z < 0.0) && (hasFliped))
    {
@@ -322,9 +240,9 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    diffZ = fabsf(self.z - self.oldZ);
    
 #ifdef DEBUG
-   forceDataX.text = [NSString stringWithFormat:@"X: %+1.30f", diffX];
-   forceDataY.text = [NSString stringWithFormat:@"Y: %+1.30f", diffY];
-   forceDataZ.text = [NSString stringWithFormat:@"Z: %+1.30f", diffZ];
+   dave.forceDataX.text = [NSString stringWithFormat:@"X: %+1.30f", diffX];
+   dave.forceDataY.text = [NSString stringWithFormat:@"Y: %+1.30f", diffY];
+   dave.forceDataZ.text = [NSString stringWithFormat:@"Z: %+1.30f", diffZ];
 #endif
 
    //if (z > 0.3)
@@ -332,7 +250,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    if ((diffX > 1.0) || (diffY > 1.0) || (diffZ > 1.0))
    {
       self.hasFliped             = YES;
-      self.messageView.image     = Nil;
+      dave.message     = Nil;
       if (self.timer)
       {
          [self.timer invalidate];
@@ -359,14 +277,14 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    CGMutablePathRef      thePath;
 	CAKeyframeAnimation * bounceAnimation;
 
-   [self.boardView.layer removeAllAnimations];
+   [dave.boardView.layer removeAllAnimations];
 
    thePath = CGPathCreateMutable();
-   CGPathMoveToPoint(thePath, NULL, boardView.center.x, boardView.center.y);
-   CGPathAddLineToPoint(thePath, NULL, boardView.center.x, boardView.center.y-15);
-   CGPathAddLineToPoint(thePath, NULL, boardView.center.x, boardView.center.y);
-   CGPathAddLineToPoint(thePath, NULL, boardView.center.x, boardView.center.y+15);
-   CGPathAddLineToPoint(thePath, NULL, boardView.center.x, boardView.center.y);
+   CGPathMoveToPoint(thePath, NULL, dave.boardView.center.x, dave.boardView.center.y);
+   CGPathAddLineToPoint(thePath, NULL, dave.boardView.center.x, dave.boardView.center.y-15);
+   CGPathAddLineToPoint(thePath, NULL, dave.boardView.center.x, dave.boardView.center.y);
+   CGPathAddLineToPoint(thePath, NULL, dave.boardView.center.x, dave.boardView.center.y+15);
+   CGPathAddLineToPoint(thePath, NULL, dave.boardView.center.x, dave.boardView.center.y);
 
    bounceAnimation                     = [CAKeyframeAnimation animationWithKeyPath:@"position"];
    bounceAnimation.removedOnCompletion = YES;
@@ -375,7 +293,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    bounceAnimation.path                = thePath;
    //bounceAnimation.timingFunction      = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 
-   [self.boardView.layer addAnimation:bounceAnimation forKey:@"bounceAnimation"];
+   [dave.boardView.layer addAnimation:bounceAnimation forKey:@"bounceAnimation"];
 
    if (self.timer)
    {
@@ -401,14 +319,14 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
       [self.timer invalidate];
       self.timer = Nil;
    };
-   self.messageView.hidden = YES;
+   dave.messageView.hidden = YES;
    return;
 }
 
 
 - (void)showMessage
 {
-   self.messageView.hidden = NO;
+   dave.messageView.hidden = NO;
    if (self.timer)
    {
       [self.timer invalidate];
@@ -431,7 +349,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 {
    NSUInteger   msg_count = [self.messages count];
    NSUInteger   msg_index = random() % msg_count;
-   self.messageView.image = [self.messages objectAtIndex:msg_index];
+   dave.message           = [self.messages objectAtIndex:msg_index];
 
    if ([self.defaults boolForKey:@"vibrate"])
       AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
@@ -440,7 +358,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
    [self bounceBoard];
 
-   self.messageView.hidden = YES;
+   dave.messageView.hidden = YES;
       
   return;
 };
@@ -474,7 +392,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
       if (self.bga_timing_function)
          backgroundAnimation.timingFunction   = [CAMediaTimingFunction functionWithName:self.bga_timing_function];
 
-      [self.backgroundView.layer addAnimation:backgroundAnimation forKey:@"rotateAnimation"];
+      [dave.backgroundView.layer addAnimation:backgroundAnimation forKey:@"rotateAnimation"];
    };
 
    [pool release];
@@ -492,9 +410,9 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
    pool = [[NSAutoreleasePool alloc] init];
 
-   [self.backgroundView.layer removeAllAnimations];
+   [dave.backgroundView.layer removeAllAnimations];
 
-   [self.backgroundView.layer addAnimation:backgroundAnimation forKey:@"rotateAnimation"];
+   [dave.backgroundView.layer addAnimation:backgroundAnimation forKey:@"rotateAnimation"];
 
    [pool release];
 
@@ -529,21 +447,9 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
    NSLog(@"unloading %@", self.name);
 
-   self.backgroundView.image = nil;
-   self.foregroundView.image = nil;
-   self.boardView.image      = nil;
-   self.messageView.image    = nil;
-   self.aboutImageView.image = nil;
-
    self.backgroundAnimation.delegate = nil;
    self.backgroundAnimation          = nil;
 
-   [self.backgroundView removeFromSuperview];
-   [self.foregroundView removeFromSuperview];
-   [self.boardView      removeFromSuperview];
-   [self.messageView    removeFromSuperview];
-   [self.menuButton     removeFromSuperview];
-   [self.infoButton     removeFromSuperview];
    [self.aboutImageView removeFromSuperview];
    [self.aboutButton    removeFromSuperview];
    [self.view           removeFromSuperview];
@@ -556,22 +462,12 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
    self.bga_timing_function = nil;
 
-   self.forceDataX      = nil;
-   self.forceDataY      = nil;
-   self.forceDataZ      = nil;
-
    self.background      = nil;
-   self.backgroundView  = nil;
    self.foreground      = nil;
-   self.foregroundView  = nil;
    self.board           = nil;
-   self.boardView       = nil;
    self.messages        = nil;
-   self.messageView     = nil;
    self.menu            = nil;
-   self.menuButton      = nil;
    self.info            = nil;
-   self.infoButton      = nil;
 
    self.about           = nil;
    self.aboutView       = nil;
@@ -581,6 +477,8 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    self.defaults        = nil;
    self.timer           = nil;
    //AudioServicesDisposeSystemSoundID(chimes);
+
+   [dave release];
 
 	[super dealloc];
 

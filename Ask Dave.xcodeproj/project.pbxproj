@@ -20,6 +20,8 @@
 		A07FD00A0F80704200CA32C5 /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = A07FD0090F80704200CA32C5 /* MenuController.m */; };
 		A07FD0190F8070DB00CA32C5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07FD0180F8070DB00CA32C5 /* AudioToolbox.framework */; };
 		A07FD0900F80769300CA32C5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A07FD08F0F80769300CA32C5 /* Default.png */; };
+		A082D7F70FA56DCA00BE7D1A /* DaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = A082D7F60FA56DCA00BE7D1A /* DaveView.m */; };
+		A082D7FA0FA56DDB00BE7D1A /* DaveInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A082D7F90FA56DDB00BE7D1A /* DaveInfoView.m */; };
 		A0BCD7370F91533600553076 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0BCD7360F91533600553076 /* Entitlements.plist */; };
 		A0F7A4FB0F9077AF00D50555 /* C_INFO.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4E00F9077AF00D50555 /* C_INFO.png */; };
 		A0F7A4FC0F9077AF00D50555 /* CA01.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4E20F9077AF00D50555 /* CA01.png */; };
@@ -205,6 +207,10 @@
 		A07FD0180F8070DB00CA32C5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A07FD08F0F80769300CA32C5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A082D7EB0FA4653C00BE7D1A /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		A082D7F50FA56DCA00BE7D1A /* DaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaveView.h; sourceTree = "<group>"; };
+		A082D7F60FA56DCA00BE7D1A /* DaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaveView.m; sourceTree = "<group>"; };
+		A082D7F80FA56DDB00BE7D1A /* DaveInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaveInfoView.h; sourceTree = "<group>"; };
+		A082D7F90FA56DDB00BE7D1A /* DaveInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaveInfoView.m; sourceTree = "<group>"; };
 		A0BCD7360F91533600553076 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		A0F7A4C20F90776C00D50555 /* Button_AskDave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_AskDave.png; sourceTree = "<group>"; };
 		A0F7A4C30F90776C00D50555 /* Button_Classic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Classic.png; sourceTree = "<group>"; };
@@ -421,6 +427,10 @@
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
 				A07FCFF40F806E6700CA32C5 /* DaveController.h */,
 				A07FCFF50F806E6700CA32C5 /* DaveController.m */,
+				A082D7F80FA56DDB00BE7D1A /* DaveInfoView.h */,
+				A082D7F90FA56DDB00BE7D1A /* DaveInfoView.m */,
+				A082D7F50FA56DCA00BE7D1A /* DaveView.h */,
+				A082D7F60FA56DCA00BE7D1A /* DaveView.m */,
 				A07FD0080F80704200CA32C5 /* MenuController.h */,
 				A07FD0090F80704200CA32C5 /* MenuController.m */,
 				A07FD0050F80703100CA32C5 /* SettingsController.h */,
@@ -1034,6 +1044,8 @@
 				A07FD0070F80703100CA32C5 /* SettingsController.m in Sources */,
 				A07FD00A0F80704200CA32C5 /* MenuController.m in Sources */,
 				A0F7A8C60F90FB2E00D50555 /* UIImageAskDave.m in Sources */,
+				A082D7F70FA56DCA00BE7D1A /* DaveView.m in Sources */,
+				A082D7FA0FA56DDB00BE7D1A /* DaveInfoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

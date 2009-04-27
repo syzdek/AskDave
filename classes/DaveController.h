@@ -40,10 +40,12 @@
 /////////////////////////
 
 @class AppDelegate;
+@class DaveView;
 
 @interface DaveController : UIViewController
 {
    UIWindow           * window;
+   DaveView           * dave;
    NSString           * name;
    id                  delegate;
    BOOL                hasFliped;
@@ -62,23 +64,13 @@
    BOOL                bga_autoreverses;
    NSString          * bga_timing_function;
 
-   UILabel           * forceDataX;
-   UILabel           * forceDataY;
-   UILabel           * forceDataZ;
-
    UIImage           * background;
-   UIImageView       * backgroundView;
    CABasicAnimation  * backgroundAnimation;
    UIImage           * foreground;
-   UIImageView       * foregroundView;
    UIImage           * board;
-   UIImageView       * boardView;
    NSMutableArray    * messages;
-   UIImageView       * messageView;
    UIImage           * menu;
-   UIButton          * menuButton;
    UIImage           * info;
-   UIButton          * infoButton;
 
    UIImage           * about;
    UIView            * aboutView;
@@ -109,23 +101,13 @@
 @property(assign, readwrite) BOOL                bga_autoreverses;
 @property(assign) NSString                     * bga_timing_function;
 
-@property(nonatomic, retain) UILabel           * forceDataX;
-@property(nonatomic, retain) UILabel           * forceDataY;
-@property(nonatomic, retain) UILabel           * forceDataZ;
-
 @property(nonatomic, retain) UIImage           * background;
-@property(nonatomic, retain) UIImageView       * backgroundView;
 @property(nonatomic, retain) CABasicAnimation  * backgroundAnimation;
 @property(nonatomic, retain) UIImage           * foreground;
-@property(nonatomic, retain) UIImageView       * foregroundView;
 @property(nonatomic, retain) UIImage           * board;
-@property(nonatomic, retain) UIImageView       * boardView;
 @property(nonatomic, retain) NSMutableArray    * messages;
-@property(nonatomic, retain) UIImageView       * messageView;
 @property(nonatomic, retain) UIImage           * menu;
-@property(nonatomic, retain) UIButton          * menuButton;
 @property(nonatomic, retain) UIImage           * info;
-@property(nonatomic, retain) UIButton          * infoButton;
 
 @property(nonatomic, retain) UIImage           * about;
 @property(nonatomic, retain) UIView            * aboutView;
