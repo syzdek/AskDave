@@ -72,8 +72,17 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
+- (void)dealloc
+{
+   delegate   = nil;
+   self.about = nil;
+   [aboutView removeFromSuperview];
+   [button    removeFromSuperview];
+
+   aboutView = nil;
+   button    = nil;
+
+   [super dealloc];
 }
 
 

@@ -113,7 +113,7 @@
 
 - (void)dealloc
 {
-   self.delegate    = nil;
+   delegate = nil;
 
    forceDataX.text = nil;
    forceDataY.text = nil;
@@ -130,13 +130,21 @@
    self.menu        = nil;
    self.message     = nil;
 
-   [backgroundView  release];
-   [boardView       release];
-   [foregroundView  release];
-   [messageView     release];
+   [backgroundView   removeFromSuperview];
+   [boardView        removeFromSuperview];
+   [foregroundView   removeFromSuperview];
+   [messageView      removeFromSuperview];
 
-   [infoButton  release];
-   [menuButton  release];
+   backgroundView  = nil;
+   boardView       = nil;
+   foregroundView  = nil;
+   messageView     = nil;
+
+   [infoButton  removeFromSuperview];
+   [menuButton  removeFromSuperview];
+
+   infoButton  = nil;
+   menuButton  = nil;
 
    [super dealloc];
 

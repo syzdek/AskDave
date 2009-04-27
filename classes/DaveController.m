@@ -133,17 +133,8 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 - (void)unloadView
 {
    NSLog(@"unloading view of %@", self.name);
-   [[UIAccelerometer sharedAccelerometer] setUpdateInterval:90.0];
-   [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
-   if (self.timer)
-      [self.timer invalidate];
-   if (dave)
-      [dave.boardView.layer removeAllAnimations];
-   if (dave)
-      [dave.backgroundView.layer removeAllAnimations];
-   if (self.backgroundAnimation)
-      self.backgroundAnimation.delegate = nil;
-   self.backgroundAnimation = nil;
+   [self animationStop];
+   self.name = nil;
    return;
 }
 
@@ -361,12 +352,27 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
       backgroundAnimation.repeatCount         = 5;
       if (self.bga_timing_function)
          backgroundAnimation.timingFunction   = [CAMediaTimingFunction functionWithName:self.bga_timing_function];
-
       [dave.backgroundView.layer addAnimation:backgroundAnimation forKey:@"rotateAnimation"];
    };
 
    [pool release];
 
+   return;
+}
+
+
+-(void)animationStop
+{
+   if (self.timer)
+      [self.timer invalidate];
+   self.timer = nil;
+   if (dave)
+      [dave.boardView.layer removeAllAnimations];
+   if (dave)
+      [dave.backgroundView.layer removeAllAnimations];
+   if (self.backgroundAnimation)
+      self.backgroundAnimation.delegate = nil;
+   self.backgroundAnimation = nil;
    return;
 }
 
@@ -413,19 +419,10 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
 - (void)dealloc
 {
-   //[self unloadView];
-
    NSLog(@"deallocing %@", self.name);
 
-   if (self.backgroundAnimation)
-      self.backgroundAnimation.delegate = nil;
-   self.backgroundAnimation          = nil;
-
    self.view            = nil;
-
-   self.window          = nil;
-   self.name            = nil;
-   self.delegate        = nil;
+   //self.name            = nil;
 
    self.bga_timing_function = nil;
 
@@ -442,7 +439,9 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    //AudioServicesDisposeSystemSoundID(chimes);
 
    [dave release];
+   dave = nil;
    [daveInfo release];
+   daveInfo = nil;
 
 	[super dealloc];
 

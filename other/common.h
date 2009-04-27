@@ -30,6 +30,7 @@
 ///////////////////
 
 // Constant for the number of times per second (Hertz) to sample acceleration.
+#define ENABLE_ACCELEROMETER        1
 #define kAccelerometerFrequency     10
 #define kTimerFrequency             10.0
 #define kAccelerometerForce         .75

@@ -111,8 +111,10 @@
 
    // loads accelerometer
    NSLog(@"activating accelerometer...");
+#ifdef ENABLE_ACCELEROMETER
    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
+#endif
 
    NSLog(@"Enjoy!!!");
 
@@ -165,6 +167,7 @@
    if (!(tag))
       tag = (random() % 6) + 1;
 
+   [board release];
    board           = [[DaveController alloc] init];
    board.window    = self.window;
    board.delegate  = self;
@@ -431,8 +434,7 @@
 
    boardActive = NO;
 
-   if (board)
-      [board unloadView];
+   [board animationStop];
 
    // setup the animation group
 	[UIView beginAnimations:nil context:nil];
