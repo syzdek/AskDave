@@ -41,11 +41,13 @@
 
 @class AppDelegate;
 @class DaveView;
+@class DaveInfoView;
 
 @interface DaveController : UIViewController
 {
    UIWindow           * window;
    DaveView           * dave;
+   DaveInfoView       * daveInfo;
    NSString           * name;
    id                  delegate;
    BOOL                hasFliped;
@@ -73,9 +75,6 @@
    UIImage           * info;
 
    UIImage           * about;
-   UIView            * aboutView;
-   UIImageView       * aboutImageView;
-   UIButton          * aboutButton;
 
    NSUserDefaults    * defaults;
    NSTimer           * timer;
@@ -110,9 +109,6 @@
 @property(nonatomic, retain) UIImage           * info;
 
 @property(nonatomic, retain) UIImage           * about;
-@property(nonatomic, retain) UIView            * aboutView;
-@property(nonatomic, retain) UIImageView       * aboutImageView;
-@property(nonatomic, retain) UIButton          * aboutButton;
 
 @property(nonatomic, retain) NSUserDefaults    * defaults;
 @property(nonatomic, retain) NSTimer           * timer;

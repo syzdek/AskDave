@@ -31,6 +31,7 @@
 
 #import "common.h"
 #import "DaveController.h"
+#import "DaveInfoView.h"
 #import "DaveView.h"
 #import <AudioToolbox/AudioToolbox.h>
 
@@ -80,9 +81,6 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 @synthesize info;
 
 @synthesize about;
-@synthesize aboutView;
-@synthesize aboutImageView;
-@synthesize aboutButton;
 
 @synthesize defaults;
 @synthesize timer;
@@ -91,7 +89,8 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 {
    if (self = [super init])
    {
-      dave = [[DaveView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+      daveInfo  = [[DaveInfoView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+      dave      = [[DaveView alloc]     initWithFrame:[[UIScreen mainScreen] applicationFrame]];
       self.view = dave;
    }
    return(self);
@@ -101,7 +100,6 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 // Implement loadView if you want to create a view hierarchy programmatically
 - (void)loadView
 {
-   CGRect              frame;
    //NSString          * path;
    NSAutoreleasePool * pool;
    
@@ -120,32 +118,8 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    dave.menu       = self.menu;
    dave.info       = self.info;
 
-   self.aboutView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
-   [self.aboutView release];
-
-   // loads about view
-   frame                      = CGRectMake(0.0, 0.0, 320, 480);
-   if (self.about)
-   {
-      frame.size.width           = self.about.size.width;
-      frame.size.height          = self.about.size.height;
-      frame.origin.x             = 0 - ((self.about.size.width  - 320)/2);
-      frame.origin.y             = 0 - ((self.about.size.height - 480)/2);
-   };
-   aboutImageView        = [[UIImageView alloc] initWithFrame:frame];
-   self.aboutImageView.image  = self.about;
-   [self.aboutView addSubview:aboutImageView];
-
-   // loads about button
-   frame.size.width              = 320 - 40;
-   frame.size.height             = 60;
-   frame.origin.x                = 20;
-   frame.origin.y                = 480 - frame.size.height - 25;
-   aboutButton                   = [UIButton buttonWithType:UIButtonTypeCustom];
-   aboutButton.frame             = frame;
-   aboutButton.backgroundColor   = [UIColor clearColor];
-   [aboutButton addTarget:self action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
-   [self.aboutView addSubview:aboutButton];
+   daveInfo.delegate = self;
+   daveInfo.about    = self.about;
 
    self.oldX = 4;
    self.oldY = 4;
@@ -450,10 +424,6 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    self.backgroundAnimation.delegate = nil;
    self.backgroundAnimation          = nil;
 
-   [self.aboutImageView removeFromSuperview];
-   [self.aboutButton    removeFromSuperview];
-   [self.view           removeFromSuperview];
-
    self.view            = nil;
 
    self.window          = nil;
@@ -470,9 +440,6 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    self.info            = nil;
 
    self.about           = nil;
-   self.aboutView       = nil;
-   self.aboutImageView  = nil;
-   self.aboutButton     = nil;
 
    self.defaults        = nil;
    self.timer           = nil;
@@ -499,10 +466,12 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    [UIView setAnimationDidStopSelector:@selector(transitionDidStop:finished:context:)];
 
    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:window cache:YES];
-   [self.view removeFromSuperview];
-   [window addSubview:self.aboutView];
+   [dave removeFromSuperview];
+   [window addSubview:daveInfo];
 
    [UIView commitAnimations];
+
+   self.view = daveInfo;
 
    [pool release];
 
@@ -523,10 +492,12 @@ NSLog(@"button pressed");
    [UIView setAnimationDidStopSelector:@selector(transitionDidStop:finished:context:)];
 
    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:window cache:YES];
-   [self.aboutView removeFromSuperview];
-   [window addSubview:self.view];
+   [daveInfo removeFromSuperview];
+   [window addSubview:dave];
 
    [UIView commitAnimations];
+
+   self.view = dave;
 
    [pool release];
 
