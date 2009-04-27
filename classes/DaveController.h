@@ -45,11 +45,13 @@
 
 @interface DaveController : UIViewController
 {
+   id                   delegate;
    UIWindow           * window;
+   NSString           * name;
+
+   // internal state information
    DaveView           * dave;
    DaveInfoView       * daveInfo;
-   NSString           * name;
-   id                  delegate;
    BOOL                hasFliped;
    float               x;
    float               y;
@@ -66,16 +68,15 @@
    BOOL                bga_autoreverses;
    NSString          * bga_timing_function;
 
-   UIImage           * background;
-   CABasicAnimation  * backgroundAnimation;
-   UIImage           * foreground;
-   UIImage           * board;
-   NSMutableArray    * messages;
-   UIImage           * menu;
-   UIImage           * info;
-
    UIImage           * about;
+   UIImage           * background;
+   UIImage           * board;
+   UIImage           * foreground;
+   UIImage           * info;
+   UIImage           * menu;
 
+   NSMutableArray    * messages;
+   CABasicAnimation  * backgroundAnimation;
    NSUserDefaults    * defaults;
    NSTimer           * timer;
    SystemSoundID       chimes;
@@ -84,13 +85,6 @@
 @property(nonatomic, retain) UIWindow          * window;
 @property(nonatomic, retain) NSString          * name;
 @property(nonatomic, retain) id                  delegate;
-@property(assign, readwrite) BOOL                hasFliped;
-@property(assign, readwrite) float               x;
-@property(assign, readwrite) float               y;
-@property(assign, readwrite) float               z;
-@property(assign, readwrite) float               oldX;
-@property(assign, readwrite) float               oldY;
-@property(assign, readwrite) float               oldZ;
 
 // Background animation settings
 @property(assign, readwrite) float               bga;
@@ -100,16 +94,15 @@
 @property(assign, readwrite) BOOL                bga_autoreverses;
 @property(assign) NSString                     * bga_timing_function;
 
-@property(nonatomic, retain) UIImage           * background;
-@property(nonatomic, retain) CABasicAnimation  * backgroundAnimation;
-@property(nonatomic, retain) UIImage           * foreground;
-@property(nonatomic, retain) UIImage           * board;
-@property(nonatomic, retain) NSMutableArray    * messages;
-@property(nonatomic, retain) UIImage           * menu;
-@property(nonatomic, retain) UIImage           * info;
-
 @property(nonatomic, retain) UIImage           * about;
+@property(nonatomic, retain) UIImage           * background;
+@property(nonatomic, retain) UIImage           * board;
+@property(nonatomic, retain) UIImage           * foreground;
+@property(nonatomic, retain) UIImage           * info;
+@property(nonatomic, retain) UIImage           * menu;
 
+@property(nonatomic, retain) NSMutableArray    * messages;
+@property(nonatomic, retain) CABasicAnimation  * backgroundAnimation;
 @property(nonatomic, retain) NSUserDefaults    * defaults;
 @property(nonatomic, retain) NSTimer           * timer;
 

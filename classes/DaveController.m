@@ -54,16 +54,9 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
 @implementation DaveController
 
+@synthesize delegate;
 @synthesize window;
 @synthesize name;
-@synthesize delegate;
-@synthesize hasFliped;
-@synthesize x;
-@synthesize y;
-@synthesize z;
-@synthesize oldX;
-@synthesize oldY;
-@synthesize oldZ;
 
 @synthesize bga;
 @synthesize bga_duration;
@@ -72,16 +65,15 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 @synthesize bga_autoreverses;
 @synthesize bga_timing_function;
 
-@synthesize background;
-@synthesize backgroundAnimation;
-@synthesize foreground;
-@synthesize board;
-@synthesize messages;
-@synthesize menu;
-@synthesize info;
-
 @synthesize about;
+@synthesize background;
+@synthesize board;
+@synthesize foreground;
+@synthesize info;
+@synthesize menu;
 
+@synthesize messages;
+@synthesize backgroundAnimation;
 @synthesize defaults;
 @synthesize timer;
 
@@ -121,9 +113,9 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    daveInfo.delegate = self;
    daveInfo.about    = self.about;
 
-   self.oldX = 4;
-   self.oldY = 4;
-   self.oldZ = 4;
+   oldX = 4;
+   oldY = 4;
+   oldZ = 4;
    
    [pool release];
    
@@ -196,22 +188,22 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    pool = [[NSAutoreleasePool alloc] init];
 
    // grabs current readings
-   self.x = acceleration.x;
-   self.y = acceleration.y;
-   self.z = acceleration.z;
+   x = acceleration.x;
+   y = acceleration.y;
+   z = acceleration.z;
    
    // if this is the first reading, save state and exit
-   if ((self.oldX > 3) || (self.oldY > 3) || (self.oldZ > 3))
+   if ((oldX > 3) || (oldY > 3) || (oldZ > 3))
    {
-      self.oldX = self.x;
-      self.oldY = self.y;
-      self.oldZ = self.z;
+      oldX = x;
+      oldY = y;
+      oldZ = z;
       return;
    }
    
-   diffX = fabsf(self.x - self.oldX);
-   diffY = fabsf(self.y - self.oldY);
-   diffZ = fabsf(self.z - self.oldZ);
+   diffX = fabsf(x - oldX);
+   diffY = fabsf(y - oldY);
+   diffZ = fabsf(z - oldZ);
    
 #ifdef DEBUG
    dave.forceDataX.text = [NSString stringWithFormat:@"X: %+1.30f", diffX];
@@ -223,8 +215,8 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
    //   [message setText:@""];
    if ((diffX > 1.0) || (diffY > 1.0) || (diffZ > 1.0))
    {
-      self.hasFliped             = YES;
-      dave.message     = Nil;
+      hasFliped    = YES;
+      dave.message = Nil;
       if (self.timer)
       {
          [self.timer invalidate];
@@ -237,9 +229,9 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
       [self rollBall:nil];
    };
    
-   self.oldX = self.x;
-   self.oldY = self.y;
-   self.oldZ = self.z;
+   oldX = x;
+   oldY = y;
+   oldZ = z;
    
    [pool release];
    
@@ -432,20 +424,20 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
    self.bga_timing_function = nil;
 
-   self.background      = nil;
-   self.foreground      = nil;
-   self.board           = nil;
-   self.messages        = nil;
-   self.menu            = nil;
-   self.info            = nil;
-
    self.about           = nil;
+   self.background      = nil;
+   self.board           = nil;
+   self.foreground      = nil;
+   self.info            = nil;
+   self.menu            = nil;
 
+   self.messages        = nil;
    self.defaults        = nil;
    self.timer           = nil;
    //AudioServicesDisposeSystemSoundID(chimes);
 
    [dave release];
+   [daveInfo release];
 
 	[super dealloc];
 
