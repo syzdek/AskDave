@@ -16,24 +16,27 @@ and creates the autotool files:
 Git Branches
 ------------
 
-	docs - branch contains documents related to the "Ask Dave" project
-	master - branch should match the current release of "Ask Dave"
-	next - this branch is the staging area for the next release of "Ask Dave"
-	pu - this branch contains proposed updates for "Ask Dave"
-	??/* - topical branches used for adding/testing new features of "Ask Dave"
+   docs   - branch contains documents related to the "Ask Dave" project
+   master - branch should match the current release of "Ask Dave"
+   next   - this branch is the staging area for the next release of "Ask Dave"
+   pu     - this branch contains proposed updates for "Ask Dave"
+   ??/*   - topical branches used for adding/testing new features of "Ask Dave"
 
 Directory Map
 -------------
 
-	.git/ - Git repository (stores history)
-	.gitignore - list of files for Git to ignore
-	Ask Dave.xcodeproj - Ask Dave Xcode project
-   COPYING - source code license (images are covered by a CC copyright license)
+   .git/              - Git repository (stores history)
+   .gitignore         - list of files for Git to ignore
+   Ask Dave.xcodeproj - Ask Dave Xcode project
+   COPYING            - source code license (images are covered by a CC
+                        copyright license)
    Entitlements.plist - entitlements file for AdHoc distribution
-	README - this file
-	build/ - Xcode build directory (used for compiling the app)
-   categories/ contains source files for Objective-C categories
-	classes/ - contains source files for Objective-C classes
-	other/ - misc source files
-	resources - resource files such as icons, images, etc
+   README             - this file
+   build/             - Xcode build directory (used for compiling the app)
+   categories/        - contains source files for Objective-C categories
+   classes/           - contains source files for Objective-C classes
+   other/             - misc source files
+   resources/         - resource files such as icons, images, etc
+   resources/images/  - images licensed under the CC BY-NC-ND copyright
+                        license by David Simmer II
 
