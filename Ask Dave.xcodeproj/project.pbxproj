@@ -198,6 +198,7 @@
 		A039533D0F8893EC00215BC8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A03954BC0F88F80700215BC8 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		A03955A10F8915C200215BC8 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		A076BD660FA782AB00154EAB /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
 		A07FCFF40F806E6700CA32C5 /* DaveController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaveController.h; sourceTree = "<group>"; };
 		A07FCFF50F806E6700CA32C5 /* DaveController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaveController.m; sourceTree = "<group>"; };
 		A07FD0050F80703100CA32C5 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
@@ -576,6 +577,7 @@
 		A06EBA010F8E08FE00EB5176 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				A076BD660FA782AB00154EAB /* COPYING */,
 				A0F7A4BB0F9076AB00D50555 /* boards */,
 				A0F7A4BC0F9076CC00D50555 /* menu */,
 				A0F7A7760F90CB4F00D50555 /* store */,
