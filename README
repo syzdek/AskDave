@@ -38,8 +38,8 @@ Directory Map
    .git/              - Git repository (stores history)
    .gitignore         - list of files for Git to ignore
    Ask Dave.xcodeproj - Ask Dave Xcode project
-   COPYING            - source code license (images are covered by a CC
-                        copyright license)
+   COPYING            - source code license (images are covered by the CC
+                        BY-NC-ND copyright license)
    Entitlements.plist - entitlements file for AdHoc distribution
    README             - this file
    build/             - Xcode build directory (used for compiling the app)
