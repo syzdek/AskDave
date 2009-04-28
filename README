@@ -2,6 +2,15 @@
 Ask Dave
 ========
 
+Application Site:
+   http://www.blogography.com/askdave.html
+
+Project Site:
+   http://support.bindlebinaries.net/projects/show/askdave
+
+SCM Portal:
+   http://scm.bindlebinaries.net/scm/clients/blogography/AskDave.git
+
 
 Getting the source
 ------------------
@@ -10,8 +19,9 @@ The source code for this project is maintained using git (http://git-scm.com).
 The following instructions checkout the source code from the git repository
 and creates the autotool files:
 
-        git clone git://git.scm.bindlebinaries.net/pub/scm/projects/AskDave.git
-        cd AskDave
+   git clone \
+      git://git.scm.bindlebinaries.net/pub/scm/clients/blogography/AskDave.git
+   cd AskDave
 
 Git Branches
 ------------
