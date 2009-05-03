@@ -30,6 +30,7 @@
 ///////////////
 
 #import "common.h"
+#import "MenuView.h"
 #import "MenuController.h"
 
 
@@ -47,92 +48,24 @@
 // Implement loadView if you want to create a view hierarchy programmatically
 - (void)loadView
 {
-   CGRect              frame;
-   UIView            * localView;
-   //UILabel           * localLabel;
-   UIButton          * localButton;
-   UIImageView       * localImageView;
-   //NSString          * path;
    NSAutoreleasePool * pool;
    
    pool = [[NSAutoreleasePool alloc] init];
 
    // load view
-   localView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
-   self.view = localView;
-   [localView release];
+   menu            = [[MenuView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+   menu.delegate   = delegate;
+   menu.background = [UIImage imageNamed:@"Default.png"];
+   menu.info       = [UIImage imageNamed:@"Button_Info.png"];
+   menu.random     = [UIImage imageNamed:@"Button_AskDave.png"];
+   [menu addButton:[UIImage imageNamed:@"Dave_Classic.png"]];
+   [menu addButton:[UIImage imageNamed:@"Dave_Zombie.png"]];
+   [menu addButton:[UIImage imageNamed:@"Dave_Nirvana.png"]];
+   [menu addButton:[UIImage imageNamed:@"Dave_Geeky.png"]];
+   [menu addButton:[UIImage imageNamed:@"Dave_Pirate.png"]];
+   [menu addButton:[UIImage imageNamed:@"Dave_Devil.png"]];
 
-   // loads background image view
-   frame                      = CGRectMake(0.0, 0.0, 320, 480);
-   localImageView             = [[UIImageView alloc] initWithFrame:frame];
-   localImageView.image       = [UIImage imageNamed:@"menu.png"];;
-   [self.view addSubview:localImageView];
-   [localImageView release];
-
-   // Add classic button
-   localButton       = [UIButton buttonWithType:UIButtonTypeCustom];
-   localButton.frame = CGRectMake(320-290, 460-430, 115, 110);
-   //localButton.backgroundColor = [UIColor yellowColor];
-   localButton.tag   = 1;
-   [localButton addTarget:delegate action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
-   [self.view addSubview:localButton];
-
-   // Add czombie button
-   localButton       = [UIButton buttonWithType:UIButtonTypeCustom];
-   localButton.frame = CGRectMake(320-145, 460-430, 115, 110);
-   //localButton.backgroundColor = [UIColor yellowColor];
-   localButton.tag   = 2;
-   [localButton addTarget:delegate action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
-   [self.view addSubview:localButton];
-
-   // Add classic button
-   localButton       = [UIButton buttonWithType:UIButtonTypeCustom];
-   localButton.frame = CGRectMake(320-290, 460-300, 115, 110);
-   //localButton.backgroundColor = [UIColor yellowColor];
-   localButton.tag   = 3;
-   [localButton addTarget:delegate action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
-   [self.view addSubview:localButton];
-
-   // Add czombie button
-   localButton       = [UIButton buttonWithType:UIButtonTypeCustom];
-   localButton.frame = CGRectMake(320-145, 460-300, 115, 110);
-   //localButton.backgroundColor = [UIColor yellowColor];
-   localButton.tag   = 4;
-   [localButton addTarget:delegate action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
-   [self.view addSubview:localButton];
-
-   // Add classic button
-   localButton       = [UIButton buttonWithType:UIButtonTypeCustom];
-   localButton.frame = CGRectMake(320-290, 460-165, 115, 110);
-   //localButton.backgroundColor = [UIColor yellowColor];
-   localButton.tag   = 5;
-   [localButton addTarget:delegate action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
-   [self.view addSubview:localButton];
-
-   // Add czombie button
-   localButton       = [UIButton buttonWithType:UIButtonTypeCustom];
-   localButton.frame = CGRectMake(320-145, 460-165, 115, 110);
-   //localButton.backgroundColor = [UIColor yellowColor];
-   localButton.tag   = 6;
-   [localButton addTarget:delegate action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
-   [self.view addSubview:localButton];
-
-   // Add 'i' button
-   //localButton       = [UIButton buttonWithType:UIButtonTypeInfoLight];
-   localButton       = [UIButton buttonWithType:UIButtonTypeCustom];
-   localButton.frame = CGRectMake(320-76, 460-28, 45, 45);
-   //localButton.backgroundColor = [UIColor yellowColor];
-   [localButton addTarget:delegate action:@selector(showSettingsView:) forControlEvents:UIControlEventTouchUpInside];
-   [self.view addSubview:localButton];
-
-   // Add 'random Dave' button
-   //localButton       = [UIButton buttonWithType:UIButtonTypeInfoLight];
-   localButton       = [UIButton buttonWithType:UIButtonTypeCustom];
-   localButton.frame = CGRectMake(30, 480-50, 200, 50);
-   //localButton.backgroundColor = [UIColor yellowColor];
-   localButton.tag   = 0;
-   [localButton addTarget:delegate action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
-   [self.view addSubview:localButton];
+   self.view = menu;
 
    [pool release];
    
@@ -173,6 +106,9 @@
 
 - (void)dealloc
 {
+   self.delegate = nil;
+   self.defaults = nil;
+   [menu release];
 	[super dealloc];
 }
 

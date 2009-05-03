@@ -1,5 +1,5 @@
 /*
- *  AskDave
+ *  Ask Dave
  *  Copyright (C) 2009 David M. Syzdek <syzdek@bindlebinaries.net>.
  *
  *  @BINDLEBINARIES_FOSS_LICENSE_HEADER_START@
@@ -20,7 +20,7 @@
  *  @BINDLEBINARIES_FOSS_LICENSE_HEADER_END@
  */
 /**
- *  @file classes/MenuController.h controls menu display
+ *  @file classes/MenuView.h displayes the "Menu"
  */
 
 ///////////////
@@ -31,17 +31,41 @@
 
 #import <UIKit/UIKit.h>
 
-@class AppDelegate;
-@class MenuView;
 
-@interface MenuController : UIViewController
+/////////////////////////
+//                     //
+//  Class Definitions  //
+//                     //
+/////////////////////////
+
+
+@interface MenuView : UIView
 {
-   id               delegate;
-   NSUserDefaults * defaults;
-   MenuView       * menu;
+   id delegate;
+
+   UIImage     * background;
+   UIImage     * info;
+   UIImage     * random;
+
+   UIImageView * backgroundView;
+   UIButton    * infoButton;
+   UIButton    * randomButton;
+
+   NSMutableArray * buttons;
 }
 
-@property(nonatomic, retain) id               delegate;
-@property(nonatomic, retain) NSUserDefaults * defaults;
+@property(assign) id delegate;
+
+@property(nonatomic, retain) UIImage * background;
+@property(nonatomic, retain) UIImage * info;
+@property(nonatomic, retain) UIImage * random;
+
+@property(readonly) UIImageView  * backgroundView;
+@property(readonly) UIButton     * infoButton;
+@property(readonly) UIButton     * randomButton;
+
+@property(readonly) NSMutableArray * buttons;
+
+- (void)addButton:(UIImage *)anImage;
 
 @end

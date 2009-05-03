@@ -23,6 +23,15 @@
 		A082D7F70FA56DCA00BE7D1A /* DaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = A082D7F60FA56DCA00BE7D1A /* DaveView.m */; };
 		A082D7FA0FA56DDB00BE7D1A /* DaveInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A082D7F90FA56DDB00BE7D1A /* DaveInfoView.m */; };
 		A0BCD7370F91533600553076 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0BCD7360F91533600553076 /* Entitlements.plist */; };
+		A0CBA3300FAD99CB004A7BFB /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CBA32F0FAD99CB004A7BFB /* MenuView.m */; };
+		A0CBA4160FAE4D7E004A7BFB /* Dave_Classic.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4CB0F90776C00D50555 /* Dave_Classic.png */; };
+		A0CBA4190FAE4D90004A7BFB /* Dave_Devil.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4CC0F90776C00D50555 /* Dave_Devil.png */; };
+		A0CBA41A0FAE4D95004A7BFB /* Dave_Geeky.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4CD0F90776C00D50555 /* Dave_Geeky.png */; };
+		A0CBA41B0FAE4D9C004A7BFB /* Dave_Nirvana.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4CE0F90776C00D50555 /* Dave_Nirvana.png */; };
+		A0CBA41C0FAE4DA1004A7BFB /* Dave_Pirate.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4CF0F90776C00D50555 /* Dave_Pirate.png */; };
+		A0CBA41D0FAE4DA6004A7BFB /* Dave_Zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4D00F90776C00D50555 /* Dave_Zombie.png */; };
+		A0CBA4260FAE4EB3004A7BFB /* Button_AskDave.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4C20F90776C00D50555 /* Button_AskDave.png */; };
+		A0CBA4270FAE4EBA004A7BFB /* Button_Info.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4C60F90776C00D50555 /* Button_Info.png */; };
 		A0F7A4FB0F9077AF00D50555 /* C_INFO.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4E00F9077AF00D50555 /* C_INFO.png */; };
 		A0F7A4FC0F9077AF00D50555 /* CA01.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4E20F9077AF00D50555 /* CA01.png */; };
 		A0F7A4FD0F9077AF00D50555 /* CA02.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4E30F9077AF00D50555 /* CA02.png */; };
@@ -179,7 +188,6 @@
 		A0F7A61B0F90780E00D50555 /* ZB.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A6010F90780E00D50555 /* ZB.png */; };
 		A0F7A61C0F90780E00D50555 /* ZR.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A6020F90780E00D50555 /* ZR.png */; };
 		A0F7A61D0F90780E00D50555 /* ZS.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A6030F90780E00D50555 /* ZS.png */; };
-		A0F7A64E0F907B0000D50555 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A64D0F907B0000D50555 /* menu.png */; };
 		A0F7A69A0F90839900D50555 /* AskDaveIcon57.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A6990F90839900D50555 /* AskDaveIcon57.png */; };
 		A0F7A8C60F90FB2E00D50555 /* UIImageAskDave.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F7A8C50F90FB2E00D50555 /* UIImageAskDave.m */; };
 /* End PBXBuildFile section */
@@ -213,6 +221,8 @@
 		A082D7F80FA56DDB00BE7D1A /* DaveInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaveInfoView.h; sourceTree = "<group>"; };
 		A082D7F90FA56DDB00BE7D1A /* DaveInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaveInfoView.m; sourceTree = "<group>"; };
 		A0BCD7360F91533600553076 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		A0CBA32E0FAD99CB004A7BFB /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuView.h; sourceTree = "<group>"; };
+		A0CBA32F0FAD99CB004A7BFB /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
 		A0F7A4C20F90776C00D50555 /* Button_AskDave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_AskDave.png; sourceTree = "<group>"; };
 		A0F7A4C30F90776C00D50555 /* Button_Classic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Classic.png; sourceTree = "<group>"; };
 		A0F7A4C40F90776C00D50555 /* Button_Devil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Devil.png; sourceTree = "<group>"; };
@@ -424,18 +434,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A0CBA32C0FAD9985004A7BFB /* Controllers */,
+				A0CBA32D0FAD998E004A7BFB /* Views */,
 				1D3623240D0F684500981E51 /* AppDelegate.h */,
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
-				A07FCFF40F806E6700CA32C5 /* DaveController.h */,
-				A07FCFF50F806E6700CA32C5 /* DaveController.m */,
-				A082D7F80FA56DDB00BE7D1A /* DaveInfoView.h */,
-				A082D7F90FA56DDB00BE7D1A /* DaveInfoView.m */,
-				A082D7F50FA56DCA00BE7D1A /* DaveView.h */,
-				A082D7F60FA56DCA00BE7D1A /* DaveView.m */,
-				A07FD0080F80704200CA32C5 /* MenuController.h */,
-				A07FD0090F80704200CA32C5 /* MenuController.m */,
-				A07FD0050F80703100CA32C5 /* SettingsController.h */,
-				A07FD0060F80703100CA32C5 /* SettingsController.m */,
 			);
 			name = Classes;
 			path = classes;
@@ -602,6 +604,32 @@
 				A0F7A5640F9077E800D50555 /* GS.png */,
 			);
 			path = geek;
+			sourceTree = "<group>";
+		};
+		A0CBA32C0FAD9985004A7BFB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A07FCFF40F806E6700CA32C5 /* DaveController.h */,
+				A07FCFF50F806E6700CA32C5 /* DaveController.m */,
+				A07FD0080F80704200CA32C5 /* MenuController.h */,
+				A07FD0090F80704200CA32C5 /* MenuController.m */,
+				A07FD0050F80703100CA32C5 /* SettingsController.h */,
+				A07FD0060F80703100CA32C5 /* SettingsController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		A0CBA32D0FAD998E004A7BFB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A082D7F80FA56DDB00BE7D1A /* DaveInfoView.h */,
+				A082D7F90FA56DDB00BE7D1A /* DaveInfoView.m */,
+				A082D7F50FA56DCA00BE7D1A /* DaveView.h */,
+				A082D7F60FA56DCA00BE7D1A /* DaveView.m */,
+				A0CBA32E0FAD99CB004A7BFB /* MenuView.h */,
+				A0CBA32F0FAD99CB004A7BFB /* MenuView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		A0F7A4BB0F9076AB00D50555 /* boards */ = {
@@ -1027,9 +1055,16 @@
 				A0F7A61B0F90780E00D50555 /* ZB.png in Resources */,
 				A0F7A61C0F90780E00D50555 /* ZR.png in Resources */,
 				A0F7A61D0F90780E00D50555 /* ZS.png in Resources */,
-				A0F7A64E0F907B0000D50555 /* menu.png in Resources */,
 				A0F7A69A0F90839900D50555 /* AskDaveIcon57.png in Resources */,
 				A0BCD7370F91533600553076 /* Entitlements.plist in Resources */,
+				A0CBA4160FAE4D7E004A7BFB /* Dave_Classic.png in Resources */,
+				A0CBA4190FAE4D90004A7BFB /* Dave_Devil.png in Resources */,
+				A0CBA41A0FAE4D95004A7BFB /* Dave_Geeky.png in Resources */,
+				A0CBA41B0FAE4D9C004A7BFB /* Dave_Nirvana.png in Resources */,
+				A0CBA41C0FAE4DA1004A7BFB /* Dave_Pirate.png in Resources */,
+				A0CBA41D0FAE4DA6004A7BFB /* Dave_Zombie.png in Resources */,
+				A0CBA4260FAE4EB3004A7BFB /* Button_AskDave.png in Resources */,
+				A0CBA4270FAE4EBA004A7BFB /* Button_Info.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1048,6 +1083,7 @@
 				A0F7A8C60F90FB2E00D50555 /* UIImageAskDave.m in Sources */,
 				A082D7F70FA56DCA00BE7D1A /* DaveView.m in Sources */,
 				A082D7FA0FA56DDB00BE7D1A /* DaveInfoView.m in Sources */,
+				A0CBA3300FAD99CB004A7BFB /* MenuView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
