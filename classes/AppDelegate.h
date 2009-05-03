@@ -41,23 +41,23 @@
 
 @class AskDaveViewController;
 @class DaveController;
+@class MenuController;
 @class SettingsController;
 
 @interface AppDelegate : NSObject <UIApplicationDelegate, UIAccelerometerDelegate>
 {
    IBOutlet UIWindow  * window;
-   DaveController     * board;
-   BOOL                 boardActive;
    UIViewController   * active;
-   UIViewController   * menu;
+   DaveController     * board;
+   MenuController     * menu;
    SettingsController * settings;
    NSUserDefaults     * defaults;
 }
 
 @property (nonatomic, retain) UIWindow           * window;
-@property (nonatomic, retain) DaveController     * board;
 @property (nonatomic, retain) UIViewController   * active;
-@property (nonatomic, retain) UIViewController   * menu;
+@property (nonatomic, retain) DaveController     * board;
+@property (nonatomic, retain) MenuController     * menu;
 @property (nonatomic, retain) SettingsController * settings;
 @property (nonatomic, retain) NSUserDefaults     * defaults;
 
