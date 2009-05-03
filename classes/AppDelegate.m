@@ -47,8 +47,8 @@
 @implementation AppDelegate
 
 @synthesize window;
-@synthesize board;
 @synthesize active;
+@synthesize dave;
 @synthesize menu;
 @synthesize settings;
 @synthesize defaults;
@@ -128,7 +128,7 @@
 
 - (void)dealloc
 {
-   [board    release];
+   [dave     release];
    [settings release];
 	[window   release];
 	[super    dealloc];
@@ -139,14 +139,14 @@
 // UIAccelerometerDelegate method, called when the device accelerates.
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
 {
-   if (self.board == nil)
+   if (dave == nil)
       return;
-   if (board != active)
+   if (dave != active)
       return;
    if ([self.defaults boolForKey:@"shake"])
-      [self.board accelerometerShake:accelerometer didAccelerate:acceleration];
+      [dave accelerometerShake:accelerometer didAccelerate:acceleration];
    else
-      [self.board accelerometerFlip:accelerometer didAccelerate:acceleration];
+      [dave accelerometerFlip:accelerometer didAccelerate:acceleration];
    return;
 }
 
@@ -162,240 +162,240 @@
    if (!(tag))
       tag = (random() % 6) + 1;
 
-   [board release];
-   board           = [[DaveController alloc] init];
-   board.window    = self.window;
-   board.delegate  = self;
-   board.defaults  = self.defaults;
-   board.messages  = [NSMutableArray arrayWithCapacity:20];
+   [dave release];
+   dave           = [[DaveController alloc] init];
+   dave.window    = self.window;
+   dave.delegate  = self;
+   dave.defaults  = self.defaults;
+   dave.messages  = [NSMutableArray arrayWithCapacity:20];
 
    switch(tag)
    {
       case 1:
          NSLog(@"init classic Dave...");
-         self.board.name                 = @"classic Dave";
-         self.board.bga                  = YES;
-         self.board.bga_duration         = 240;
-         self.board.bga_fromValue        = 360;
-         self.board.bga_toValue          = 0;
-         self.board.bga_autoreverses     = NO;
-         //self.board.bga_timing_function  = kCAMediaTimingFunctionEaseInEaseOut;
-         self.board.background           = [UIImage uncachedImageNamed:@"CR.png"];
-         self.board.foreground           = [UIImage uncachedImageNamed:@"CB.png"];
-         self.board.board                = [UIImage uncachedImageNamed:@"CS.png"];
-         self.board.menu                 = [UIImage uncachedImageNamed:@"CAM.png"];
-         self.board.info                 = [UIImage uncachedImageNamed:@"CAI.png"];
-         self.board.about                = [UIImage uncachedImageNamed:@"C_INFO.png"];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA01.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA02.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA03.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA04.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA05.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA06.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA07.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA08.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA09.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA10.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA11.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA12.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA13.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA14.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA15.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA16.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA17.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA18.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA19.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"CA20.png"]];
+         dave.name                 = @"classic Dave";
+         dave.bga                  = YES;
+         dave.bga_duration         = 240;
+         dave.bga_fromValue        = 360;
+         dave.bga_toValue          = 0;
+         dave.bga_autoreverses     = NO;
+         //dave.bga_timing_function  = kCAMediaTimingFunctionEaseInEaseOut;
+         dave.background           = [UIImage uncachedImageNamed:@"CR.png"];
+         dave.foreground           = [UIImage uncachedImageNamed:@"CB.png"];
+         dave.board                = [UIImage uncachedImageNamed:@"CS.png"];
+         dave.menu                 = [UIImage uncachedImageNamed:@"CAM.png"];
+         dave.info                 = [UIImage uncachedImageNamed:@"CAI.png"];
+         dave.about                = [UIImage uncachedImageNamed:@"C_INFO.png"];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA01.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA02.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA03.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA04.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA05.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA06.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA07.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA08.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA09.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA10.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA11.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA12.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA13.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA14.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA15.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA16.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA17.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA18.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA19.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"CA20.png"]];
          break;
 
       case 2:
          NSLog(@"init zombie Dave...");
-         self.board.name                 = @"zombie Dave";
-         self.board.bga                  = YES;
-         self.board.bga_duration         = 120;
-         self.board.bga_fromValue        = 0;
-         self.board.bga_toValue          = 360;
-         self.board.bga_autoreverses     = YES;
-         //self.board.bga_timing_function  = kCAMediaTimingFunctionEaseInEaseOut;
-         self.board.background           = [UIImage uncachedImageNamed:@"ZR.png"];
-         self.board.foreground           = [UIImage uncachedImageNamed:@"ZB.png"];
-         self.board.board                = [UIImage uncachedImageNamed:@"ZS.png"];
-         self.board.menu                 = [UIImage uncachedImageNamed:@"ZAM.png"];
-         self.board.info                 = [UIImage uncachedImageNamed:@"ZAI.png"];
-         self.board.about                = [UIImage uncachedImageNamed:@"Z_INFO.png"];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA01.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA02.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA03.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA04.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA05.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA06.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA07.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA08.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA09.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA10.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA11.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA12.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA13.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA14.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA15.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA16.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA17.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA18.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA19.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"ZA20.png"]];
+         dave.name                 = @"zombie Dave";
+         dave.bga                  = YES;
+         dave.bga_duration         = 120;
+         dave.bga_fromValue        = 0;
+         dave.bga_toValue          = 360;
+         dave.bga_autoreverses     = YES;
+         //dave.bga_timing_function  = kCAMediaTimingFunctionEaseInEaseOut;
+         dave.background           = [UIImage uncachedImageNamed:@"ZR.png"];
+         dave.foreground           = [UIImage uncachedImageNamed:@"ZB.png"];
+         dave.board                = [UIImage uncachedImageNamed:@"ZS.png"];
+         dave.menu                 = [UIImage uncachedImageNamed:@"ZAM.png"];
+         dave.info                 = [UIImage uncachedImageNamed:@"ZAI.png"];
+         dave.about                = [UIImage uncachedImageNamed:@"Z_INFO.png"];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA01.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA02.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA03.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA04.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA05.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA06.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA07.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA08.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA09.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA10.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA11.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA12.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA13.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA14.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA15.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA16.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA17.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA18.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA19.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA20.png"]];
          break;
 
       case 3:
          NSLog(@"init nirvana Dave...");
-         self.board.name                 = @"nirvana Dave";
-         self.board.bga                  = YES;
-         self.board.bga_duration         = 60;
-         self.board.bga_fromValue        = 0;
-         self.board.bga_toValue          = 360;
-         //self.board.bga_autoreverses     = YES;
-         //self.board.bga_timing_function  = kCAMediaTimingFunctionEaseInEaseOut;
-         self.board.background           = [UIImage uncachedImageNamed:@"NR.png"];
-         self.board.foreground           = [UIImage uncachedImageNamed:@"NB.png"];
-         self.board.board                = [UIImage uncachedImageNamed:@"NS.png"];
-         self.board.menu                 = [UIImage uncachedImageNamed:@"NAM.png"];
-         self.board.info                 = [UIImage uncachedImageNamed:@"NAI.png"];
-         self.board.about                = [UIImage uncachedImageNamed:@"N_INFO.png"];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA01.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA02.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA03.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA04.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA05.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA06.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA07.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA08.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA09.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA10.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA11.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA12.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA13.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA14.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA15.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA16.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA17.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA18.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA19.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"NA20.png"]];
+         dave.name                 = @"nirvana Dave";
+         dave.bga                  = YES;
+         dave.bga_duration         = 60;
+         dave.bga_fromValue        = 0;
+         dave.bga_toValue          = 360;
+         //dave.bga_autoreverses     = YES;
+         //dave.bga_timing_function  = kCAMediaTimingFunctionEaseInEaseOut;
+         dave.background           = [UIImage uncachedImageNamed:@"NR.png"];
+         dave.foreground           = [UIImage uncachedImageNamed:@"NB.png"];
+         dave.board                = [UIImage uncachedImageNamed:@"NS.png"];
+         dave.menu                 = [UIImage uncachedImageNamed:@"NAM.png"];
+         dave.info                 = [UIImage uncachedImageNamed:@"NAI.png"];
+         dave.about                = [UIImage uncachedImageNamed:@"N_INFO.png"];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA01.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA02.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA03.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA04.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA05.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA06.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA07.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA08.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA09.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA10.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA11.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA12.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA13.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA14.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA15.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA16.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA17.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA18.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA19.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"NA20.png"]];
          break;
 
       case 4:
          NSLog(@"init geek Dave...");
-         self.board.name                 = @"geek Dave";
-         self.board.bga                  = YES;
-         self.board.bga_duration         = 85;
-         self.board.bga_fromValue        = 0;
-         self.board.bga_toValue          = 360;
-         self.board.bga_autoreverses     = NO;
-         //self.board.bga_timing_function  = kCAMediaTimingFunctionEaseInEaseOut;
-         self.board.background           = [UIImage uncachedImageNamed:@"GR.png"];
-         self.board.foreground           = [UIImage uncachedImageNamed:@"GB.png"];
-         self.board.board                = [UIImage uncachedImageNamed:@"GS.png"];
-         self.board.menu                 = [UIImage uncachedImageNamed:@"GAM.png"];
-         self.board.info                 = [UIImage uncachedImageNamed:@"GAI.png"];
-         self.board.about                = [UIImage uncachedImageNamed:@"G_INFO.png"];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA01.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA02.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA03.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA04.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA05.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA06.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA07.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA08.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA09.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA10.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA11.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA12.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA13.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA14.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA15.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA16.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA17.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA18.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA19.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"GA20.png"]];
+         dave.name                 = @"geek Dave";
+         dave.bga                  = YES;
+         dave.bga_duration         = 85;
+         dave.bga_fromValue        = 0;
+         dave.bga_toValue          = 360;
+         dave.bga_autoreverses     = NO;
+         //dave.bga_timing_function  = kCAMediaTimingFunctionEaseInEaseOut;
+         dave.background           = [UIImage uncachedImageNamed:@"GR.png"];
+         dave.foreground           = [UIImage uncachedImageNamed:@"GB.png"];
+         dave.board                = [UIImage uncachedImageNamed:@"GS.png"];
+         dave.menu                 = [UIImage uncachedImageNamed:@"GAM.png"];
+         dave.info                 = [UIImage uncachedImageNamed:@"GAI.png"];
+         dave.about                = [UIImage uncachedImageNamed:@"G_INFO.png"];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA01.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA02.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA03.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA04.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA05.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA06.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA07.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA08.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA09.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA10.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA11.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA12.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA13.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA14.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA15.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA16.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA17.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA18.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA19.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"GA20.png"]];
          break;
 
       case 5:
          NSLog(@"init pirate Dave...");
-         self.board.name                 = @"pirate Dave";
-         self.board.bga                  = YES;
-         self.board.bga_duration         = 95;
-         self.board.bga_fromValue        = 0;
-         self.board.bga_toValue          = 360;
-         self.board.bga_autoreverses     = NO;
-         //self.board.bga_timing_function  = kCAMediaTimingFunctionEaseInEaseOut;
-         self.board.background           = [UIImage uncachedImageNamed:@"PR.png"];
-         self.board.foreground           = [UIImage uncachedImageNamed:@"PB.png"];
-         self.board.board                = [UIImage uncachedImageNamed:@"PS.png"];
-         self.board.menu                 = [UIImage uncachedImageNamed:@"PAM.png"];
-         self.board.info                 = [UIImage uncachedImageNamed:@"PAI.png"];
-         self.board.about                = [UIImage uncachedImageNamed:@"P_INFO.png"];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA01.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA02.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA03.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA04.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA05.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA06.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA07.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA08.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA09.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA10.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA11.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA12.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA13.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA14.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA15.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA16.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA17.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA18.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA19.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"PA20.png"]];
+         dave.name                 = @"pirate Dave";
+         dave.bga                  = YES;
+         dave.bga_duration         = 95;
+         dave.bga_fromValue        = 0;
+         dave.bga_toValue          = 360;
+         dave.bga_autoreverses     = NO;
+         //dave.bga_timing_function  = kCAMediaTimingFunctionEaseInEaseOut;
+         dave.background           = [UIImage uncachedImageNamed:@"PR.png"];
+         dave.foreground           = [UIImage uncachedImageNamed:@"PB.png"];
+         dave.board                = [UIImage uncachedImageNamed:@"PS.png"];
+         dave.menu                 = [UIImage uncachedImageNamed:@"PAM.png"];
+         dave.info                 = [UIImage uncachedImageNamed:@"PAI.png"];
+         dave.about                = [UIImage uncachedImageNamed:@"P_INFO.png"];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA01.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA02.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA03.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA04.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA05.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA06.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA07.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA08.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA09.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA10.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA11.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA12.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA13.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA14.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA15.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA16.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA17.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA18.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA19.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"PA20.png"]];
          break;
 
       case 6:
       default:
          NSLog(@"init devil Dave...");
-         self.board.name                 = @"devil Dave";
-         self.board.bga                  = YES;
-         self.board.bga_duration         = 120;
-         self.board.bga_fromValue        = 0;
-         self.board.bga_toValue          = 360;
-         self.board.bga_autoreverses     = NO;
-         //self.board.bga_timing_function  = kCAMediaTimingFunctionEaseInEaseOut;
-         self.board.background           = [UIImage uncachedImageNamed:@"DR.png"];
-         self.board.foreground           = [UIImage uncachedImageNamed:@"DB.png"];
-         self.board.board                = [UIImage uncachedImageNamed:@"DS.png"];
-         self.board.menu                 = [UIImage uncachedImageNamed:@"DAM.png"];
-         self.board.info                 = [UIImage uncachedImageNamed:@"DAI.png"];
-         self.board.about                = [UIImage uncachedImageNamed:@"D_INFO.png"];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA01.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA02.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA03.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA04.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA05.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA06.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA07.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA08.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA09.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA10.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA11.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA12.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA13.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA14.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA15.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA16.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA17.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA18.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA19.png"]];
-         [self.board.messages addObject:[UIImage uncachedImageNamed:@"DA20.png"]];
+         dave.name                 = @"devil Dave";
+         dave.bga                  = YES;
+         dave.bga_duration         = 120;
+         dave.bga_fromValue        = 0;
+         dave.bga_toValue          = 360;
+         dave.bga_autoreverses     = NO;
+         //dave.bga_timing_function  = kCAMediaTimingFunctionEaseInEaseOut;
+         dave.background           = [UIImage uncachedImageNamed:@"DR.png"];
+         dave.foreground           = [UIImage uncachedImageNamed:@"DB.png"];
+         dave.board                = [UIImage uncachedImageNamed:@"DS.png"];
+         dave.menu                 = [UIImage uncachedImageNamed:@"DAM.png"];
+         dave.info                 = [UIImage uncachedImageNamed:@"DAI.png"];
+         dave.about                = [UIImage uncachedImageNamed:@"D_INFO.png"];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA01.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA02.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA03.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA04.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA05.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA06.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA07.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA08.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA09.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA10.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA11.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA12.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA13.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA14.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA15.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA16.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA17.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA18.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA19.png"]];
+         [dave.messages addObject:[UIImage uncachedImageNamed:@"DA20.png"]];
          break;
    };
 
-   [self.board loadView];
+   [dave loadView];
 
    // setup the animation group
    [UIView setAnimationDelegate:self];
@@ -406,11 +406,11 @@
 
    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:window cache:YES];
    [active.view removeFromSuperview];
-   [window addSubview:board.view];
+   [window addSubview:dave.view];
 
    [UIView commitAnimations];
 
-   self.active = board;
+   self.active = dave;
 
    [pool release];
 
@@ -424,7 +424,7 @@
 
    pool = [[NSAutoreleasePool alloc] init];
 
-   [board animationStop];
+   [dave animationStop];
 
    // setup the animation group
    [UIView setAnimationDelegate:self];

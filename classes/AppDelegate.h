@@ -48,7 +48,7 @@
 {
    IBOutlet UIWindow  * window;
    UIViewController   * active;
-   DaveController     * board;
+   DaveController     * dave;
    MenuController     * menu;
    SettingsController * settings;
    NSUserDefaults     * defaults;
@@ -56,7 +56,7 @@
 
 @property (nonatomic, retain) UIWindow           * window;
 @property (nonatomic, retain) UIViewController   * active;
-@property (nonatomic, retain) DaveController     * board;
+@property (nonatomic, retain) DaveController     * dave;
 @property (nonatomic, retain) MenuController     * menu;
 @property (nonatomic, retain) SettingsController * settings;
 @property (nonatomic, retain) NSUserDefaults     * defaults;
