@@ -48,7 +48,7 @@
    IBOutlet UIWindow  * window;
    DaveController     * board;
    BOOL                 boardActive;
-   UIView             * active;
+   UIViewController   * active;
    UIViewController   * menu;
    SettingsController * settings;
    NSUserDefaults     * defaults;
@@ -56,7 +56,7 @@
 
 @property (nonatomic, retain) UIWindow           * window;
 @property (nonatomic, retain) DaveController     * board;
-@property (nonatomic, retain) UIView             * active;
+@property (nonatomic, retain) UIViewController   * active;
 @property (nonatomic, retain) UIViewController   * menu;
 @property (nonatomic, retain) SettingsController * settings;
 @property (nonatomic, retain) NSUserDefaults     * defaults;
@@ -68,6 +68,7 @@
 - (void) showBoardView:(id)sender;
 - (void) showMenuView:(id)sender;
 - (void) showSettingsView:(id)sender;
+- (void) transitionDidStop:(NSString *)animationID finished:(BOOL)finished context:(void *)context;
 
 @end
 

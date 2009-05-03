@@ -105,7 +105,7 @@
 
 	// Override point for customization after app launch
    NSLog(@"displaying views...");
-   self.active = menu.view;
+   self.active = menu;
    [window addSubview:menu.view];
    [window makeKeyAndVisible];
 
@@ -403,20 +403,21 @@
    [self.board loadView];
 
    // setup the animation group
+   [UIView setAnimationDelegate:self];
 	[UIView beginAnimations:nil context:nil];
    [UIView setAnimationDuration:0.75];
    [UIView setAnimationDelegate:self];
    [UIView setAnimationDidStopSelector:@selector(transitionDidStop:finished:context:)];
 
    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:window cache:YES];
-   [active removeFromSuperview];
+   [active.view removeFromSuperview];
    [window addSubview:board.view];
 
    [UIView commitAnimations];
 
-   self.active = board.view;
+   self.active = board;
 
-   [self.board viewDidLoad];
+   //[self.board viewDidLoad];
 
    boardActive = YES;
 
@@ -437,20 +438,21 @@
    [board animationStop];
 
    // setup the animation group
+   [UIView setAnimationDelegate:self];
 	[UIView beginAnimations:nil context:nil];
    [UIView setAnimationDuration:0.75];
    [UIView setAnimationDelegate:self];
    [UIView setAnimationDidStopSelector:@selector(transitionDidStop:finished:context:)];
    
    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:window cache:YES];
-   [active removeFromSuperview];
+   [active.view removeFromSuperview];
    [window addSubview:menu.view];
 
    [UIView commitAnimations];
 
    [pool release];
 
-   self.active = menu.view;
+   self.active = menu;
 
    return;
 }
@@ -465,21 +467,29 @@
    boardActive = NO;
 
    // setup the animation group
+   [UIView setAnimationDelegate:self];
 	[UIView beginAnimations:nil context:nil];
    [UIView setAnimationDuration:0.75];
    [UIView setAnimationDelegate:self];
    [UIView setAnimationDidStopSelector:@selector(transitionDidStop:finished:context:)];
 
    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:window cache:YES];
-   [active removeFromSuperview];
+   [active.view removeFromSuperview];
    [window addSubview:settings.view];
 
    [UIView commitAnimations];
 
    [pool release];
 
-   self.active = settings.view;
+   self.active = settings;
 
+   return;
+}
+
+
+- (void) transitionDidStop:(NSString *)animationID finished:(BOOL)finished context:(void *)context
+{
+   [active viewDidLoad];
    return;
 }
 
