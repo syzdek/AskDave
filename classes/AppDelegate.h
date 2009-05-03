@@ -61,6 +61,9 @@
 @property (nonatomic, retain) SettingsController * settings;
 @property (nonatomic, retain) NSUserDefaults     * defaults;
 
+- (void) applicationDidFinishLaunching:(UIApplication *)application;
+- (void) applicationWillTerminate:(UIApplication *)application;
+- (void) dealloc;
 - (void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration;
 - (void) showBoardView:(id)sender;
 - (void) showMenuView:(id)sender;
