@@ -58,7 +58,6 @@
 {    
    NSDictionary      * appDefaults;
    NSUserDefaults    * localDefaults;
-	UIViewController  * localController;
    NSAutoreleasePool * pool;
 
    pool = [[NSAutoreleasePool alloc] init];
@@ -71,8 +70,6 @@
    NSLog(@"http://www.blogography.com/");
 
    [application setStatusBarHidden:YES animated:NO];
-
-   boardActive = NO;
 
    srandomdev();
 
@@ -90,15 +87,13 @@
    [self.defaults registerDefaults:appDefaults];
 
    NSLog(@"loading menu view...");
-   localController     = [[MenuController alloc] init];
-   self.menu           = localController;
+   menu = [[MenuController alloc] init];
    [(id)self.menu setDelegate:self];
    [(id)self.menu setDefaults:self.defaults];
    [self.menu loadView];
-   [localController release];
 
    NSLog(@"loading settings view...");
-   settings             = [[SettingsController alloc] init];
+   settings = [[SettingsController alloc] init];
    [(id)settings setDelegate:self];
    [(id)settings setDefaults:self.defaults];
    [(id)settings loadView];
@@ -144,9 +139,9 @@
 // UIAccelerometerDelegate method, called when the device accelerates.
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
 {
-   if (!(boardActive))
-      return;
    if (self.board == nil)
+      return;
+   if (board != active)
       return;
    if ([self.defaults boolForKey:@"shake"])
       [self.board accelerometerShake:accelerometer didAccelerate:acceleration];
@@ -417,10 +412,6 @@
 
    self.active = board;
 
-   //[self.board viewDidLoad];
-
-   boardActive = YES;
-
    [pool release];
 
    return;
@@ -432,8 +423,6 @@
    NSAutoreleasePool * pool;
 
    pool = [[NSAutoreleasePool alloc] init];
-
-   boardActive = NO;
 
    [board animationStop];
 
@@ -463,8 +452,6 @@
    NSAutoreleasePool * pool;
 
    pool = [[NSAutoreleasePool alloc] init];
-
-   boardActive = NO;
 
    // setup the animation group
    [UIView setAnimationDelegate:self];
