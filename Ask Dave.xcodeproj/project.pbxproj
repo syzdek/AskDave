@@ -37,6 +37,8 @@
 		A0CBA4430FAE5197004A7BFB /* CAI.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4F60F9077AF00D50555 /* CAI.png */; };
 		A0CBA4440FAE5197004A7BFB /* CAM.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4F70F9077AF00D50555 /* CAM.png */; };
 		A0CBA4B20FAE57FB004A7BFB /* MenuButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CBA4B10FAE57FB004A7BFB /* MenuButtonView.m */; };
+		A0CBA5660FAE776E004A7BFB /* Button_AskDave.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4C20F90776C00D50555 /* Button_AskDave.png */; };
+		A0CBA5670FAE777A004A7BFB /* Button_Info.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4C60F90776C00D50555 /* Button_Info.png */; };
 		A0F7A4FB0F9077AF00D50555 /* C_INFO.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4E00F9077AF00D50555 /* C_INFO.png */; };
 		A0F7A4FC0F9077AF00D50555 /* CA01.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4E20F9077AF00D50555 /* CA01.png */; };
 		A0F7A4FD0F9077AF00D50555 /* CA02.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4E30F9077AF00D50555 /* CA02.png */; };
@@ -1066,6 +1068,8 @@
 				A0CBA4420FAE518F004A7BFB /* DAM.png in Resources */,
 				A0CBA4430FAE5197004A7BFB /* CAI.png in Resources */,
 				A0CBA4440FAE5197004A7BFB /* CAM.png in Resources */,
+				A0CBA5660FAE776E004A7BFB /* Button_AskDave.png in Resources */,
+				A0CBA5670FAE777A004A7BFB /* Button_Info.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
