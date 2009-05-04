@@ -113,6 +113,8 @@
 
    NSLog(@"Enjoy!!!");
 
+   [menu swoopIn];
+
    [pool release];
 
    return;

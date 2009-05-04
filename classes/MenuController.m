@@ -81,6 +81,99 @@
 }
 
 
+- (void)swoopIn
+{
+   int i;
+   MenuButtonView      * menuButton;
+   NSMutableArray      * animations;
+   CGMutablePathRef      thePath;
+	CAKeyframeAnimation * swoopAnimation;
+   NSAutoreleasePool   * pool;
+
+   pool = [[NSAutoreleasePool alloc] init];
+
+   animations = [[NSMutableArray alloc] initWithCapacity:6];
+
+   for(i = 0; i < [menu.buttons count]; i++)
+   {
+      menuButton = [menu.buttons objectAtIndex:i];
+
+      [menuButton.layer removeAllAnimations];
+
+      thePath = CGPathCreateMutable();
+      CGPathMoveToPoint(thePath,    NULL, menuButton.outCenter.x, menuButton.outCenter.y);
+      CGPathAddLineToPoint(thePath, NULL, menuButton.inCenter.x,  menuButton.inCenter.y);
+
+      swoopAnimation                     = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+      swoopAnimation.removedOnCompletion = YES;
+      swoopAnimation.duration            = .20;
+      swoopAnimation.repeatCount         = 0;
+      swoopAnimation.path                = thePath;
+
+      [animations addObject:swoopAnimation];
+   };
+
+   for(i = 0; i < [menu.buttons count]; i++)
+   {
+      menuButton     = [menu.buttons objectAtIndex:i];
+      swoopAnimation = [animations   objectAtIndex:i];
+      [menuButton.layer addAnimation:swoopAnimation forKey:@"bounceAnimation"];
+   };
+
+   [animations release];
+
+   [pool release];
+
+   return;
+}
+
+
+- (void)swoopOut
+{
+   int i;
+   MenuButtonView      * menuButton;
+   NSMutableArray      * animations;
+   CGMutablePathRef      thePath;
+	CAKeyframeAnimation * swoopAnimation;
+   NSAutoreleasePool   * pool;
+
+   pool = [[NSAutoreleasePool alloc] init];
+
+   animations = [[NSMutableArray alloc] initWithCapacity:6];
+
+   for(i = 0; i < [menu.buttons count]; i++)
+   {
+      menuButton = [menu.buttons objectAtIndex:i];
+
+      [menuButton.layer removeAllAnimations];
+
+      thePath = CGPathCreateMutable();
+      CGPathMoveToPoint(thePath,    NULL, menuButton.inCenter.x,  menuButton.inCenter.y);
+      CGPathAddLineToPoint(thePath, NULL, menuButton.outCenter.x, menuButton.outCenter.y);
+
+      swoopAnimation                     = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+      swoopAnimation.removedOnCompletion = YES;
+      swoopAnimation.duration            = .20;
+      swoopAnimation.repeatCount         = 0;
+      swoopAnimation.path                = thePath;
+
+      [animations addObject:swoopAnimation];
+   };
+
+   for(i = 0; i < [menu.buttons count]; i++)
+   {
+      menuButton     = [menu.buttons objectAtIndex:i];
+      swoopAnimation = [animations   objectAtIndex:i];
+      [menuButton.layer addAnimation:swoopAnimation forKey:@"bounceAnimation"];
+   };
+
+   [animations release];
+
+   [pool release];
+
+   return;
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

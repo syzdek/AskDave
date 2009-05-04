@@ -29,6 +29,7 @@
 //           //
 ///////////////
 
+#import <QuartzCore/QuartzCore.h>
 #import <UIKit/UIKit.h>
 
 @class AppDelegate;
@@ -43,5 +44,8 @@
 
 @property(nonatomic, retain) id               delegate;
 @property(nonatomic, retain) NSUserDefaults * defaults;
+
+- (void)swoopIn;
+- (void)swoopOut;
 
 @end
