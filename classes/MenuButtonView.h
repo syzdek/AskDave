@@ -20,7 +20,7 @@
  *  @BINDLEBINARIES_FOSS_LICENSE_HEADER_END@
  */
 /**
- *  @file classes/MenuView.h displayes the "Menu"
+ *  @file classes/MenuButtonView.h displayes the "Menu button"
  */
 
 ///////////////
@@ -38,34 +38,21 @@
 //                     //
 /////////////////////////
 
-
-@interface MenuView : UIView
+@interface MenuButtonView : UIButton
 {
    id delegate;
 
-   UIImage     * background;
-   UIImage     * info;
-   UIImage     * random;
+   CGPoint   inCenter;
+   CGPoint   outCenter;
 
-   UIImageView * backgroundView;
-   UIButton    * infoButton;
-   UIButton    * randomButton;
-
-   NSMutableArray * buttons;
+   UIImage * image;
 }
 
 @property(assign) id delegate;
 
-@property(nonatomic, retain) UIImage * background;
-@property(nonatomic, retain) UIImage * info;
-@property(nonatomic, retain) UIImage * random;
+@property(readonly) CGPoint inCenter;
+@property(readonly) CGPoint outCenter;
 
-@property(readonly) UIImageView  * backgroundView;
-@property(readonly) UIButton     * infoButton;
-@property(readonly) UIButton     * randomButton;
-
-@property(readonly) NSMutableArray * buttons;
-
-- (void)addButton:(UIImage *)anImage tag:(NSInteger)aTag;
+@property(nonatomic, retain) UIImage * image;
 
 @end

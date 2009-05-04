@@ -39,5 +39,18 @@
 #define kDurationMagnitude          0.2
 #define kMaxDuration                10.0
 
+// defines menu margins
+#define kMenuLeftMargin             17
+#define kMenuRightMargin            17
+#define kMenuTopMargin              15
+#define kMenuBottonMargin           0
+
+#define kDaveAny                     0
+#define kDaveClassic                 1
+#define kDaveZombie                  2
+#define kDaveNirvana                 3
+#define kDaveGeeky                   4
+#define kDavePirate                  5
+#define kDaveDevil                   6
 
 /* end of header */

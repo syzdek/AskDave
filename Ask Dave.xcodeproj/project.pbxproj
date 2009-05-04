@@ -36,6 +36,7 @@
 		A0CBA4420FAE518F004A7BFB /* DAM.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A52C0F9077BC00D50555 /* DAM.png */; };
 		A0CBA4430FAE5197004A7BFB /* CAI.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4F60F9077AF00D50555 /* CAI.png */; };
 		A0CBA4440FAE5197004A7BFB /* CAM.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4F70F9077AF00D50555 /* CAM.png */; };
+		A0CBA4B20FAE57FB004A7BFB /* MenuButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CBA4B10FAE57FB004A7BFB /* MenuButtonView.m */; };
 		A0F7A4FB0F9077AF00D50555 /* C_INFO.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4E00F9077AF00D50555 /* C_INFO.png */; };
 		A0F7A4FC0F9077AF00D50555 /* CA01.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4E20F9077AF00D50555 /* CA01.png */; };
 		A0F7A4FD0F9077AF00D50555 /* CA02.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F7A4E30F9077AF00D50555 /* CA02.png */; };
@@ -221,6 +222,8 @@
 		A0BCD7360F91533600553076 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		A0CBA32E0FAD99CB004A7BFB /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuView.h; sourceTree = "<group>"; };
 		A0CBA32F0FAD99CB004A7BFB /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
+		A0CBA4B00FAE57FB004A7BFB /* MenuButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuButtonView.h; sourceTree = "<group>"; };
+		A0CBA4B10FAE57FB004A7BFB /* MenuButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuButtonView.m; sourceTree = "<group>"; };
 		A0F7A4C20F90776C00D50555 /* Button_AskDave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_AskDave.png; sourceTree = "<group>"; };
 		A0F7A4C30F90776C00D50555 /* Button_Classic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Classic.png; sourceTree = "<group>"; };
 		A0F7A4C40F90776C00D50555 /* Button_Devil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Devil.png; sourceTree = "<group>"; };
@@ -624,6 +627,8 @@
 				A082D7F90FA56DDB00BE7D1A /* DaveInfoView.m */,
 				A082D7F50FA56DCA00BE7D1A /* DaveView.h */,
 				A082D7F60FA56DCA00BE7D1A /* DaveView.m */,
+				A0CBA4B00FAE57FB004A7BFB /* MenuButtonView.h */,
+				A0CBA4B10FAE57FB004A7BFB /* MenuButtonView.m */,
 				A0CBA32E0FAD99CB004A7BFB /* MenuView.h */,
 				A0CBA32F0FAD99CB004A7BFB /* MenuView.m */,
 			);
@@ -1080,6 +1085,7 @@
 				A082D7F70FA56DCA00BE7D1A /* DaveView.m in Sources */,
 				A082D7FA0FA56DDB00BE7D1A /* DaveInfoView.m in Sources */,
 				A0CBA3300FAD99CB004A7BFB /* MenuView.m in Sources */,
+				A0CBA4B20FAE57FB004A7BFB /* MenuButtonView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

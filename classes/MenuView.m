@@ -31,6 +31,7 @@
 
 #import "common.h"
 #import "MenuView.h"
+#import "MenuButtonView.h"
 
 
 ///////////////
@@ -64,8 +65,8 @@
       {
          frame.size.width               = 219;
          frame.size.height              = 52;
-         frame.origin.x                 = 17;
-         frame.origin.y                 = self.frame.size.height - 52;
+         frame.origin.x                 = kMenuLeftMargin;
+         frame.origin.y                 = self.frame.size.height - 52 - kMenuBottonMargin;
          randomButton.frame             = frame;
          randomButton.backgroundColor   = [UIColor clearColor];
          [self addSubview:randomButton];
@@ -74,8 +75,8 @@
       {
          frame.size.width             = 67;
          frame.size.height            = 52;
-         frame.origin.x               = self.frame.size.width - 67 - 17;
-         frame.origin.y               = self.frame.size.height - 52;
+         frame.origin.x               = self.frame.size.width - 67 - kMenuRightMargin;
+         frame.origin.y               = self.frame.size.height - 52 - kMenuBottonMargin;
          infoButton.frame             = frame;
          infoButton.backgroundColor   = [UIColor clearColor];
          [self addSubview:infoButton];
@@ -117,25 +118,17 @@
 }
 
 
-- (void)addButton:(UIImage *)anImage
+- (void)addButton:(UIImage *)anImage tag:(NSInteger)aTag
 {
-   CGRect     frame;
-   UIButton * button;
+   //CGRect           frame;
+   MenuButtonView * button;
 
-   if (button = [UIButton buttonWithType:UIButtonTypeCustom])
+   if (button = [MenuButtonView buttonWithType:UIButtonTypeCustom])
    {
-         frame.size.width         = anImage.size.width;
-         frame.size.height        = anImage.size.height;
-         frame.origin.x           = 17;
-         frame.origin.y           = 15;
-         if ([buttons count] % 2)
-            frame.origin.x        = self.frame.size.width - anImage.size.width - 17;
-         frame.origin.y          += ([buttons count] / 2) * anImage.size.height;
-         button.frame             = frame;
          button.backgroundColor   = [UIColor clearColor];
-         button.tag               = [buttons count] + 1;
-         [button  setBackgroundImage:anImage forState:UIControlStateNormal];
-         [button  addTarget:delegate action:@selector(showBoardView:) forControlEvents:UIControlEventTouchUpInside];
+         button.tag               = aTag;
+         button.image             = anImage;
+         button.delegate          = delegate;
          [buttons addObject:button];
          [self    addSubview:button];
    };
@@ -146,7 +139,10 @@
 
 - (void)setDelegate:(id)aValue
 {
+   int i;
    delegate = aValue;
+   for(i = 0; i < [buttons count]; i++)
+      [[buttons objectAtIndex:i] setDelegate:delegate];
    [infoButton   addTarget:delegate action:@selector(showSettingsView:) forControlEvents:UIControlEventTouchUpInside];
    [randomButton addTarget:delegate action:@selector(showBoardView:)    forControlEvents:UIControlEventTouchUpInside];
    return;

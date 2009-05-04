@@ -171,7 +171,7 @@
 
    switch(tag)
    {
-      case 1:
+      case kDaveClassic:
          NSLog(@"init classic Dave...");
          dave.name                 = @"classic Dave";
          dave.bga                  = YES;
@@ -208,7 +208,7 @@
          [dave.messages addObject:[UIImage uncachedImageNamed:@"CA20.png"]];
          break;
 
-      case 2:
+      case kDaveZombie:
          NSLog(@"init zombie Dave...");
          dave.name                 = @"zombie Dave";
          dave.bga                  = YES;
@@ -245,7 +245,7 @@
          [dave.messages addObject:[UIImage uncachedImageNamed:@"ZA20.png"]];
          break;
 
-      case 3:
+      case kDaveNirvana:
          NSLog(@"init nirvana Dave...");
          dave.name                 = @"nirvana Dave";
          dave.bga                  = YES;
@@ -282,7 +282,7 @@
          [dave.messages addObject:[UIImage uncachedImageNamed:@"NA20.png"]];
          break;
 
-      case 4:
+      case kDaveGeeky:
          NSLog(@"init geek Dave...");
          dave.name                 = @"geek Dave";
          dave.bga                  = YES;
@@ -319,7 +319,7 @@
          [dave.messages addObject:[UIImage uncachedImageNamed:@"GA20.png"]];
          break;
 
-      case 5:
+      case kDavePirate:
          NSLog(@"init pirate Dave...");
          dave.name                 = @"pirate Dave";
          dave.bga                  = YES;
@@ -356,7 +356,7 @@
          [dave.messages addObject:[UIImage uncachedImageNamed:@"PA20.png"]];
          break;
 
-      case 6:
+      case kDaveDevil:
       default:
          NSLog(@"init devil Dave...");
          dave.name                 = @"devil Dave";

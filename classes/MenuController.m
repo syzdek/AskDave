@@ -31,6 +31,7 @@
 
 #import "common.h"
 #import "MenuView.h"
+#import "MenuButtonView.h"
 #import "MenuController.h"
 
 
@@ -58,12 +59,12 @@
    menu.background = [UIImage imageNamed:@"Default.png"];
    menu.info       = [UIImage imageNamed:@"Button_Info.png"];
    menu.random     = [UIImage imageNamed:@"Button_AskDave.png"];
-   [menu addButton:[UIImage imageNamed:@"Dave_Classic.png"]];
-   [menu addButton:[UIImage imageNamed:@"Dave_Zombie.png"]];
-   [menu addButton:[UIImage imageNamed:@"Dave_Nirvana.png"]];
-   [menu addButton:[UIImage imageNamed:@"Dave_Geeky.png"]];
-   [menu addButton:[UIImage imageNamed:@"Dave_Pirate.png"]];
-   [menu addButton:[UIImage imageNamed:@"Dave_Devil.png"]];
+   [menu addButton:[UIImage imageNamed:@"Dave_Classic.png"] tag:kDaveClassic];
+   [menu addButton:[UIImage imageNamed:@"Dave_Zombie.png"]  tag:kDaveZombie];
+   [menu addButton:[UIImage imageNamed:@"Dave_Nirvana.png"] tag:kDaveNirvana];
+   [menu addButton:[UIImage imageNamed:@"Dave_Geeky.png"]   tag:kDaveGeeky];
+   [menu addButton:[UIImage imageNamed:@"Dave_Pirate.png"]  tag:kDavePirate];
+   [menu addButton:[UIImage imageNamed:@"Dave_Devil.png"]   tag:kDaveDevil];
 
    self.view = menu;
 
